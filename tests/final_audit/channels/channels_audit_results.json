@@ -1,0 +1,46 @@
+{
+  "audit_metadata": {
+    "auditor": "Antigravity Autonomous Systems Engineering Team",
+    "date": "2026-11-13",
+    "openexr_available": true
+  },
+  "copy_node_inspection": {
+    "knob_pairs_count": 4,
+    "is_limited_to_4_pairs": true,
+    "arbitrary_channel_count_supported_in_single_node": false,
+    "classification": "PARTIAL"
+  },
+  "channel_tests": {},
+  "exr_verification": {
+    "status": "PASS",
+    "file_path": "C:\\Users\\rajeshn\\Desktop\\Rajesh\\OpenComp\\tests\\final_audit\\channels\\test_multichannel_audit.exr",
+    "dimensions": "64x64",
+    "channels_written": [
+      "R",
+      "G",
+      "B",
+      "A",
+      "depth.Z",
+      "forward.u",
+      "forward.v",
+      "diffuse.R",
+      "crypto_object.01"
+    ],
+    "channels_read": [
+      "A",
+      "B",
+      "G",
+      "R",
+      "crypto_object.01",
+      "depth.Z",
+      "diffuse.R",
+      "forward.u",
+      "forward.v"
+    ],
+    "all_channels_present": true,
+    "depth_min": 10.0,
+    "depth_max": 100.0,
+    "crypto_val": 1042.0,
+    "crypto_exact": true
+  }
+}

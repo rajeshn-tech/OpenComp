@@ -1,0 +1,67 @@
+# ==============================================================================
+# OpenComp Production VFX Suite - Git Ignore Specification
+# ==============================================================================
+
+# Python Environments & Bytecode
+.venv/
+env/
+venv/
+ENV/
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Node.js Dependencies & Runtime
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Server Runtime & Port State
+.server_info.json
+
+# Operating System Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# IDE & Editor Directories
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Temporary & Autosave Files
+*.autosave
+*.tmp
+*.tmp.*
+*.bak
+!backup/**
+
+# Logs
+*.log
+
+# Ephemeral Test Render Outputs
+# (Targeted: Do NOT globally ignore *.exr to preserve golden fixtures & artist assets)
+tests/output/*.exr
+tests/output/*.png
+tests/output/*.oc3d
+tests/output/*.usda
+tests/output/*.usdc
+tests/output/mock_lan_share/
+!tests/output/.gitkeep
+
+# Explicit Whitelist: Ensure Golden Fixtures & Historical Assets Are Never Ignored
+!tests/fixtures/**
+!test_assets/**
+!tests/final_audit/**
+!checkpoint_phase5/**
+!checkpoint_phase6/**
+!data/**
+

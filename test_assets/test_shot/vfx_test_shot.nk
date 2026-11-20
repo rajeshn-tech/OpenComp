@@ -1,0 +1,61 @@
+#! /usr/local/Nuke14.0v1/libnuke-14.0.1.so -nx
+version 14.0 v1
+Root {
+ inputs 0
+ name "C:/Users/rajeshn/Desktop/Rajesh/OpenComp/test_assets/test_shot/vfx_test_shot.nk"
+ frame 1
+ first_frame 1
+ last_frame 24
+ format "1280 720 0 0 1280 720 1 HD_720"
+}
+Read {
+ inputs 0
+ file "C:/Users/rajeshn/Desktop/Rajesh/OpenComp/test_assets/test_shot/sequence/background/bg_plate.%04d.exr"
+ format "1280x720"
+ first 1
+ last 24
+ name Read_BG
+ xpos 100
+ ypos 60
+}
+Read {
+ inputs 0
+ file "C:/Users/rajeshn/Desktop/Rajesh/OpenComp/test_assets/test_shot/sequence/greenscreen/fg_actor.%04d.exr"
+ format "1280x720"
+ first 1
+ last 24
+ name Read_FG
+ xpos 360
+ ypos 60
+}
+Keyer {
+ inputs 1
+ operation "greenscreen"
+ tolerance 0.28
+ softness 0.16
+ name Keyer1
+ xpos 360
+ ypos 160
+}
+Grade {
+ inputs 1
+ gain {curve x1 1.05 x12 1.18 x24 1.1}
+ gamma 1.08
+ lift -0.02
+ name Grade1
+ xpos 360
+ ypos 260
+}
+Merge2 {
+ inputs 2
+ operation over
+ name Merge1
+ xpos 220
+ ypos 380
+}
+Viewer {
+ inputs 1
+ name Viewer1
+ xpos 220
+ ypos 500
+}

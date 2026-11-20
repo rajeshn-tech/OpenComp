@@ -1,0 +1,144 @@
+[
+  {
+    "id": 1,
+    "name": "1080p Greenscreen VFX Comp",
+    "resolution": "1920x1080",
+    "status": "PASSED",
+    "durationMs": "10860.7",
+    "heapDeltaMB": "-0.87",
+    "outputFiles": [
+      {
+        "path": "C:\\Users\\rajeshn\\Desktop\\Rajesh\\OpenComp\\tests\\final_audit\\pipelines\\pipe01_greenscreen_1080p.exr",
+        "sizeBytes": 16606344,
+        "width": 1920,
+        "height": 1080
+      }
+    ],
+    "details": "Chroma keyed foreground transformed and composited over background"
+  },
+  {
+    "id": 2,
+    "name": "4K UHD Multi-pass CG Comp (DWAA)",
+    "resolution": "3840x2160",
+    "status": "PASSED",
+    "durationMs": "8064.1",
+    "heapDeltaMB": "-0.68",
+    "outputFiles": [
+      {
+        "path": "C:\\Users\\rajeshn\\Desktop\\Rajesh\\OpenComp\\tests\\final_audit\\pipelines\\pipe02_cg_multipass_4k_dwaa.exr",
+        "sizeBytes": 167670,
+        "width": 3840,
+        "height": 2160,
+        "compression": "Compression.DWAA_COMPRESSION",
+        "channels": [
+          "A",
+          "B",
+          "G",
+          "R"
+        ]
+      }
+    ],
+    "details": "Multi-AOV shuffled, graded, and encoded to DWAA compressed EXR"
+  },
+  {
+    "id": 3,
+    "name": "4K DCI Day-for-Night Grade",
+    "resolution": "3840x2160",
+    "status": "PASSED",
+    "durationMs": "55328.3",
+    "heapDeltaMB": "0.23",
+    "outputFiles": [
+      {
+        "path": "C:\\Users\\rajeshn\\Desktop\\Rajesh\\OpenComp\\tests\\final_audit\\pipelines\\pipe03_day_for_night_4k.exr",
+        "sizeBytes": 66390024,
+        "width": 3840,
+        "height": 2160
+      }
+    ],
+    "details": "Day-for-night color conversion via Grade, ColorCorrect, and ColorLookup"
+  },
+  {
+    "id": 4,
+    "name": "2K Cleanup & Rig Removal",
+    "resolution": "2048x1080",
+    "status": "PASSED",
+    "durationMs": "6838.0",
+    "heapDeltaMB": "0.22",
+    "outputFiles": [
+      {
+        "path": "C:\\Users\\rajeshn\\Desktop\\Rajesh\\OpenComp\\tests\\final_audit\\pipelines\\pipe04_cleanup_2k.exr",
+        "sizeBytes": 17712264,
+        "width": 2048,
+        "height": 1080
+      }
+    ],
+    "details": "Roto matte, feathered blur, and clone patch merged"
+  },
+  {
+    "id": 5,
+    "name": "8K Stereo VFX Composite",
+    "resolution": "7680x4320",
+    "status": "PASSED",
+    "durationMs": "5556.3",
+    "heapDeltaMB": "-0.67",
+    "outputFiles": [],
+    "details": "7680x4320 (8K) Stereo Left/Right merged and disparity warped in memory"
+  },
+  {
+    "id": 6,
+    "name": "4K Lens & Optical Effects",
+    "resolution": "3840x2160",
+    "status": "PASSED",
+    "durationMs": "13428.7",
+    "heapDeltaMB": "0.17",
+    "outputFiles": [],
+    "details": "3840x2160 Lens defocus, edge softening, and optical glow computed"
+  },
+  {
+    "id": 7,
+    "name": "12K Matte Painting Panoramic Stitch",
+    "resolution": "12288x6480",
+    "status": "PASSED",
+    "durationMs": "2927.6",
+    "heapDeltaMB": "0.75",
+    "outputFiles": [],
+    "details": "12288x6480 (12K DCI) Panoramic constant plate graded without allocation failure"
+  },
+  {
+    "id": 8,
+    "name": "16K Extreme Large Format Tiled Processing",
+    "resolution": "15360x8640",
+    "status": "PASSED",
+    "durationMs": "3426.5",
+    "heapDeltaMB": "-0.85",
+    "outputFiles": [],
+    "details": "15360x8640 (16K UHD) 40x2048px tiles evaluated with 0 seam artifacts"
+  },
+  {
+    "id": 9,
+    "name": "Full 24-Frame 1080p Animated Sequence",
+    "resolution": "1920x1080",
+    "status": "PASSED",
+    "durationMs": "2142.3",
+    "heapDeltaMB": "0.03",
+    "outputFiles": [],
+    "details": "24 frames evaluated; net heap growth -0.01 MB (stable, no memory leaks)"
+  },
+  {
+    "id": 10,
+    "name": "Mixed Format Conform & Scale to 2K DCI",
+    "resolution": "2048x1080",
+    "status": "PASSED",
+    "durationMs": "7160.1",
+    "heapDeltaMB": "0.38",
+    "outputFiles": [
+      {
+        "path": "C:\\Users\\rajeshn\\Desktop\\Rajesh\\OpenComp\\tests\\final_audit\\pipelines\\pipe10_conformed_2k.exr",
+        "sizeBytes": 17712264,
+        "width": 2048,
+        "height": 1080
+      }
+    ],
+    "details": "720p, 1080p, and 4K conformed to 2048x1080 2K DCI via bicubic sub-pixel resampling"
+  }
+]

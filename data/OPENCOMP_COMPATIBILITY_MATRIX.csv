@@ -1,0 +1,149 @@
+Node Name,Nuke Edition (Nuke / NukeX),Category,OpenComp Equivalent Node,Status,Functional Difference,Priority for OpenComp,Target Phase
+Read,Nuke,Image,Read,IMPLEMENTED,Supports PNG/JPEG/EXR; Nuke supports RAW/DPX/CIN/ProRes natively,P0 Critical,Phase 1 (Complete)
+Write,Nuke,Image,Write,IMPLEMENTED,Supports PNG/JPEG/EXR 16/32-bit; Nuke supports multi-part EXR/ProRes/DNxHR,P0 Critical,Phase 1 (Complete)
+Constant,Nuke,Image,Constant,IMPLEMENTED,Identical 32-bit linear float solid color canvas generator,P0 Critical,Phase 1 (Complete)
+Ramp,Nuke,Image,Ramp,IMPLEMENTED,Linear/smooth 2-point gradient generator; matches Nuke ramp math,P1 High,Phase 1 (Complete)
+CheckerBoard,Nuke,Image,None,MISSING,Nuke procedural checkerboard pattern generator with frequency controls,P2 Medium,Phase 6
+ColorBars,Nuke,Image,None,MISSING,SMPTE color calibration bar pattern generator,P3 Low,Phase 7
+ContactSheet,Nuke,Image,ContactSheet,IMPLEMENTED,Multi-input grid matrix organizer; identical layout logic,P1 High,Phase 2 (Complete)
+CurveTool,Nuke,Image,None,MISSING,Analyzes footage for exposure/max luma/auto-crop boxes over time,P1 High,Phase 6
+Merge,Nuke,Merge,Merge,IMPLEMENTED,28 blend modes; exact Nuke math; 4-channel RGBA pipeline,P0 Critical,Phase 1 (Complete)
+Switch,Nuke,Merge,Switch,IMPLEMENTED,Multi-input integer branch index selector,P0 Critical,Phase 1 (Complete)
+Premult,Nuke,Merge,Premult,IMPLEMENTED,Multiplies RGB channels by Alpha; identical Nuke behavior,P0 Critical,Phase 1 (Complete)
+Unpremult,Nuke,Merge,Unpremult,IMPLEMENTED,Divides RGB channels by Alpha with divide-by-zero protection,P0 Critical,Phase 1 (Complete)
+Blend,Nuke,Merge,None,MISSING,Multi-input weighted alpha blend crossfader,P2 Medium,Phase 6
+Dissolve,Nuke,Merge,None,MISSING,2-input cross-dissolve with transition curve knob,P2 Medium,Phase 6
+AddMix,Nuke,Merge,None,MISSING,Non-premultiplied matte mixing node,P2 Medium,Phase 6
+KeyMix,Nuke,Merge,None,MISSING,A/B mix controlled strictly by an external matte input pipe,P1 High,Phase 6
+Grade,Nuke,Color,Grade,IMPLEMENTED,Exact Nuke grading equation matching blackpoint/whitepoint/lift/gain/mult/offset/gamma,P0 Critical,Phase 1 (Complete)
+ColorCorrect,Nuke,Color,ColorCorrect,IMPLEMENTED,Master/shadows/midtones/highlights grading; exact luma zone thresholds,P0 Critical,Phase 1 (Complete)
+ColorLookup,Nuke,Color,ColorLookup,IMPLEMENTED,Spline-based tone curves for master/R/G/B/A; Hermite interpolation,P0 Critical,Phase 1 (Complete)
+Colorspace,Nuke,Color,Colorspace,IMPLEMENTED,Analytical 3x3 matrix and gamma conversions (sRGB/Rec709/Linear/ACEScg),P0 Critical,Phase 1 (Complete)
+OCIOColorSpace,Nuke,Color,OCIOColorSpace,IMPLEMENTED,OpenColorIO v2 transform executed via Python bridge & 3D LUT cache,P0 Critical,Phase 2 (Complete)
+OCIODisplay,Nuke,Color,OCIODisplay,IMPLEMENTED,OpenColorIO v2 display & view transform (sRGB/Rec709/ACES 1.0 SDR),P0 Critical,Phase 2 (Complete)
+Invert,Nuke,Color,Invert,IMPLEMENTED,1.0 - x value inversion for selected channels,P0 Critical,Phase 1 (Complete)
+Clamp,Nuke,Color,None,MISSING,Restricts pixel float values between user min and max thresholds,P1 High,Phase 6
+Histogram,Nuke,Color,None,MISSING,Graphical tonal histogram adjustment widget,P2 Medium,Phase 6
+Toe,Nuke,Color,None,MISSING,Lifts blacks with a smooth parabolic shoulder to avoid clipping,P2 Medium,Phase 6
+HueCorrect,Nuke,Color,None,MISSING,Per-hue curve adjustment for master/saturation/luminance,P1 High,Phase 6
+Saturation,Nuke,Color,None,MISSING,Simple luminance-preserving color saturation adjustment,P1 High,Phase 6
+Blur,Nuke,Filter,Blur,IMPLEMENTED,Separable 2-pass Gaussian convolution filter with float radius,P0 Critical,Phase 1 (Complete)
+EdgeBlur,Nuke,Filter,EdgeBlur,IMPLEMENTED,Sobel edge detection followed by localized alpha edge blurring,P1 High,Phase 2 (Complete)
+Erode,Nuke,Filter,Erode,IMPLEMENTED,Morphological min/max filter for matte contraction and expansion,P1 High,Phase 1 (Complete)
+FilterErode,Nuke,Filter,None,MISSING,Subpixel Gaussian-smoothed edge erosion and dilation,P1 High,Phase 6
+Glow,Nuke,Filter,Glow,IMPLEMENTED,Thresholded highlight isolation and multi-scale Gaussian bloom synthesis,P1 High,Phase 2 (Complete)
+ZDefocus,Nuke,Filter,ZDefocus,IMPLEMENTED,Depth-map driven bokeh convolution; OpenComp uses circular disc kernel,P0 Critical,Phase 2 (Complete)
+Defocus,Nuke,Filter,None,MISSING,Uniform optical circle-of-confusion defocus,P2 Medium,Phase 6
+Convolve,Nuke,Filter,None,MISSING,Spatial / FFT 2D image convolution with arbitrary user kernel image,P1 High,Phase 6
+Sharpen,Nuke,Filter,None,MISSING,Unsharp masking filter with high-frequency detail boost,P1 High,Phase 6
+DirBlur,Nuke,Filter,None,MISSING,Directional linear motion blur along specified angle and length,P2 Medium,Phase 6
+Matrix,Nuke,Filter,None,MISSING,User-configurable 3x3 or 5x5 convolution matrix,P2 Medium,Phase 6
+Transform,Nuke,Transform,Transform,IMPLEMENTED,2D translation/rotation/scale/skew with subpixel interpolation,P0 Critical,Phase 1 (Complete)
+CornerPin2D,Nuke,Transform,CornerPin,IMPLEMENTED,4-point bilinear perspective quad warp; matches Nuke CornerPin2D,P0 Critical,Phase 1 (Complete)
+Crop,Nuke,Transform,Crop,IMPLEMENTED,Bounding box cropping with optional soft edge falloff,P0 Critical,Phase 1 (Complete)
+Reformat,Nuke,Transform,Reformat,IMPLEMENTED,Resolution resizing, aspect ratio fitting (width/height/fit/fill),P0 Critical,Phase 1 (Complete)
+Tracker,Nuke,Transform,Tracker,IMPLEMENTED,Normalized cross-correlation (NCC) point tracker with stabilize/matchmove,P0 Critical,Phase 3 (Complete)
+PlanarTracker,NukeX,Transform,PlanarTracker,IMPLEMENTED,Homography 4-point planar surface tracking; matches NukeX workflow,P0 Critical,Phase 3 (Complete)
+SplineWarp,Nuke,Transform,SplineWarp,IMPLEMENTED,Dual-spline vector correspondence mesh deformation,P0 Critical,Phase 3 (Complete)
+GridWarp,Nuke,Transform,None,MISSING,Interactive grid lattice vertex warping,P1 High,Phase 6
+Card3D,Nuke,Transform,Card3D,IMPLEMENTED,3D planar card in camera space with perspective mapping,P0 Critical,Phase 4 (Complete)
+Mirror,Nuke,Transform,None,MISSING,Horizontal and vertical image axis flipping,P2 Medium,Phase 6
+Position,Nuke,Transform,None,MISSING,Integer/subpixel 2D offset without filtering,P2 Medium,Phase 6
+TVIScale,Nuke,Transform,None,MISSING,Total Variation Inpainting high-quality resolution upscaler,P2 Medium,Phase 7
+Keyer,Nuke,Keyer,Keyer,IMPLEMENTED,Luminance/red/green/blue threshold keyer with low/high soft knees,P0 Critical,Phase 1 (Complete)
+Keylight,Nuke,Keyer,ChromaKeyer,PARTIAL,OpenComp ChromaKeyer implements screen suppression and balance math,P0 Critical,Phase 2 (Complete)
+Primatte,NukeX,Keyer,None,MISSING,3D polyhedral color separation chromakeyer algorithm,P1 High,Phase 6
+IBKColour,Nuke,Keyer,None,MISSING,Image-based keyer clean plate generator,P1 High,Phase 6
+IBKGizmo,Nuke,Keyer,None,MISSING,Image-based keyer matte extraction and despill processor,P1 High,Phase 6
+Despill,Nuke,Keyer,Despill,IMPLEMENTED,Green/blue spill suppression using average/max secondary algorithm,P0 Critical,Phase 2 (Complete)
+MatteControl,Nuke,Keyer,MatteControl,IMPLEMENTED,Combined erode/blur/gamma/contrast matte post-processing tool,P1 High,Phase 2 (Complete)
+EdgeExtend,Nuke,Keyer,EdgeExtend,IMPLEMENTED,Edge color dilation filling transparent fringes and eliminating halos,P1 High,Phase 2 (Complete)
+Difference,Nuke,Keyer,None,MISSING,Calculates pixel color distance between two plates to extract matte,P2 Medium,Phase 6
+Ultimatte,NukeX,Keyer,None,MISSING,Classical hardware-style blue/greenscreen keying algorithm,P2 Medium,Phase 7
+Shuffle,Nuke,Channel,Shuffle,IMPLEMENTED,Channel routing matrix between inputs and outputs,P0 Critical,Phase 1 (Complete)
+Copy,Nuke,Channel,Copy,IMPLEMENTED,Copies specified channels from pipe A into pipe B,P0 Critical,Phase 1 (Complete)
+ChannelMerge,Nuke,Channel,ChannelMerge,IMPLEMENTED,Performs union/intersection/xor operations on arbitrary channels,P1 High,Phase 2 (Complete)
+Add,Nuke,Channel,None,MISSING,Creates and assigns new user-defined channel names,P2 Medium,Phase 6
+Remove,Nuke,Channel,None,MISSING,Deletes specific channels or entire layer sets to optimize memory,P1 High,Phase 6
+Roto,Nuke,Draw,Roto,IMPLEMENTED,Vector Bezier and B-spline curves with feather handles and invert,P0 Critical,Phase 2 (Complete)
+RotoPaint,Nuke,Draw,Paint,IMPLEMENTED,Vector raster painting with clone/brush/eraser and stroke history,P0 Critical,Phase 2 (Complete)
+Depth,Nuke,Draw,Depth,IMPLEMENTED,OpenComp unique node generating 2D-to-3D stereo depth gradients,P1 High,Phase 2 (Complete)
+StereoWarp,Nuke,Draw,StereoWarp,IMPLEMENTED,OpenComp unique DIBR depth-image-based rendering stereo synthesizer,P1 High,Phase 2 (Complete)
+StereoMerge,Nuke,Draw,StereoMerge,IMPLEMENTED,Combines left/right stereo views into anaglyph or side-by-side output,P1 High,Phase 2 (Complete)
+Dot,Nuke,Other,Dot,IMPLEMENTED,Pipe routing junction node with clean 90-degree elbows,P0 Critical,Phase 1 (Complete)
+Backdrop,Nuke,Other,Backdrop,IMPLEMENTED,Visual rectangular node organization container with color and text label,P1 High,Phase 1 (Complete)
+Viewer,Nuke,Viewer,Viewer,IMPLEMENTED,32-bit linear float display viewport with gain/gamma/channel isolation,P0 Critical,Phase 1 (Complete)
+FrameHold,Nuke,Time,FrameHold,IMPLEMENTED,Freezes image sequence at a designated frame indefinitely,P0 Critical,Phase 1 (Complete)
+Retime,Nuke,Time,Retime,IMPLEMENTED,Linear speed scaling and integer frame retiming with frame blending,P0 Critical,Phase 3 (Complete)
+TimeWarp,Nuke,Time,TimeWarp,IMPLEMENTED,Arbitrary non-linear curve-driven frame retiming,P0 Critical,Phase 3 (Complete)
+TimeOffset,Nuke,Time,None,MISSING,Static integer frame forward/backward shift,P1 High,Phase 6
+FrameRange,Nuke,Time,None,MISSING,Sets playback in/out frame bounds for downstream pipeline nodes,P1 High,Phase 6
+TemporalMedian,Nuke,Time,None,MISSING,3-frame statistical median filter removing temporal grain and dust,P2 Medium,Phase 6
+AppendClip,Nuke,Time,None,MISSING,Sequentially splices multiple clips one after another on the timeline,P2 Medium,Phase 6
+FrameBlend,Nuke,Time,None,MISSING,Accumulates and averages multiple adjacent frames for motion blur,P1 High,Phase 6
+Axis,Nuke,3D,Axis3D,IMPLEMENTED,3D spatial transform coordinate pivot and parent hierarchy node,P0 Critical,Phase 4 (Complete)
+Camera,Nuke,3D,Camera3D,IMPLEMENTED,Perspective physical camera model with focal length and aperture,P0 Critical,Phase 4 (Complete)
+Card,Nuke,3D,Card3D,IMPLEMENTED,Planar 3D polygon card textured with upstream 2D image,P0 Critical,Phase 4 (Complete)
+Cube,Nuke,3D,Cube3D,IMPLEMENTED,3D polygonal cube geometric primitive with UV mapping,P1 High,Phase 4 (Complete)
+Sphere,Nuke,3D,None,MISSING,3D UV sphere geometric primitive,P1 High,Phase 6
+Cylinder,Nuke,3D,None,MISSING,3D cylinder geometric primitive with caps,P2 Medium,Phase 6
+Scene,Nuke,3D,Scene3D,IMPLEMENTED,Multi-input 3D scene aggregator bundling geometry/cameras/lights,P0 Critical,Phase 4 (Complete)
+Project3D,Nuke,3D,Project3D,IMPLEMENTED,Projects 2D image onto 3D geometry using camera frustum,P0 Critical,Phase 4 (Complete)
+ScanlineRender,Nuke,3D,ScanlineRender,IMPLEMENTED,Software Z-buffered scanline rasterizer producing 2D RGBA and depth,P0 Critical,Phase 4 (Complete)
+TransformGeo,Nuke,3D,None,MISSING,Applies 3D translation/rotation/scale directly to geometry streams,P1 High,Phase 6
+ApplyMaterial,Nuke,3D,None,MISSING,Binds 2D shader/texture streams to specific 3D geometry objects,P1 High,Phase 6
+DirectLight,Nuke,3D,None,MISSING,Parallel directional infinite distance light source,P1 High,Phase 6
+PointLight,Nuke,3D,None,MISSING,Omnidirectional point light source with distance attenuation,P1 High,Phase 6
+SpotLight,Nuke,3D,None,MISSING,Cone-shaped spotlights with penumbra angle falloff,P1 High,Phase 6
+Environment,Nuke,3D,None,MISSING,Latitude-longitude spherical environment map lighting,P2 Medium,Phase 7
+RayRender,Nuke,3D,None,MISSING,Modern path-tracing / ray-tracing 3D renderer with reflections/refractions,P2 Medium,Phase 7
+DeepRead,Nuke,Deep,DeepRead,IMPLEMENTED,Loads multi-sample Deep EXR files via Python OpenEXR bridge,P0 Critical,Phase 5 (Complete)
+DeepWrite,Nuke,Deep,DeepWrite,IMPLEMENTED,Exports multi-sample Deep EXR files via Python OpenEXR bridge,P0 Critical,Phase 5 (Complete)
+DeepToImage,Nuke,Deep,DeepToImage,IMPLEMENTED,Flattens deep sample arrays into 2D linear float RGBA image,P0 Critical,Phase 5 (Complete)
+DeepFromImage,Nuke,Deep,DeepFromImage,IMPLEMENTED,Converts 2D color and 2D depth into 1-sample deep image stream,P0 Critical,Phase 5 (Complete)
+DeepMerge,Nuke,Deep,DeepMerge,IMPLEMENTED,Volumetric sample interleaving using Beer-Lambert optical absorption,P0 Critical,Phase 5 (Complete)
+DeepHoldout,Nuke,Deep,DeepHoldout,IMPLEMENTED,Subtracts occluding foreground geometry from background volumetric samples,P0 Critical,Phase 5 (Complete)
+DeepCrop,Nuke,Deep,DeepCrop,IMPLEMENTED,Clips deep samples between near and far depth planes,P0 Critical,Phase 5 (Complete)
+DeepSample,Nuke,Deep,None,MISSING,Probes and outputs deep sample values at specific pixel coordinates,P1 High,Phase 6
+DeepReformat,Nuke,Deep,None,MISSING,Changes format resolution and aspect ratio of deep image streams,P1 High,Phase 6
+DeepColorCorrect,Nuke,Deep,None,MISSING,Applies color grading directly to deep samples before flattening,P1 High,Phase 6
+DeepTransform,Nuke,Deep,None,MISSING,Applies 2D spatial translation and scale to deep sample bounding boxes,P1 High,Phase 6
+DeepExpression,Nuke,Deep,None,MISSING,Evaluates custom mathematical expressions per deep sample,P2 Medium,Phase 7
+CameraTracker,NukeX,NukeX Solvers,None,MISSING,Automated Structure-from-Motion 3D camera solver and point cloud generator,P0 Critical,Phase 6
+SmartVectors,NukeX,NukeX Solvers,None,MISSING,High-precision optical flow motion vector map generator,P0 Critical,Phase 6
+VectorDistort,NukeX,NukeX Solvers,None,MISSING,Warping node driving clean plates and patches via SmartVectors,P0 Critical,Phase 6
+Kronos,NukeX,NukeX Solvers,None,MISSING,GPU optical-flow temporal retimer with subpixel vector interpolation,P1 High,Phase 6
+LensDistortion,NukeX,NukeX Solvers,None,MISSING,Grid and feature-line camera lens distortion profiling and STMap creation,P1 High,Phase 6
+STMap,Nuke,Transform,None,MISSING,Distorts images using UV coordinate displacement channels,P1 High,Phase 6
+ModelBuilder,NukeX,NukeX Solvers,None,MISSING,Interactive photogrammetric 3D geometry alignment tool,P1 High,Phase 7
+PointCloudGenerator,NukeX,NukeX Solvers,None,MISSING,Dense 3D point cloud synthesis from solved camera tracks,P1 High,Phase 7
+PoissonMesh,NukeX,NukeX Solvers,None,MISSING,Reconstructs polygon surfaces from dense point clouds,P2 Medium,Phase 7
+ParticleEmitter,NukeX,Particles,None,MISSING,3D particle emitter emitting particles from points or geometry,P2 Medium,Phase 7
+ParticleTurbulence,NukeX,Particles,None,MISSING,Adds 3D Perlin noise spatial turbulence to particle velocity,P2 Medium,Phase 7
+ParticleDirectionalForce,NukeX,Particles,None,MISSING,Applies constant directional acceleration (gravity/wind) to particles,P2 Medium,Phase 7
+ParticleBounce,NukeX,Particles,None,MISSING,Simulates particle collisions and elastic rebound against 3D geometry,P2 Medium,Phase 7
+ParticleDrag,NukeX,Particles,None,MISSING,Simulates atmospheric friction and fluid resistance on particles,P2 Medium,Phase 7
+ParticleSpawn,NukeX,Particles,None,MISSING,Spawns secondary particle bursts upon collision or lifetime expiration,P2 Medium,Phase 7
+CopyCat,NukeX,AIR ML,None,MISSING,PyTorch neural network training inside graph for rotoscopy and cleanup,P3 Low,Phase 8
+Inference,NukeX,AIR ML,None,MISSING,Executes trained ONNX and Cat model weights inside the graph,P3 Low,Phase 8
+Deblur,NukeX,AIR ML,None,MISSING,Neural network model removing camera and optical motion blur,P3 Low,Phase 8
+Upscale,NukeX,AIR ML,None,MISSING,Deep learning resolution super-sampling model,P3 Low,Phase 8
+F_RigRemoval,NukeX,Furnace,None,MISSING,Automated tracking and background inpainting for wire/rig removal,P2 Medium,Phase 7
+F_WireRemoval,NukeX,Furnace,None,MISSING,Dedicated linear wire tracking and background synthesis tool,P2 Medium,Phase 7
+F_DeGrain,NukeX,Furnace,None,MISSING,Motion-compensated temporal film grain suppression,P2 Medium,Phase 7
+F_ReGrain,NukeX,Furnace,None,MISSING,Sample-based physical film grain synthesis and matching,P2 Medium,Phase 7
+JoinViews,Nuke,Stereo,StereoMerge,PARTIAL,OpenComp StereoMerge combines views into anaglyph/side-by-side,P1 High,Phase 2 (Complete)
+OneView,Nuke,Stereo,None,MISSING,Isolates a single view from a multi-view stream for processing,P1 High,Phase 6
+Anaglyph,Nuke,Stereo,StereoMerge,IMPLEMENTED,Red/cyan stereo 3D preview mode built into StereoMerge,P1 High,Phase 2 (Complete)
+SideBySide,Nuke,Stereo,StereoMerge,IMPLEMENTED,Horizontal stereo view tiling built into StereoMerge,P1 High,Phase 2 (Complete)
+ReConverge,Nuke,Stereo,StereoWarp,PARTIAL,OpenComp StereoWarp shifts convergence plane via DIBR depth map,P1 High,Phase 2 (Complete)
+BlinkScript,Nuke,Utility,None,MISSING,In-app C++ / OpenCL JIT pixel kernel compiler,P3 Low,Phase 8
+Group,Nuke,Utility,None,MISSING,Sub-graph container encapsulating multiple nodes into reusable macro,P1 High,Phase 6
+Gizmo,Nuke,Utility,None,MISSING,Exported script-level custom tool container,P1 High,Phase 6
+StickyNote,Nuke,Utility,None,MISSING,Freeform text annotation note placed in DAG canvas,P2 Medium,Phase 6
+Assert,Nuke,Utility,None,MISSING,Pipeline validation node aborting render if condition is false,P2 Medium,Phase 6
+ViewMetaData,Nuke,Metadata,None,MISSING,Inspects EXR and image container key-value metadata tables,P1 High,Phase 6
+ModifyMetaData,Nuke,Metadata,None,MISSING,Injects or alters image metadata header keys,P2 Medium,Phase 6
+CompareMetaData,Nuke,Metadata,None,MISSING,Compares metadata dictionaries between two input streams,P3 Low,Phase 7
+OFXPlugin,Nuke,Plugin,None,MISSING,OpenFX industry-standard C-API plugin host interface,P3 Low,Phase 9
+

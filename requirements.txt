@@ -1,0 +1,7 @@
+# OpenComp - Python Engine & VFX Reference Platform CY2024 Dependencies
+numpy>=1.24.0
+pyside6>=6.5.0
+pillow>=9.5.0
+openexr>=3.5.2
+opencolorio>=2.3.0
+

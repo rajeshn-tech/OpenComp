@@ -1,0 +1,33 @@
+ocio_profile_version: 2.0
+
+environment:
+  {}
+
+search_path: ""
+strictparsing: true
+luma: [0.2126, 0.7152, 0.0722]
+
+roles:
+  default: raw
+  scene_linear: linear_custom
+
+displays:
+  sRGB:
+    - !<View> {name: Raw, colorspace: raw}
+
+colorspaces:
+  - !<ColorSpace>
+    name: raw
+    family: raw
+    equalitygroup: ""
+    bitdepth: 32f
+    isdata: true
+    allocation: uniform
+
+  - !<ColorSpace>
+    name: linear_custom
+    family: linear
+    equalitygroup: ""
+    bitdepth: 32f
+    isdata: false
+    allocation: uniform

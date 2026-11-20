@@ -1,0 +1,536 @@
+{
+  "version": "1.0",
+  "name": "OpenComp Artist Validation Master Suite",
+  "format": "1920x1080",
+  "nodes": [
+    {
+      "id": "Read1",
+      "name": "Read1",
+      "type": "Read",
+      "category": "Image",
+      "x": 100,
+      "y": 100,
+      "disabled": false,
+      "knobs": {
+        "file": {
+          "value": "C:/Users/rajeshn/Desktop/Rajesh/OpenComp/test_assets/manual_validation/sample_plate_1080p.exr"
+        },
+        "format": {
+          "value": "1920x1080"
+        },
+        "channels": {
+          "value": "all"
+        },
+        "on_error": {
+          "value": "checkerboard"
+        }
+      },
+      "inputs": []
+    },
+    {
+      "id": "Grade1",
+      "name": "Grade1",
+      "type": "Grade",
+      "category": "Color",
+      "x": 100,
+      "y": 200,
+      "disabled": false,
+      "knobs": {
+        "blackpoint": {
+          "value": 0.02
+        },
+        "whitepoint": {
+          "value": 0.98
+        },
+        "gain": {
+          "value": 1.2,
+          "keyframes": {
+            "1": 1.0,
+            "24": 1.5
+          }
+        },
+        "gamma": {
+          "value": 1.1
+        },
+        "blackClamp": {
+          "value": true
+        },
+        "whiteClamp": {
+          "value": false
+        }
+      },
+      "inputs": [
+        {
+          "id": "in",
+          "connection": {
+            "nodeId": "Read1",
+            "outputPortId": "out"
+          }
+        }
+      ]
+    },
+    {
+      "id": "Blur1",
+      "name": "Blur1",
+      "type": "Blur",
+      "category": "Filter",
+      "x": 100,
+      "y": 300,
+      "disabled": false,
+      "knobs": {
+        "size": {
+          "value": 6.0
+        },
+        "aspectRatio": {
+          "value": 1.0
+        }
+      },
+      "inputs": [
+        {
+          "id": "in",
+          "connection": {
+            "nodeId": "Grade1",
+            "outputPortId": "out"
+          }
+        }
+      ]
+    },
+    {
+      "id": "Read_GS",
+      "name": "Read_GS",
+      "type": "Read",
+      "category": "Image",
+      "x": 380,
+      "y": 100,
+      "disabled": false,
+      "knobs": {
+        "file": {
+          "value": "C:/Users/rajeshn/Desktop/Rajesh/OpenComp/test_assets/manual_validation/greenscreen_1080p.exr"
+        },
+        "format": {
+          "value": "1920x1080"
+        },
+        "channels": {
+          "value": "rgba"
+        }
+      },
+      "inputs": []
+    },
+    {
+      "id": "ChromaKeyer1",
+      "name": "ChromaKeyer1",
+      "type": "ChromaKeyer",
+      "category": "Keyer",
+      "x": 380,
+      "y": 200,
+      "disabled": false,
+      "knobs": {
+        "keyColor": {
+          "value": [
+            0.08,
+            0.88,
+            0.12
+          ]
+        },
+        "screenGain": {
+          "value": 1.1
+        },
+        "clipBlack": {
+          "value": 0.05
+        },
+        "clipWhite": {
+          "value": 0.95
+        }
+      },
+      "inputs": [
+        {
+          "id": "in",
+          "connection": {
+            "nodeId": "Read_GS",
+            "outputPortId": "out"
+          }
+        }
+      ]
+    },
+    {
+      "id": "Despill1",
+      "name": "Despill1",
+      "type": "Despill",
+      "category": "Keyer",
+      "x": 380,
+      "y": 300,
+      "disabled": false,
+      "knobs": {
+        "screenType": {
+          "value": "green"
+        },
+        "algorithm": {
+          "value": "average"
+        },
+        "balance": {
+          "value": 1.0
+        }
+      },
+      "inputs": [
+        {
+          "id": "in",
+          "connection": {
+            "nodeId": "ChromaKeyer1",
+            "outputPortId": "out"
+          }
+        }
+      ]
+    },
+    {
+      "id": "EdgeExtend1",
+      "name": "EdgeExtend1",
+      "type": "EdgeExtend",
+      "category": "Keyer",
+      "x": 380,
+      "y": 400,
+      "disabled": false,
+      "knobs": {
+        "slices": {
+          "value": 8
+        }
+      },
+      "inputs": [
+        {
+          "id": "in",
+          "connection": {
+            "nodeId": "Despill1",
+            "outputPortId": "out"
+          }
+        }
+      ]
+    },
+    {
+      "id": "Constant_Depth",
+      "name": "Constant_Depth",
+      "type": "Constant",
+      "category": "Image",
+      "x": 660,
+      "y": 100,
+      "disabled": false,
+      "knobs": {
+        "color": {
+          "value": [
+            0.4,
+            0.4,
+            0.4,
+            1.0
+          ]
+        },
+        "format": {
+          "value": "1920x1080"
+        }
+      },
+      "inputs": []
+    },
+    {
+      "id": "Depth1",
+      "name": "Depth1",
+      "type": "Depth",
+      "category": "Channel / Draw",
+      "x": 660,
+      "y": 200,
+      "disabled": false,
+      "knobs": {
+        "mode": {
+          "value": "ramp"
+        },
+        "nearZ": {
+          "value": 0.1
+        },
+        "farZ": {
+          "value": 1.0
+        }
+      },
+      "inputs": [
+        {
+          "id": "in",
+          "connection": {
+            "nodeId": "Constant_Depth",
+            "outputPortId": "out"
+          }
+        }
+      ]
+    },
+    {
+      "id": "StereoWarp1",
+      "name": "StereoWarp1",
+      "type": "StereoWarp",
+      "category": "Channel / Draw",
+      "x": 660,
+      "y": 300,
+      "disabled": false,
+      "knobs": {
+        "separation": {
+          "value": 30.0
+        },
+        "convergence": {
+          "value": 0.5
+        },
+        "view": {
+          "value": "both"
+        }
+      },
+      "inputs": [
+        {
+          "id": "in",
+          "connection": {
+            "nodeId": "Read1",
+            "outputPortId": "out"
+          }
+        },
+        {
+          "id": "depth",
+          "connection": {
+            "nodeId": "Depth1",
+            "outputPortId": "out"
+          }
+        }
+      ]
+    },
+    {
+      "id": "StereoMerge1",
+      "name": "StereoMerge1",
+      "type": "StereoMerge",
+      "category": "Channel / Draw",
+      "x": 660,
+      "y": 400,
+      "disabled": false,
+      "knobs": {
+        "mode": {
+          "value": "anaglyph"
+        }
+      },
+      "inputs": [
+        {
+          "id": "left",
+          "connection": {
+            "nodeId": "StereoWarp1",
+            "outputPortId": "out"
+          }
+        },
+        {
+          "id": "right",
+          "connection": {
+            "nodeId": "StereoWarp1",
+            "outputPortId": "out"
+          }
+        }
+      ]
+    },
+    {
+      "id": "Copy1",
+      "name": "Copy1",
+      "type": "Copy",
+      "category": "Channel / Draw",
+      "x": 940,
+      "y": 200,
+      "disabled": false,
+      "knobs": {
+        "pairs": {
+          "value": [
+            {
+              "from": "depth.Z",
+              "to": "alpha"
+            },
+            {
+              "from": "normals.X",
+              "to": "red"
+            },
+            {
+              "from": "normals.Y",
+              "to": "green"
+            },
+            {
+              "from": "normals.Z",
+              "to": "blue"
+            },
+            {
+              "from": "motion.u",
+              "to": "motion.u"
+            },
+            {
+              "from": "motion.v",
+              "to": "motion.v"
+            },
+            {
+              "from": "crypto_object",
+              "to": "crypto_object"
+            },
+            {
+              "from": "alpha",
+              "to": "mask.a"
+            }
+          ]
+        }
+      },
+      "inputs": [
+        {
+          "id": "A",
+          "connection": {
+            "nodeId": "Read1",
+            "outputPortId": "out"
+          }
+        },
+        {
+          "id": "B",
+          "connection": {
+            "nodeId": "Read_GS",
+            "outputPortId": "out"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ChannelMerge1",
+      "name": "ChannelMerge1",
+      "type": "ChannelMerge",
+      "category": "Channel / Draw",
+      "x": 940,
+      "y": 300,
+      "disabled": false,
+      "knobs": {
+        "operation": {
+          "value": "union"
+        },
+        "fromA": {
+          "value": "alpha"
+        },
+        "fromB": {
+          "value": "alpha"
+        },
+        "to": {
+          "value": "alpha"
+        }
+      },
+      "inputs": [
+        {
+          "id": "A",
+          "connection": {
+            "nodeId": "ChromaKeyer1",
+            "outputPortId": "out"
+          }
+        },
+        {
+          "id": "B",
+          "connection": {
+            "nodeId": "Copy1",
+            "outputPortId": "out"
+          }
+        }
+      ]
+    },
+    {
+      "id": "Roto1",
+      "name": "Roto1",
+      "type": "Roto",
+      "category": "Channel / Draw",
+      "x": 1220,
+      "y": 200,
+      "disabled": false,
+      "knobs": {
+        "output": {
+          "value": "alpha"
+        }
+      },
+      "inputs": []
+    },
+    {
+      "id": "Paint1",
+      "name": "Paint1",
+      "type": "Paint",
+      "category": "Channel / Draw",
+      "x": 1220,
+      "y": 300,
+      "disabled": false,
+      "knobs": {},
+      "inputs": [
+        {
+          "id": "in",
+          "connection": {
+            "nodeId": "Roto1",
+            "outputPortId": "out"
+          }
+        }
+      ]
+    },
+    {
+      "id": "Merge1",
+      "name": "Merge1",
+      "type": "Merge",
+      "category": "Merge",
+      "x": 1220,
+      "y": 420,
+      "disabled": false,
+      "knobs": {
+        "operation": {
+          "value": "over"
+        }
+      },
+      "inputs": [
+        {
+          "id": "B",
+          "connection": {
+            "nodeId": "Blur1",
+            "outputPortId": "out"
+          }
+        },
+        {
+          "id": "A",
+          "connection": {
+            "nodeId": "EdgeExtend1",
+            "outputPortId": "out"
+          }
+        },
+        {
+          "id": "mask",
+          "connection": {
+            "nodeId": "Paint1",
+            "outputPortId": "out"
+          }
+        }
+      ]
+    },
+    {
+      "id": "Viewer1",
+      "name": "Viewer1",
+      "type": "Viewer",
+      "category": "Viewer",
+      "x": 660,
+      "y": 560,
+      "disabled": false,
+      "knobs": {
+        "inputIndex": {
+          "value": 1
+        }
+      },
+      "inputs": [
+        {
+          "id": "1",
+          "connection": {
+            "nodeId": "Merge1",
+            "outputPortId": "out"
+          }
+        },
+        {
+          "id": "2",
+          "connection": {
+            "nodeId": "StereoMerge1",
+            "outputPortId": "out"
+          }
+        },
+        {
+          "id": "3",
+          "connection": {
+            "nodeId": "ChannelMerge1",
+            "outputPortId": "out"
+          }
+        }
+      ]
+    }
+  ]
+}

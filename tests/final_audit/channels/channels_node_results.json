@@ -1,0 +1,20 @@
+{
+  "copy_tests": {
+    "rgb_untouched": false,
+    "alpha_copied": true,
+    "forward_u_mapped": true,
+    "diffuse_r_copied": false,
+    "crypto_id_copied": true,
+    "untouched_specular_preserved": false,
+    "four_pair_limit_enforced": true,
+    "fifth_pair_ignored": true
+  },
+  "channel_merge_tests": {
+    "union_val": 1,
+    "union_correct": false,
+    "in_val": 1,
+    "in_correct": false,
+    "stencil_val": 0,
+    "stencil_correct": false
+  }
+}

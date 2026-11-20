@@ -1,0 +1,358 @@
+{
+  "tests/final_audit/renders/real_shot.0001.exr": {
+    "filepath": "C:\\Users\\rajeshn\\Desktop\\Rajesh\\OpenComp\\tests\\final_audit\\renders\\real_shot.0001.exr",
+    "file_size_bytes": 246140,
+    "file_size_mb": 0.2347,
+    "width": 1920,
+    "height": 1080,
+    "data_window": {
+      "min_x": 0,
+      "min_y": 0,
+      "max_x": 1919,
+      "max_y": 1079
+    },
+    "display_window": {
+      "min_x": 0,
+      "min_y": 0,
+      "max_x": 1919,
+      "max_y": 1079
+    },
+    "channels": [
+      "A",
+      "B",
+      "G",
+      "R"
+    ],
+    "channel_types": {
+      "A": "FLOAT",
+      "B": "FLOAT",
+      "G": "FLOAT",
+      "R": "FLOAT"
+    },
+    "compression": "DWAA_COMPRESSION",
+    "line_order": "INCREASING_Y",
+    "pixel_stats": {
+      "A": {
+        "min": 0.9999999403953552,
+        "max": 0.9999999403953552,
+        "mean": 0.9999999403953552,
+        "std": 0.0,
+        "num_pixels": 2073600
+      },
+      "B": {
+        "min": 0.0003314018249511719,
+        "max": 0.9990234375,
+        "mean": 0.46768832206726074,
+        "std": 0.20838283002376556,
+        "num_pixels": 2073600
+      },
+      "G": {
+        "min": 0.0004432201385498047,
+        "max": 0.9990234375,
+        "mean": 0.47322878241539,
+        "std": 0.2931765913963318,
+        "num_pixels": 2073600
+      },
+      "R": {
+        "min": 0.00023436546325683594,
+        "max": 1.0,
+        "mean": 0.4734260141849518,
+        "std": 0.2931773364543915,
+        "num_pixels": 2073600
+      }
+    },
+    "metadata": {
+      "compression": "DWAA_COMPRESSION",
+      "dwaCompressionLevel": "45.0",
+      "lineOrder": "INCREASING_Y",
+      "pixelAspectRatio": "1.0",
+      "screenWindowCenter": "(0.0, 0.0)",
+      "screenWindowWidth": "1.0",
+      "type": "b'scanlineimage'"
+    }
+  },
+  "tests/final_audit/renders/real_shot.0005.exr": {
+    "filepath": "C:\\Users\\rajeshn\\Desktop\\Rajesh\\OpenComp\\tests\\final_audit\\renders\\real_shot.0005.exr",
+    "file_size_bytes": 267351,
+    "file_size_mb": 0.255,
+    "width": 1920,
+    "height": 1080,
+    "data_window": {
+      "min_x": 0,
+      "min_y": 0,
+      "max_x": 1919,
+      "max_y": 1079
+    },
+    "display_window": {
+      "min_x": 0,
+      "min_y": 0,
+      "max_x": 1919,
+      "max_y": 1079
+    },
+    "channels": [
+      "A",
+      "B",
+      "G",
+      "R"
+    ],
+    "channel_types": {
+      "A": "FLOAT",
+      "B": "FLOAT",
+      "G": "FLOAT",
+      "R": "FLOAT"
+    },
+    "compression": "DWAA_COMPRESSION",
+    "line_order": "INCREASING_Y",
+    "pixel_stats": {
+      "A": {
+        "min": 0.9999999403953552,
+        "max": 0.9999999403953552,
+        "mean": 0.9999999403953552,
+        "std": 0.0,
+        "num_pixels": 2073600
+      },
+      "B": {
+        "min": 0.0005445480346679688,
+        "max": 1.56640625,
+        "mean": 0.7338568568229675,
+        "std": 0.3269710838794708,
+        "num_pixels": 2073600
+      },
+      "G": {
+        "min": 0.0006847381591796875,
+        "max": 1.5703125,
+        "mean": 0.7425442934036255,
+        "std": 0.46003100275993347,
+        "num_pixels": 2073600
+      },
+      "R": {
+        "min": 0.0003590583801269531,
+        "max": 1.5703125,
+        "mean": 0.7428571581840515,
+        "std": 0.46002987027168274,
+        "num_pixels": 2073600
+      }
+    },
+    "metadata": {
+      "compression": "DWAA_COMPRESSION",
+      "dwaCompressionLevel": "45.0",
+      "lineOrder": "INCREASING_Y",
+      "pixelAspectRatio": "1.0",
+      "screenWindowCenter": "(0.0, 0.0)",
+      "screenWindowWidth": "1.0",
+      "type": "b'scanlineimage'"
+    }
+  },
+  "tests/final_audit/pipelines/pipe01_greenscreen_1080p.exr": {
+    "filepath": "C:\\Users\\rajeshn\\Desktop\\Rajesh\\OpenComp\\tests\\final_audit\\pipelines\\pipe01_greenscreen_1080p.exr",
+    "file_size_bytes": 16606344,
+    "file_size_mb": 15.837,
+    "width": 1920,
+    "height": 1080,
+    "data_window": {
+      "min_x": 0,
+      "min_y": 0,
+      "max_x": 1919,
+      "max_y": 1079
+    },
+    "display_window": {
+      "min_x": 0,
+      "min_y": 0,
+      "max_x": 1919,
+      "max_y": 1079
+    },
+    "channels": [
+      "A",
+      "B",
+      "G",
+      "R"
+    ],
+    "channel_types": {
+      "A": "HALF",
+      "B": "HALF",
+      "G": "HALF",
+      "R": "HALF"
+    },
+    "compression": "NO_COMPRESSION",
+    "line_order": "INCREASING_Y",
+    "pixel_stats": {
+      "A": {
+        "min": 1.0,
+        "max": 1.0,
+        "mean": 1.0,
+        "std": 0.0,
+        "num_pixels": 2073600
+      },
+      "B": {
+        "min": 0.0210113525390625,
+        "max": 0.39990234375,
+        "mean": 0.17815983295440674,
+        "std": 0.09486804157495499,
+        "num_pixels": 2073600
+      },
+      "G": {
+        "min": 0.018096923828125,
+        "max": 0.89990234375,
+        "mean": 0.12640227377414703,
+        "std": 0.16005124151706696,
+        "num_pixels": 2073600
+      },
+      "R": {
+        "min": 0.029998779296875,
+        "max": 1.19921875,
+        "mean": 0.22748760879039764,
+        "std": 0.2923443019390106,
+        "num_pixels": 2073600
+      }
+    },
+    "metadata": {
+      "compression": "NO_COMPRESSION",
+      "lineOrder": "INCREASING_Y",
+      "pixelAspectRatio": "1.0",
+      "screenWindowCenter": "(0.0, 0.0)",
+      "screenWindowWidth": "1.0"
+    }
+  },
+  "tests/final_audit/pipelines/pipe02_cg_multipass_4k_dwaa.exr": {
+    "filepath": "C:\\Users\\rajeshn\\Desktop\\Rajesh\\OpenComp\\tests\\final_audit\\pipelines\\pipe02_cg_multipass_4k_dwaa.exr",
+    "file_size_bytes": 167670,
+    "file_size_mb": 0.1599,
+    "width": 3840,
+    "height": 2160,
+    "data_window": {
+      "min_x": 0,
+      "min_y": 0,
+      "max_x": 3839,
+      "max_y": 2159
+    },
+    "display_window": {
+      "min_x": 0,
+      "min_y": 0,
+      "max_x": 3839,
+      "max_y": 2159
+    },
+    "channels": [
+      "A",
+      "B",
+      "G",
+      "R"
+    ],
+    "channel_types": {
+      "A": "HALF",
+      "B": "HALF",
+      "G": "HALF",
+      "R": "HALF"
+    },
+    "compression": "DWAA_COMPRESSION",
+    "line_order": "INCREASING_Y",
+    "pixel_stats": {
+      "A": {
+        "min": 0.0,
+        "max": 38.375,
+        "mean": 19.19500732421875,
+        "std": 11.085121154785156,
+        "num_pixels": 8294400
+      },
+      "B": {
+        "min": 0.60009765625,
+        "max": 0.60009765625,
+        "mean": 0.60009765625,
+        "std": 0.0,
+        "num_pixels": 8294400
+      },
+      "G": {
+        "min": 0.47998046875,
+        "max": 0.47998046875,
+        "mean": 0.47998046875,
+        "std": 0.0,
+        "num_pixels": 8294400
+      },
+      "R": {
+        "min": 0.83984375,
+        "max": 0.83984375,
+        "mean": 0.83984375,
+        "std": 0.0,
+        "num_pixels": 8294400
+      }
+    },
+    "metadata": {
+      "compression": "DWAA_COMPRESSION",
+      "dwaCompressionLevel": "45.0",
+      "lineOrder": "INCREASING_Y",
+      "pixelAspectRatio": "1.0",
+      "screenWindowCenter": "(0.0, 0.0)",
+      "screenWindowWidth": "1.0",
+      "type": "b'scanlineimage'"
+    }
+  },
+  "tests/final_audit/pipelines/pipe03_day_for_night_4k.exr": {
+    "filepath": "C:\\Users\\rajeshn\\Desktop\\Rajesh\\OpenComp\\tests\\final_audit\\pipelines\\pipe03_day_for_night_4k.exr",
+    "file_size_bytes": 66390024,
+    "file_size_mb": 63.3145,
+    "width": 3840,
+    "height": 2160,
+    "data_window": {
+      "min_x": 0,
+      "min_y": 0,
+      "max_x": 3839,
+      "max_y": 2159
+    },
+    "display_window": {
+      "min_x": 0,
+      "min_y": 0,
+      "max_x": 3839,
+      "max_y": 2159
+    },
+    "channels": [
+      "A",
+      "B",
+      "G",
+      "R"
+    ],
+    "channel_types": {
+      "A": "HALF",
+      "B": "HALF",
+      "G": "HALF",
+      "R": "HALF"
+    },
+    "compression": "NO_COMPRESSION",
+    "line_order": "INCREASING_Y",
+    "pixel_stats": {
+      "A": {
+        "min": 1.0,
+        "max": 1.0,
+        "mean": 1.0,
+        "std": 0.0,
+        "num_pixels": 8294400
+      },
+      "B": {
+        "min": 0.00390625,
+        "max": 0.2041015625,
+        "mean": 0.04218832030892372,
+        "std": 0.039537712931632996,
+        "num_pixels": 8294400
+      },
+      "G": {
+        "min": 0.00390625,
+        "max": 0.306640625,
+        "mean": 0.036365583539009094,
+        "std": 0.05954659357666969,
+        "num_pixels": 8294400
+      },
+      "R": {
+        "min": 0.0068359375,
+        "max": 0.373046875,
+        "mean": 0.05917556211352348,
+        "std": 0.08737891912460327,
+        "num_pixels": 8294400
+      }
+    },
+    "metadata": {
+      "compression": "NO_COMPRESSION",
+      "lineOrder": "INCREASING_Y",
+      "pixelAspectRatio": "1.0",
+      "screenWindowCenter": "(0.0, 0.0)",
+      "screenWindowWidth": "1.0"
+    }
+  }
+}

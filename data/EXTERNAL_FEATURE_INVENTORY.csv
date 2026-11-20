@@ -1,0 +1,55 @@
+FeatureName,Category,Edition,NodeType,PrimaryFunction,GPUAccelerated,OpenCompStatus
+CameraTracker,3D_Tracking,NukeX,CameraTracker,Automatic feature tracking and 3D camera solve,Yes,MISSING
+PlanarTracker,2D_Tracking,NukeX,PlanarTracker,Planar homography surface tracking and corner pinning,No,IMPLEMENTED
+SmartVector,Motion_Estimation,NukeX,SmartVector,Calculates dense motion vector fields across deformed surfaces,Yes,MISSING
+VectorDistort,Warping,NukeX,VectorDistort,Propagates paint and texture patches using SmartVectors,Yes,MISSING
+GridWarpTracker,Warping,NukeX,GridWarpTracker,Grid warp mesh vertices anchored to planar tracking features,Yes,MISSING
+VectorGenerator,Motion_Estimation,NukeX,VectorGenerator,Generates forward and backward optical flow motion vectors,Yes,PARTIAL
+Kronos,Retiming,NukeX,Kronos,Advanced motion-vector retiming and frame interpolation,Yes,PARTIAL
+LensDistortion,Optics,NukeX,LensDistortion,Analyzes camera lens grid charts and lines to compute distortion models,Yes,PARTIAL
+ModelBuilder,3D_Modeling,NukeX,ModelBuilder,Interactive 3D geometry creation aligned to tracked cameras,No,MISSING
+PointCloudGenerator,3D_Reconstruction,NukeX,PointCloudGenerator,Generates dense 3D point clouds from 2D tracked footage,Yes,MISSING
+DepthGenerator,Depth,NukeX,DepthGenerator,Produces per-frame Z-depth maps from camera motion parallax,Yes,MISSING
+PoissonMesh,3D_Reconstruction,NukeX,PoissonMesh,Calculates continuous polygon meshes from point clouds,No,MISSING
+ParticleEmitter,Particles,NukeX,ParticleEmitter,Emits 3D particles from points or geometry surfaces,No,MISSING
+ParticleBounce,Particles,NukeX,ParticleBounce,Defines 3D collision geometry for particles to bounce off,No,MISSING
+ParticleDirectionalForce,Particles,NukeX,ParticleDirectionalForce,Applies directional acceleration to particle simulations,No,MISSING
+ParticleGravity,Particles,NukeX,ParticleGravity,Simulates gravitational downward acceleration,No,MISSING
+ParticleTurbulence,Particles,NukeX,ParticleTurbulence,Injects Perlin procedural turbulence into particle velocity,No,MISSING
+ParticleVortex,Particles,NukeX,ParticleVortex,Swirls particles in a 3D spiral vortex,No,MISSING
+ParticleWind,Particles,NukeX,ParticleWind,Applies directional wind gusts and drag to particles,No,MISSING
+ParticleDrag,Particles,NukeX,ParticleDrag,Applies air resistance damping to slow moving particles,No,MISSING
+ParticleSpawn,Particles,NukeX,ParticleSpawn,Spawns secondary particle emissions upon collision or age,No,MISSING
+ParticleToGeo,Particles,NukeX,ParticleToGeo,Converts particle clouds into standard 3D triangle meshes,No,MISSING
+ParticleCache,Particles,NukeX,ParticleCache,Bakes and caches particle simulations to disk files,No,MISSING
+MatchGrade,Color,NukeX,MatchGrade,Calculates 3D LUT or CDL transforms between source and reference shots,No,MISSING
+Inpaint,Cleanup,NukeX,Inpaint,Fills holes using contextual surrounding texture synthesis,Yes,MISSING
+EdgeExtend_NukeX,Cleanup,NukeX,EdgeExtend,Pushes edge color pixels into transparent matte boundaries,No,IMPLEMENTED
+Denoise_NukeX,Filter,NukeX,Denoise,Wavelet-based spatial and temporal noise reduction,Yes,MISSING
+CopyCat,Machine_Learning,NukeX,CopyCat,Trains custom deep neural networks on shot ground truth,Yes,MISSING
+Inference,Machine_Learning,NukeX,Inference,Executes trained .cat neural network models on image sequences,Yes,MISSING
+CatFileCreator,Machine_Learning,NukeX,CatFileCreator,Wraps TorchScript PyTorch models into .cat files,No,MISSING
+Deblur,Machine_Learning,NukeX,Deblur,Pre-trained AI model that removes motion blur and defocus,Yes,MISSING
+Upscale,Machine_Learning,NukeX,Upscale,Pre-trained AI super-resolution 2x upscale model,Yes,MISSING
+F_Align,Furnace,NukeX,F_Align,Aligns mismatched plates with sub-pixel image registration,No,MISSING
+F_DeFlicker2,Furnace,NukeX,F_DeFlicker2,Removes rapid exposure fluctuations and flicker,No,MISSING
+F_DeGrain,Furnace,NukeX,F_DeGrain,Profiles and removes spatial film grain,No,MISSING
+F_DeWire,Furnace,NukeX,F_DeWire,Removes stunt wires by interpolating background pixels across strokes,No,MISSING
+F_Displace,Furnace,NukeX,F_Displace,Displaces pixels using motion vector fields,No,MISSING
+F_MotionDetect,Furnace,NukeX,F_MotionDetect,Detects motion between frames and outputs a motion mask,No,MISSING
+F_ReMaster,Furnace,NukeX,F_ReMaster,Restores archival footage (dirt, grain, flicker, scratches),No,MISSING
+F_RigRemoval,Furnace,NukeX,F_RigRemoval,Removes unwanted rigs and equipment from live action footage,No,MISSING
+F_Steadiness,Furnace,NukeX,F_Steadiness,Removes high-frequency camera shake and jitter,No,MISSING
+F_VectorGenerator,Furnace,NukeX,F_VectorGenerator,Legacy Furnace optical flow vector field generator,Yes,MISSING
+C_CameraSolver,CaraVR,NukeX,C_CameraSolver,Solves multi-camera 360-degree VR camera rigs,Yes,OPTIONAL
+C_Stitcher,CaraVR,NukeX,C_Stitcher,Stitches overlapping camera feeds into lat-long 360 panoramas,Yes,OPTIONAL
+C_ColourMatcher,CaraVR,NukeX,C_ColourMatcher,Balances color and exposure across panoramic camera arrays,No,OPTIONAL
+C_Tracker,CaraVR,NukeX,C_Tracker,Tracks features across spherical equirectangular lat-long space,Yes,OPTIONAL
+C_Warp,CaraVR,NukeX,C_Warp,Applies spherical warping to 360 panoramic views,Yes,OPTIONAL
+C_SphericalTransform,CaraVR,NukeX,C_SphericalTransform,Converts between LatLong, CubeMap, Rectilinear, Fisheye,Yes,PARTIAL
+C_RayRender,CaraVR,NukeX,C_RayRender,Renders 3D scenes directly into equirectangular spherical views,No,OPTIONAL
+C_Blender,CaraVR,NukeX,C_Blender,Blends stitch seam lines with multi-band frequency blending,Yes,OPTIONAL
+C_GlobalWarp,CaraVR,NukeX,C_GlobalWarp,Warp-aligns multi-camera overlapping views to minimize stitch error,Yes,OPTIONAL
+C_GenerateMap,CaraVR,NukeX,C_GenerateMap,Generates STMap displacement maps from stitch solves,Yes,OPTIONAL
+C_DisparityGenerator,CaraVR,NukeX,C_DisparityGenerator,Calculates left/right disparity vectors in 360 stereo VR,Yes,OPTIONAL
+

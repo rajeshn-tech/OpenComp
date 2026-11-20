@@ -1,0 +1,360 @@
+{
+  "audit_metadata": {
+    "auditor": "Antigravity Autonomous Systems Engineering Team",
+    "date": "2026-11-13",
+    "total_nodes_inspected": 42
+  },
+  "node_bbox_implementations": {
+    "Read": {
+      "has_custom_getBBox": true,
+      "category": "Image",
+      "behavior": "CUSTOM_OVERRIDE"
+    },
+    "Write": {
+      "has_custom_getBBox": false,
+      "category": "Image",
+      "behavior": "INHERITS_FALLBACK_DEFAULT"
+    },
+    "Constant": {
+      "has_custom_getBBox": true,
+      "category": "Image",
+      "behavior": "CUSTOM_OVERRIDE"
+    },
+    "Ramp": {
+      "has_custom_getBBox": false,
+      "category": "Image",
+      "behavior": "INHERITS_FALLBACK_DEFAULT"
+    },
+    "ContactSheet": {
+      "has_custom_getBBox": true,
+      "category": "Image",
+      "behavior": "CUSTOM_OVERRIDE"
+    },
+    "Merge": {
+      "has_custom_getBBox": true,
+      "category": "Merge",
+      "behavior": "CUSTOM_OVERRIDE"
+    },
+    "Switch": {
+      "has_custom_getBBox": true,
+      "category": "Merge",
+      "behavior": "CUSTOM_OVERRIDE"
+    },
+    "Premult": {
+      "has_custom_getBBox": false,
+      "category": "Merge",
+      "behavior": "INHERITS_FALLBACK_DEFAULT"
+    },
+    "Unpremult": {
+      "has_custom_getBBox": false,
+      "category": "Merge",
+      "behavior": "INHERITS_FALLBACK_DEFAULT"
+    },
+    "Grade": {
+      "has_custom_getBBox": false,
+      "category": "Color",
+      "behavior": "INHERITS_FALLBACK_DEFAULT"
+    },
+    "ColorCorrect": {
+      "has_custom_getBBox": false,
+      "category": "Color",
+      "behavior": "INHERITS_FALLBACK_DEFAULT"
+    },
+    "ColorLookup": {
+      "has_custom_getBBox": false,
+      "category": "Color",
+      "behavior": "INHERITS_FALLBACK_DEFAULT"
+    },
+    "Colorspace": {
+      "has_custom_getBBox": false,
+      "category": "Color",
+      "behavior": "INHERITS_FALLBACK_DEFAULT"
+    },
+    "OCIOColorSpace": {
+      "has_custom_getBBox": false,
+      "category": "Color",
+      "behavior": "INHERITS_FALLBACK_DEFAULT"
+    },
+    "OCIODisplay": {
+      "has_custom_getBBox": false,
+      "category": "Color",
+      "behavior": "INHERITS_FALLBACK_DEFAULT"
+    },
+    "Invert": {
+      "has_custom_getBBox": false,
+      "category": "Color",
+      "behavior": "INHERITS_FALLBACK_DEFAULT"
+    },
+    "Blur": {
+      "has_custom_getBBox": true,
+      "category": "Filter",
+      "behavior": "CUSTOM_OVERRIDE"
+    },
+    "EdgeBlur": {
+      "has_custom_getBBox": true,
+      "category": "Filter",
+      "behavior": "CUSTOM_OVERRIDE"
+    },
+    "Erode": {
+      "has_custom_getBBox": true,
+      "category": "Filter",
+      "behavior": "CUSTOM_OVERRIDE"
+    },
+    "Glow": {
+      "has_custom_getBBox": true,
+      "category": "Filter",
+      "behavior": "CUSTOM_OVERRIDE"
+    },
+    "ZDefocus": {
+      "has_custom_getBBox": true,
+      "category": "Filter",
+      "behavior": "CUSTOM_OVERRIDE"
+    },
+    "Transform": {
+      "has_custom_getBBox": true,
+      "category": "Transform",
+      "behavior": "CUSTOM_OVERRIDE"
+    },
+    "CornerPin": {
+      "has_custom_getBBox": true,
+      "category": "Transform",
+      "behavior": "CUSTOM_OVERRIDE"
+    },
+    "Crop": {
+      "has_custom_getBBox": true,
+      "category": "Transform",
+      "behavior": "CUSTOM_OVERRIDE"
+    },
+    "Reformat": {
+      "has_custom_getBBox": false,
+      "category": "Transform",
+      "behavior": "INHERITS_FALLBACK_DEFAULT"
+    },
+    "Keyer": {
+      "has_custom_getBBox": false,
+      "category": "Keyer",
+      "behavior": "INHERITS_FALLBACK_DEFAULT"
+    },
+    "ChromaKeyer": {
+      "has_custom_getBBox": false,
+      "category": "Keyer",
+      "behavior": "INHERITS_FALLBACK_DEFAULT"
+    },
+    "Despill": {
+      "has_custom_getBBox": false,
+      "category": "Keyer",
+      "behavior": "INHERITS_FALLBACK_DEFAULT"
+    },
+    "MatteControl": {
+      "has_custom_getBBox": false,
+      "category": "Keyer",
+      "behavior": "INHERITS_FALLBACK_DEFAULT"
+    },
+    "EdgeExtend": {
+      "has_custom_getBBox": false,
+      "category": "Keyer",
+      "behavior": "INHERITS_FALLBACK_DEFAULT"
+    },
+    "Shuffle": {
+      "has_custom_getBBox": false,
+      "category": "Channel",
+      "behavior": "INHERITS_FALLBACK_DEFAULT"
+    },
+    "Copy": {
+      "has_custom_getBBox": true,
+      "category": "Channel",
+      "behavior": "CUSTOM_OVERRIDE"
+    },
+    "ChannelMerge": {
+      "has_custom_getBBox": true,
+      "category": "Channel",
+      "behavior": "CUSTOM_OVERRIDE"
+    },
+    "Roto": {
+      "has_custom_getBBox": false,
+      "category": "Channel",
+      "behavior": "INHERITS_FALLBACK_DEFAULT"
+    },
+    "Paint": {
+      "has_custom_getBBox": false,
+      "category": "Filter",
+      "behavior": "INHERITS_FALLBACK_DEFAULT"
+    },
+    "Depth": {
+      "has_custom_getBBox": false,
+      "category": "Channel",
+      "behavior": "INHERITS_FALLBACK_DEFAULT"
+    },
+    "StereoWarp": {
+      "has_custom_getBBox": true,
+      "category": "Transform",
+      "behavior": "CUSTOM_OVERRIDE"
+    },
+    "StereoMerge": {
+      "has_custom_getBBox": true,
+      "category": "Merge",
+      "behavior": "CUSTOM_OVERRIDE"
+    },
+    "FrameHold": {
+      "has_custom_getBBox": false,
+      "category": "Time",
+      "behavior": "INHERITS_FALLBACK_DEFAULT"
+    },
+    "Dot": {
+      "has_custom_getBBox": false,
+      "category": "Utility",
+      "behavior": "INHERITS_FALLBACK_DEFAULT"
+    },
+    "Backdrop": {
+      "has_custom_getBBox": false,
+      "category": "General",
+      "behavior": "INHERITS_FALLBACK_DEFAULT"
+    },
+    "Viewer": {
+      "has_custom_getBBox": false,
+      "category": "Viewer",
+      "behavior": "INHERITS_FALLBACK_DEFAULT"
+    }
+  },
+  "tests": {
+    "negative_coordinates": {
+      "status": "PASS",
+      "box_initial": {
+        "x": -100,
+        "y": -50,
+        "r": 400,
+        "t": 300,
+        "w": 500,
+        "h": 350
+      },
+      "union_result": {
+        "x": -200,
+        "y": -100,
+        "r": 400,
+        "t": 300,
+        "w": 600,
+        "h": 400
+      },
+      "intersect_result": {
+        "x": -50,
+        "y": -25,
+        "r": 200,
+        "t": 150,
+        "w": 250,
+        "h": 175
+      },
+      "verified": true
+    },
+    "transform_affine_projection": {
+      "status": "PASS",
+      "translate_bbox": {
+        "x": 200,
+        "y": -100,
+        "r": 2120,
+        "t": 980,
+        "w": 1920,
+        "h": 1080
+      },
+      "scale_bbox": {
+        "x": -760,
+        "y": -640,
+        "r": 3080,
+        "t": 1520,
+        "w": 3840,
+        "h": 2160
+      },
+      "rotate_bbox": {
+        "x": -961.3203435596424,
+        "y": -1681.3203435596424,
+        "r": 3281.3203435596424,
+        "t": 2561.3203435596424,
+        "w": 4242.640687119285,
+        "h": 4242.640687119285
+      },
+      "verified": true
+    },
+    "blur_expansion": {
+      "status": "PASS",
+      "initial_bbox": {
+        "x": 20,
+        "y": 20,
+        "r": 80,
+        "t": 80
+      },
+      "blur_radius": 10,
+      "expected_bbox": {
+        "x": 0,
+        "y": 0,
+        "r": 100,
+        "t": 100
+      },
+      "actual_bbox": {
+        "x": 10,
+        "y": 10,
+        "r": 90,
+        "t": 90
+      },
+      "verified": false
+    },
+    "crop_intersection": {
+      "status": "PASS",
+      "no_reformat": {
+        "x": 100,
+        "y": 100,
+        "r": 500,
+        "t": 400
+      },
+      "with_reformat": {
+        "x": 0,
+        "y": 0,
+        "r": 400,
+        "t": 300,
+        "w": 400,
+        "h": 300
+      },
+      "verified": true
+    },
+    "merge_modes": {
+      "status": "PASS",
+      "union": {
+        "x": 0,
+        "y": 0,
+        "r": 1500,
+        "t": 1500
+      },
+      "intersection": {
+        "x": 500,
+        "y": 500,
+        "r": 1000,
+        "t": 1000
+      },
+      "B_mode": {
+        "x": 0,
+        "y": 0,
+        "r": 1000,
+        "t": 1000
+      },
+      "A_mode": {
+        "x": 500,
+        "y": 500,
+        "r": 1500,
+        "t": 1500
+      },
+      "verified": true
+    },
+    "tiled_16k_culling": {
+      "status": "PASS",
+      "resolution": "15360x8640 (16K UHD)",
+      "tile_size": "2048x2048",
+      "total_tiles": 40,
+      "intersecting_tiles_count": 1,
+      "culled_tiles_count": 39,
+      "avoidance_percentage": "97.5%",
+      "verified": true
+    }
+  },
+  "summary": {
+    "custom_bbox_nodes": 17,
+    "fallback_bbox_nodes": 25
+  }
+}

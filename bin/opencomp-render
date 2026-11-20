@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# ==============================================================================
+# OpenComp - Headless Batch Renderer CLI Launcher for Linux / POSIX Environments
+# ==============================================================================
+set -e
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PROJECT_ROOT="$(cd "${SCRIPT_DIR}/.." && pwd)"
+
+# Resolve Node.js binary
+if ! command -v node >/dev/null 2>&1; then
+    echo "❌ ERROR: Node.js runtime not found in PATH." >&2
+    echo "Please install Node.js v20+ LTS (e.g. from NodeSource or nvm)." >&2
+    exit 1
+fi
+
+# Execute batch renderer with adequate V8 heap space
+exec node --max-old-space-size=4096 "${PROJECT_ROOT}/bin/opencomp-render.mjs" "$@"
+

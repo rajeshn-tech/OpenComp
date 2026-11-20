@@ -1,0 +1,5030 @@
+{
+  "version": "1.0",
+  "name": "OpenComp Cinematic VFX Production Showcase",
+  "description": "5.0-Second (120-frame) 1080p Cinematic VFX Shot demonstrating ROTO, DEPTH, PAINT & COMPOSITING",
+  "format": "1920x1080",
+  "frameRange": {
+    "start": 1,
+    "end": 120,
+    "current": 60,
+    "fps": 24
+  },
+  "nodes": [
+    {
+      "id": "Read_Character",
+      "name": "Read_Character",
+      "type": "Read",
+      "category": "Image",
+      "x": 120,
+      "y": 100,
+      "disabled": false,
+      "knobs": {
+        "sourceType": {
+          "value": "file"
+        },
+        "format": {
+          "value": "1920x1080"
+        },
+        "file": {
+          "value": "demo/vfx_showcase/source/character_plate.%04d.exr"
+        },
+        "first": {
+          "value": 1
+        },
+        "last": {
+          "value": 120
+        },
+        "frame": {
+          "value": 1
+        },
+        "channels": {
+          "value": "rgba"
+        },
+        "colorspace": {
+          "value": "default"
+        },
+        "on_error": {
+          "value": "error"
+        }
+      },
+      "inputs": []
+    },
+    {
+      "id": "Roto_Subject",
+      "name": "Roto_Subject",
+      "type": "Roto",
+      "category": "Channel",
+      "x": 120,
+      "y": 240,
+      "disabled": false,
+      "knobs": {
+        "outputMode": {
+          "value": "replace_alpha"
+        },
+        "shape": {
+          "value": "ellipse"
+        },
+        "centerX": {
+          "value": 0.5
+        },
+        "centerY": {
+          "value": 0.5
+        },
+        "radiusX": {
+          "value": 0.35
+        },
+        "radiusY": {
+          "value": 0.35
+        },
+        "feather": {
+          "value": 0.15
+        },
+        "invert": {
+          "value": false
+        },
+        "opacity": {
+          "value": 1
+        }
+      },
+      "inputs": [
+        {
+          "id": "in",
+          "name": "in",
+          "connection": {
+            "nodeId": "Read_Character",
+            "outputPortId": "out"
+          }
+        }
+      ],
+      "shapes": [
+        {
+          "id": "shape_pfwz058j6",
+          "name": "Cloak_Torso",
+          "type": "bezier",
+          "closed": true,
+          "inverted": false,
+          "feather": 2,
+          "opacity": 1,
+          "blendMode": "add",
+          "visible": true,
+          "locked": false,
+          "color": "#ff6b4a",
+          "points": [
+            {
+              "id": "pt_6qgsyxnai",
+              "isSmooth": true,
+              "posTrack": {
+                "defaultValue": [
+                  {
+                    "id": "pt_m1dt4924g",
+                    "posTrack": {
+                      "defaultValue": [
+                        960,
+                        480
+                      ],
+                      "keys": [
+                        {
+                          "frame": 1,
+                          "value": [
+                            960,
+                            480
+                          ],
+                          "interpolation": "bezier",
+                          "leftSlope": 0,
+                          "rightSlope": 0,
+                          "leftLength": 0.33,
+                          "rightLength": 0.33
+                        },
+                        {
+                          "frame": 60,
+                          "value": [
+                            965,
+                            475
+                          ],
+                          "interpolation": "bezier",
+                          "leftSlope": 0,
+                          "rightSlope": 0,
+                          "leftLength": 0.33,
+                          "rightLength": 0.33
+                        },
+                        {
+                          "frame": 120,
+                          "value": [
+                            970,
+                            480
+                          ],
+                          "interpolation": "bezier",
+                          "leftSlope": 0,
+                          "rightSlope": 0,
+                          "leftLength": 0.33,
+                          "rightLength": 0.33
+                        }
+                      ]
+                    },
+                    "inTangentTrack": {
+                      "defaultValue": [
+                        0,
+                        0
+                      ],
+                      "keys": [
+                        {
+                          "frame": 1,
+                          "value": [
+                            -30,
+                            -10
+                          ],
+                          "interpolation": "bezier",
+                          "leftSlope": 0,
+                          "rightSlope": 0,
+                          "leftLength": 0.33,
+                          "rightLength": 0.33
+                        },
+                        {
+                          "frame": 60,
+                          "value": [
+                            -30,
+                            -10
+                          ],
+                          "interpolation": "bezier",
+                          "leftSlope": 0,
+                          "rightSlope": 0,
+                          "leftLength": 0.33,
+                          "rightLength": 0.33
+                        },
+                        {
+                          "frame": 120,
+                          "value": [
+                            -30,
+                            -10
+                          ],
+                          "interpolation": "bezier",
+                          "leftSlope": 0,
+                          "rightSlope": 0,
+                          "leftLength": 0.33,
+                          "rightLength": 0.33
+                        }
+                      ]
+                    },
+                    "outTangentTrack": {
+                      "defaultValue": [
+                        0,
+                        0
+                      ],
+                      "keys": [
+                        {
+                          "frame": 1,
+                          "value": [
+                            30,
+                            10
+                          ],
+                          "interpolation": "bezier",
+                          "leftSlope": 0,
+                          "rightSlope": 0,
+                          "leftLength": 0.33,
+                          "rightLength": 0.33
+                        },
+                        {
+                          "frame": 60,
+                          "value": [
+                            30,
+                            10
+                          ],
+                          "interpolation": "bezier",
+                          "leftSlope": 0,
+                          "rightSlope": 0,
+                          "leftLength": 0.33,
+                          "rightLength": 0.33
+                        },
+                        {
+                          "frame": 120,
+                          "value": [
+                            30,
+                            10
+                          ],
+                          "interpolation": "bezier",
+                          "leftSlope": 0,
+                          "rightSlope": 0,
+                          "leftLength": 0.33,
+                          "rightLength": 0.33
+                        }
+                      ]
+                    },
+                    "featherTrack": {
+                      "defaultValue": 0,
+                      "keys": [
+                        {
+                          "frame": 1,
+                          "value": 2,
+                          "interpolation": "bezier",
+                          "leftSlope": 0,
+                          "rightSlope": 0,
+                          "leftLength": 0.33,
+                          "rightLength": 0.33
+                        },
+                        {
+                          "frame": 60,
+                          "value": 2,
+                          "interpolation": "bezier",
+                          "leftSlope": 0,
+                          "rightSlope": 0,
+                          "leftLength": 0.33,
+                          "rightLength": 0.33
+                        },
+                        {
+                          "frame": 120,
+                          "value": 2,
+                          "interpolation": "bezier",
+                          "leftSlope": 0,
+                          "rightSlope": 0,
+                          "leftLength": 0.33,
+                          "rightLength": 0.33
+                        }
+                      ]
+                    },
+                    "isSmooth": true
+                  },
+                  0
+                ],
+                "keys": [
+                  {
+                    "frame": 1,
+                    "value": [
+                      {
+                        "id": "pt_m1dt4924g",
+                        "posTrack": {
+                          "defaultValue": [
+                            960,
+                            480
+                          ],
+                          "keys": [
+                            {
+                              "frame": 1,
+                              "value": [
+                                960,
+                                480
+                              ],
+                              "interpolation": "bezier",
+                              "leftSlope": 0,
+                              "rightSlope": 0,
+                              "leftLength": 0.33,
+                              "rightLength": 0.33
+                            },
+                            {
+                              "frame": 60,
+                              "value": [
+                                965,
+                                475
+                              ],
+                              "interpolation": "bezier",
+                              "leftSlope": 0,
+                              "rightSlope": 0,
+                              "leftLength": 0.33,
+                              "rightLength": 0.33
+                            },
+                            {
+                              "frame": 120,
+                              "value": [
+                                970,
+                                480
+                              ],
+                              "interpolation": "bezier",
+                              "leftSlope": 0,
+                              "rightSlope": 0,
+                              "leftLength": 0.33,
+                              "rightLength": 0.33
+                            }
+                          ]
+                        },
+                        "inTangentTrack": {
+                          "defaultValue": [
+                            0,
+                            0
+                          ],
+                          "keys": [
+                            {
+                              "frame": 1,
+                              "value": [
+                                -30,
+                                -10
+                              ],
+                              "interpolation": "bezier",
+                              "leftSlope": 0,
+                              "rightSlope": 0,
+                              "leftLength": 0.33,
+                              "rightLength": 0.33
+                            },
+                            {
+                              "frame": 60,
+                              "value": [
+                                -30,
+                                -10
+                              ],
+                              "interpolation": "bezier",
+                              "leftSlope": 0,
+                              "rightSlope": 0,
+                              "leftLength": 0.33,
+                              "rightLength": 0.33
+                            },
+                            {
+                              "frame": 120,
+                              "value": [
+                                -30,
+                                -10
+                              ],
+                              "interpolation": "bezier",
+                              "leftSlope": 0,
+                              "rightSlope": 0,
+                              "leftLength": 0.33,
+                              "rightLength": 0.33
+                            }
+                          ]
+                        },
+                        "outTangentTrack": {
+                          "defaultValue": [
+                            0,
+                            0
+                          ],
+                          "keys": [
+                            {
+                              "frame": 1,
+                              "value": [
+                                30,
+                                10
+                              ],
+                              "interpolation": "bezier",
+                              "leftSlope": 0,
+                              "rightSlope": 0,
+                              "leftLength": 0.33,
+                              "rightLength": 0.33
+                            },
+                            {
+                              "frame": 60,
+                              "value": [
+                                30,
+                                10
+                              ],
+                              "interpolation": "bezier",
+                              "leftSlope": 0,
+                              "rightSlope": 0,
+                              "leftLength": 0.33,
+                              "rightLength": 0.33
+                            },
+                            {
+                              "frame": 120,
+                              "value": [
+                                30,
+                                10
+                              ],
+                              "interpolation": "bezier",
+                              "leftSlope": 0,
+                              "rightSlope": 0,
+                              "leftLength": 0.33,
+                              "rightLength": 0.33
+                            }
+                          ]
+                        },
+                        "featherTrack": {
+                          "defaultValue": 0,
+                          "keys": [
+                            {
+                              "frame": 1,
+                              "value": 2,
+                              "interpolation": "bezier",
+                              "leftSlope": 0,
+                              "rightSlope": 0,
+                              "leftLength": 0.33,
+                              "rightLength": 0.33
+                            },
+                            {
+                              "frame": 60,
+                              "value": 2,
+                              "interpolation": "bezier",
+                              "leftSlope": 0,
+                              "rightSlope": 0,
+                              "leftLength": 0.33,
+                              "rightLength": 0.33
+                            },
+                            {
+                              "frame": 120,
+                              "value": 2,
+                              "interpolation": "bezier",
+                              "leftSlope": 0,
+                              "rightSlope": 0,
+                              "leftLength": 0.33,
+                              "rightLength": 0.33
+                            }
+                          ]
+                        },
+                        "isSmooth": true
+                      },
+                      null
+                    ],
+                    "interpolation": "bezier",
+                    "leftSlope": 0,
+                    "rightSlope": 0,
+                    "leftLength": 0.33,
+                    "rightLength": 0.33
+                  }
+                ]
+              },
+              "inTangentTrack": {
+                "defaultValue": [
+                  0,
+                  0
+                ],
+                "keys": [
+                  {
+                    "frame": 1,
+                    "value": [
+                      0,
+                      0
+                    ],
+                    "interpolation": "bezier",
+                    "leftSlope": 0,
+                    "rightSlope": 0,
+                    "leftLength": 0.33,
+                    "rightLength": 0.33
+                  }
+                ]
+              },
+              "outTangentTrack": {
+                "defaultValue": [
+                  0,
+                  0
+                ],
+                "keys": [
+                  {
+                    "frame": 1,
+                    "value": [
+                      0,
+                      0
+                    ],
+                    "interpolation": "bezier",
+                    "leftSlope": 0,
+                    "rightSlope": 0,
+                    "leftLength": 0.33,
+                    "rightLength": 0.33
+                  }
+                ]
+              },
+              "featherTrack": {
+                "defaultValue": 0,
+                "keys": [
+                  {
+                    "frame": 1,
+                    "value": 0,
+                    "interpolation": "bezier",
+                    "leftSlope": 0,
+                    "rightSlope": 0,
+                    "leftLength": 0.33,
+                    "rightLength": 0.33
+                  }
+                ]
+              }
+            },
+            {
+              "id": "pt_bywgmrkr9",
+              "isSmooth": true,
+              "posTrack": {
+                "defaultValue": [
+                  {
+                    "id": "pt_ga8z7ir78",
+                    "posTrack": {
+                      "defaultValue": [
+                        1030,
+                        720
+                      ],
+                      "keys": [
+                        {
+                          "frame": 1,
+                          "value": [
+                            1030,
+                            720
+                          ],
+                          "interpolation": "bezier",
+                          "leftSlope": 0,
+                          "rightSlope": 0,
+                          "leftLength": 0.33,
+                          "rightLength": 0.33
+                        },
+                        {
+                          "frame": 60,
+                          "value": [
+                            1035,
+                            715
+                          ],
+                          "interpolation": "bezier",
+                          "leftSlope": 0,
+                          "rightSlope": 0,
+                          "leftLength": 0.33,
+                          "rightLength": 0.33
+                        },
+                        {
+                          "frame": 120,
+                          "value": [
+                            1040,
+                            720
+                          ],
+                          "interpolation": "bezier",
+                          "leftSlope": 0,
+                          "rightSlope": 0,
+                          "leftLength": 0.33,
+                          "rightLength": 0.33
+                        }
+                      ]
+                    },
+                    "inTangentTrack": {
+                      "defaultValue": [
+                        0,
+                        0
+                      ],
+                      "keys": [
+                        {
+                          "frame": 1,
+                          "value": [
+                            -20,
+                            -80
+                          ],
+                          "interpolation": "bezier",
+                          "leftSlope": 0,
+                          "rightSlope": 0,
+                          "leftLength": 0.33,
+                          "rightLength": 0.33
+                        },
+                        {
+                          "frame": 60,
+                          "value": [
+                            -20,
+                            -80
+                          ],
+                          "interpolation": "bezier",
+                          "leftSlope": 0,
+                          "rightSlope": 0,
+                          "leftLength": 0.33,
+                          "rightLength": 0.33
+                        },
+                        {
+                          "frame": 120,
+                          "value": [
+                            -20,
+                            -80
+                          ],
+                          "interpolation": "bezier",
+                          "leftSlope": 0,
+                          "rightSlope": 0,
+                          "leftLength": 0.33,
+                          "rightLength": 0.33
+                        }
+                      ]
+                    },
+                    "outTangentTrack": {
+                      "defaultValue": [
+                        0,
+                        0
+                      ],
+                      "keys": [
+                        {
+                          "frame": 1,
+                          "value": [
+                            10,
+                            80
+                          ],
+                          "interpolation": "bezier",
+                          "leftSlope": 0,
+                          "rightSlope": 0,
+                          "leftLength": 0.33,
+                          "rightLength": 0.33
+                        },
+                        {
+                          "frame": 60,
+                          "value": [
+                            10,
+                            80
+                          ],
+                          "interpolation": "bezier",
+                          "leftSlope": 0,
+                          "rightSlope": 0,
+                          "leftLength": 0.33,
+                          "rightLength": 0.33
+                        },
+                        {
+                          "frame": 120,
+                          "value": [
+                            10,
+                            80
+                          ],
+                          "interpolation": "bezier",
+                          "leftSlope": 0,
+                          "rightSlope": 0,
+                          "leftLength": 0.33,
+                          "rightLength": 0.33
+                        }
+                      ]
+                    },
+                    "featherTrack": {
+                      "defaultValue": 0,
+                      "keys": [
+                        {
+                          "frame": 1,
+                          "value": 2,
+                          "interpolation": "bezier",
+                          "leftSlope": 0,
+                          "rightSlope": 0,
+                          "leftLength": 0.33,
+                          "rightLength": 0.33
+                        },
+                        {
+                          "frame": 60,
+                          "value": 2,
+                          "interpolation": "bezier",
+                          "leftSlope": 0,
+                          "rightSlope": 0,
+                          "leftLength": 0.33,
+                          "rightLength": 0.33
+                        },
+                        {
+                          "frame": 120,
+                          "value": 2,
+                          "interpolation": "bezier",
+                          "leftSlope": 0,
+                          "rightSlope": 0,
+                          "leftLength": 0.33,
+                          "rightLength": 0.33
+                        }
+                      ]
+                    },
+                    "isSmooth": true
+                  },
+                  0
+                ],
+                "keys": [
+                  {
+                    "frame": 1,
+                    "value": [
+                      {
+                        "id": "pt_ga8z7ir78",
+                        "posTrack": {
+                          "defaultValue": [
+                            1030,
+                            720
+                          ],
+                          "keys": [
+                            {
+                              "frame": 1,
+                              "value": [
+                                1030,
+                                720
+                              ],
+                              "interpolation": "bezier",
+                              "leftSlope": 0,
+                              "rightSlope": 0,
+                              "leftLength": 0.33,
+                              "rightLength": 0.33
+                            },
+                            {
+                              "frame": 60,
+                              "value": [
+                                1035,
+                                715
+                              ],
+                              "interpolation": "bezier",
+                              "leftSlope": 0,
+                              "rightSlope": 0,
+                              "leftLength": 0.33,
+                              "rightLength": 0.33
+                            },
+                            {
+                              "frame": 120,
+                              "value": [
+                                1040,
+                                720
+                              ],
+                              "interpolation": "bezier",
+                              "leftSlope": 0,
+                              "rightSlope": 0,
+                              "leftLength": 0.33,
+                              "rightLength": 0.33
+                            }
+                          ]
+                        },
+                        "inTangentTrack": {
+                          "defaultValue": [
+                            0,
+                            0
+                          ],
+                          "keys": [
+                            {
+                              "frame": 1,
+                              "value": [
+                                -20,
+                                -80
+                              ],
+                              "interpolation": "bezier",
+                              "leftSlope": 0,
+                              "rightSlope": 0,
+                              "leftLength": 0.33,
+                              "rightLength": 0.33
+                            },
+                            {
+                              "frame": 60,
+                              "value": [
+                                -20,
+                                -80
+                              ],
+                              "interpolation": "bezier",
+                              "leftSlope": 0,
+                              "rightSlope": 0,
+                              "leftLength": 0.33,
+                              "rightLength": 0.33
+                            },
+                            {
+                              "frame": 120,
+                              "value": [
+                                -20,
+                                -80
+                              ],
+                              "interpolation": "bezier",
+                              "leftSlope": 0,
+                              "rightSlope": 0,
+                              "leftLength": 0.33,
+                              "rightLength": 0.33
+                            }
+                          ]
+                        },
+                        "outTangentTrack": {
+                          "defaultValue": [
+                            0,
+                            0
+                          ],
+                          "keys": [
+                            {
+                              "frame": 1,
+                              "value": [
+                                10,
+                                80
+                              ],
+                              "interpolation": "bezier",
+                              "leftSlope": 0,
+                              "rightSlope": 0,
+                              "leftLength": 0.33,
+                              "rightLength": 0.33
+                            },
+                            {
+                              "frame": 60,
+                              "value": [
+                                10,
+                                80
+                              ],
+                              "interpolation": "bezier",
+                              "leftSlope": 0,
+                              "rightSlope": 0,
+                              "leftLength": 0.33,
+                              "rightLength": 0.33
+                            },
+                            {
+                              "frame": 120,
+                              "value": [
+                                10,
+                                80
+                              ],
+                              "interpolation": "bezier",
+                              "leftSlope": 0,
+                              "rightSlope": 0,
+                              "leftLength": 0.33,
+                              "rightLength": 0.33
+                            }
+                          ]
+                        },
+                        "featherTrack": {
+                          "defaultValue": 0,
+                          "keys": [
+                            {
+                              "frame": 1,
+                              "value": 2,
+                              "interpolation": "bezier",
+                              "leftSlope": 0,
+                              "rightSlope": 0,
+                              "leftLength": 0.33,
+                              "rightLength": 0.33
+                            },
+                            {
+                              "frame": 60,
+                              "value": 2,
+                              "interpolation": "bezier",
+                              "leftSlope": 0,
+                              "rightSlope": 0,
+                              "leftLength": 0.33,
+                              "rightLength": 0.33
+                            },
+                            {
+                              "frame": 120,
+                              "value": 2,
+                              "interpolation": "bezier",
+                              "leftSlope": 0,
+                              "rightSlope": 0,
+                              "leftLength": 0.33,
+                              "rightLength": 0.33
+                            }
+                          ]
+                        },
+                        "isSmooth": true
+                      },
+                      null
+                    ],
+                    "interpolation": "bezier",
+                    "leftSlope": 0,
+                    "rightSlope": 0,
+                    "leftLength": 0.33,
+                    "rightLength": 0.33
+                  }
+                ]
+              },
+              "inTangentTrack": {
+                "defaultValue": [
+                  0,
+                  0
+                ],
+                "keys": [
+                  {
+                    "frame": 1,
+                    "value": [
+                      0,
+                      0
+                    ],
+                    "interpolation": "bezier",
+                    "leftSlope": 0,
+                    "rightSlope": 0,
+                    "leftLength": 0.33,
+                    "rightLength": 0.33
+                  }
+                ]
+              },
+              "outTangentTrack": {
+                "defaultValue": [
+                  0,
+                  0
+                ],
+                "keys": [
+                  {
+                    "frame": 1,
+                    "value": [
+                      0,
+                      0
+                    ],
+                    "interpolation": "bezier",
+                    "leftSlope": 0,
+                    "rightSlope": 0,
+                    "leftLength": 0.33,
+                    "rightLength": 0.33
+                  }
+                ]
+              },
+              "featherTrack": {
+                "defaultValue": 0,
+                "keys": [
+                  {
+                    "frame": 1,
+                    "value": 0,
+                    "interpolation": "bezier",
+                    "leftSlope": 0,
+                    "rightSlope": 0,
+                    "leftLength": 0.33,
+                    "rightLength": 0.33
+                  }
+                ]
+              }
+            },
+            {
+              "id": "pt_m0aip23oe",
+              "isSmooth": true,
+              "posTrack": {
+                "defaultValue": [
+                  {
+                    "id": "pt_6zcw6w60l",
+                    "posTrack": {
+                      "defaultValue": [
+                        920,
+                        880
+                      ],
+                      "keys": [
+                        {
+                          "frame": 1,
+                          "value": [
+                            920,
+                            880
+                          ],
+                          "interpolation": "bezier",
+                          "leftSlope": 0,
+                          "rightSlope": 0,
+                          "leftLength": 0.33,
+                          "rightLength": 0.33
+                        },
+                        {
+                          "frame": 60,
+                          "value": [
+                            925,
+                            875
+                          ],
+                          "interpolation": "bezier",
+                          "leftSlope": 0,
+                          "rightSlope": 0,
+                          "leftLength": 0.33,
+                          "rightLength": 0.33
+                        },
+                        {
+                          "frame": 120,
+                          "value": [
+                            930,
+                            880
+                          ],
+                          "interpolation": "bezier",
+                          "leftSlope": 0,
+                          "rightSlope": 0,
+                          "leftLength": 0.33,
+                          "rightLength": 0.33
+                        }
+                      ]
+                    },
+                    "inTangentTrack": {
+                      "defaultValue": [
+                        0,
+                        0
+                      ],
+                      "keys": [
+                        {
+                          "frame": 1,
+                          "value": [
+                            30,
+                            -10
+                          ],
+                          "interpolation": "bezier",
+                          "leftSlope": 0,
+                          "rightSlope": 0,
+                          "leftLength": 0.33,
+                          "rightLength": 0.33
+                        },
+                        {
+                          "frame": 60,
+                          "value": [
+                            30,
+                            -10
+                          ],
+                          "interpolation": "bezier",
+                          "leftSlope": 0,
+                          "rightSlope": 0,
+                          "leftLength": 0.33,
+                          "rightLength": 0.33
+                        },
+                        {
+                          "frame": 120,
+                          "value": [
+                            30,
+                            -10
+                          ],
+                          "interpolation": "bezier",
+                          "leftSlope": 0,
+                          "rightSlope": 0,
+                          "leftLength": 0.33,
+                          "rightLength": 0.33
+                        }
+                      ]
+                    },
+                    "outTangentTrack": {
+                      "defaultValue": [
+                        0,
+                        0
+                      ],
+                      "keys": [
+                        {
+                          "frame": 1,
+                          "value": [
+                            -30,
+                            10
+                          ],
+                          "interpolation": "bezier",
+                          "leftSlope": 0,
+                          "rightSlope": 0,
+                          "leftLength": 0.33,
+                          "rightLength": 0.33
+                        },
+                        {
+                          "frame": 60,
+                          "value": [
+                            -30,
+                            10
+                          ],
+                          "interpolation": "bezier",
+                          "leftSlope": 0,
+                          "rightSlope": 0,
+                          "leftLength": 0.33,
+                          "rightLength": 0.33
+                        },
+                        {
+                          "frame": 120,
+                          "value": [
+                            -30,
+                            10
+                          ],
+                          "interpolation": "bezier",
+                          "leftSlope": 0,
+                          "rightSlope": 0,
+                          "leftLength": 0.33,
+                          "rightLength": 0.33
+                        }
+                      ]
+                    },
+                    "featherTrack": {
+                      "defaultValue": 0,
+                      "keys": [
+                        {
+                          "frame": 1,
+                          "value": 2,
+                          "interpolation": "bezier",
+                          "leftSlope": 0,
+                          "rightSlope": 0,
+                          "leftLength": 0.33,
+                          "rightLength": 0.33
+                        },
+                        {
+                          "frame": 60,
+                          "value": 2,
+                          "interpolation": "bezier",
+                          "leftSlope": 0,
+                          "rightSlope": 0,
+                          "leftLength": 0.33,
+                          "rightLength": 0.33
+                        },
+                        {
+                          "frame": 120,
+                          "value": 2,
+                          "interpolation": "bezier",
+                          "leftSlope": 0,
+                          "rightSlope": 0,
+                          "leftLength": 0.33,
+                          "rightLength": 0.33
+                        }
+                      ]
+                    },
+                    "isSmooth": true
+                  },
+                  0
+                ],
+                "keys": [
+                  {
+                    "frame": 1,
+                    "value": [
+                      {
+                        "id": "pt_6zcw6w60l",
+                        "posTrack": {
+                          "defaultValue": [
+                            920,
+                            880
+                          ],
+                          "keys": [
+                            {
+                              "frame": 1,
+                              "value": [
+                                920,
+                                880
+                              ],
+                              "interpolation": "bezier",
+                              "leftSlope": 0,
+                              "rightSlope": 0,
+                              "leftLength": 0.33,
+                              "rightLength": 0.33
+                            },
+                            {
+                              "frame": 60,
+                              "value": [
+                                925,
+                                875
+                              ],
+                              "interpolation": "bezier",
+                              "leftSlope": 0,
+                              "rightSlope": 0,
+                              "leftLength": 0.33,
+                              "rightLength": 0.33
+                            },
+                            {
+                              "frame": 120,
+                              "value": [
+                                930,
+                                880
+                              ],
+                              "interpolation": "bezier",
+                              "leftSlope": 0,
+                              "rightSlope": 0,
+                              "leftLength": 0.33,
+                              "rightLength": 0.33
+                            }
+                          ]
+                        },
+                        "inTangentTrack": {
+                          "defaultValue": [
+                            0,
+                            0
+                          ],
+                          "keys": [
+                            {
+                              "frame": 1,
+                              "value": [
+                                30,
+                                -10
+                              ],
+                              "interpolation": "bezier",
+                              "leftSlope": 0,
+                              "rightSlope": 0,
+                              "leftLength": 0.33,
+                              "rightLength": 0.33
+                            },
+                            {
+                              "frame": 60,
+                              "value": [
+                                30,
+                                -10
+                              ],
+                              "interpolation": "bezier",
+                              "leftSlope": 0,
+                              "rightSlope": 0,
+                              "leftLength": 0.33,
+                              "rightLength": 0.33
+                            },
+                            {
+                              "frame": 120,
+                              "value": [
+                                30,
+                                -10
+                              ],
+                              "interpolation": "bezier",
+                              "leftSlope": 0,
+                              "rightSlope": 0,
+                              "leftLength": 0.33,
+                              "rightLength": 0.33
+                            }
+                          ]
+                        },
+                        "outTangentTrack": {
+                          "defaultValue": [
+                            0,
+                            0
+                          ],
+                          "keys": [
+                            {
+                              "frame": 1,
+                              "value": [
+                                -30,
+                                10
+                              ],
+                              "interpolation": "bezier",
+                              "leftSlope": 0,
+                              "rightSlope": 0,
+                              "leftLength": 0.33,
+                              "rightLength": 0.33
+                            },
+                            {
+                              "frame": 60,
+                              "value": [
+                                -30,
+                                10
+                              ],
+                              "interpolation": "bezier",
+                              "leftSlope": 0,
+                              "rightSlope": 0,
+                              "leftLength": 0.33,
+                              "rightLength": 0.33
+                            },
+                            {
+                              "frame": 120,
+                              "value": [
+                                -30,
+                                10
+                              ],
+                              "interpolation": "bezier",
+                              "leftSlope": 0,
+                              "rightSlope": 0,
+                              "leftLength": 0.33,
+                              "rightLength": 0.33
+                            }
+                          ]
+                        },
+                        "featherTrack": {
+                          "defaultValue": 0,
+                          "keys": [
+                            {
+                              "frame": 1,
+                              "value": 2,
+                              "interpolation": "bezier",
+                              "leftSlope": 0,
+                              "rightSlope": 0,
+                              "leftLength": 0.33,
+                              "rightLength": 0.33
+                            },
+                            {
+                              "frame": 60,
+                              "value": 2,
+                              "interpolation": "bezier",
+                              "leftSlope": 0,
+                              "rightSlope": 0,
+                              "leftLength": 0.33,
+                              "rightLength": 0.33
+                            },
+                            {
+                              "frame": 120,
+                              "value": 2,
+                              "interpolation": "bezier",
+                              "leftSlope": 0,
+                              "rightSlope": 0,
+                              "leftLength": 0.33,
+                              "rightLength": 0.33
+                            }
+                          ]
+                        },
+                        "isSmooth": true
+                      },
+                      null
+                    ],
+                    "interpolation": "bezier",
+                    "leftSlope": 0,
+                    "rightSlope": 0,
+                    "leftLength": 0.33,
+                    "rightLength": 0.33
+                  }
+                ]
+              },
+              "inTangentTrack": {
+                "defaultValue": [
+                  0,
+                  0
+                ],
+                "keys": [
+                  {
+                    "frame": 1,
+                    "value": [
+                      0,
+                      0
+                    ],
+                    "interpolation": "bezier",
+                    "leftSlope": 0,
+                    "rightSlope": 0,
+                    "leftLength": 0.33,
+                    "rightLength": 0.33
+                  }
+                ]
+              },
+              "outTangentTrack": {
+                "defaultValue": [
+                  0,
+                  0
+                ],
+                "keys": [
+                  {
+                    "frame": 1,
+                    "value": [
+                      0,
+                      0
+                    ],
+                    "interpolation": "bezier",
+                    "leftSlope": 0,
+                    "rightSlope": 0,
+                    "leftLength": 0.33,
+                    "rightLength": 0.33
+                  }
+                ]
+              },
+              "featherTrack": {
+                "defaultValue": 0,
+                "keys": [
+                  {
+                    "frame": 1,
+                    "value": 0,
+                    "interpolation": "bezier",
+                    "leftSlope": 0,
+                    "rightSlope": 0,
+                    "leftLength": 0.33,
+                    "rightLength": 0.33
+                  }
+                ]
+              }
+            },
+            {
+              "id": "pt_10l61jxov",
+              "isSmooth": true,
+              "posTrack": {
+                "defaultValue": [
+                  {
+                    "id": "pt_ms21oexmc",
+                    "posTrack": {
+                      "defaultValue": [
+                        890,
+                        700
+                      ],
+                      "keys": [
+                        {
+                          "frame": 1,
+                          "value": [
+                            890,
+                            700
+                          ],
+                          "interpolation": "bezier",
+                          "leftSlope": 0,
+                          "rightSlope": 0,
+                          "leftLength": 0.33,
+                          "rightLength": 0.33
+                        },
+                        {
+                          "frame": 60,
+                          "value": [
+                            895,
+                            695
+                          ],
+                          "interpolation": "bezier",
+                          "leftSlope": 0,
+                          "rightSlope": 0,
+                          "leftLength": 0.33,
+                          "rightLength": 0.33
+                        },
+                        {
+                          "frame": 120,
+                          "value": [
+                            900,
+                            700
+                          ],
+                          "interpolation": "bezier",
+                          "leftSlope": 0,
+                          "rightSlope": 0,
+                          "leftLength": 0.33,
+                          "rightLength": 0.33
+                        }
+                      ]
+                    },
+                    "inTangentTrack": {
+                      "defaultValue": [
+                        0,
+                        0
+                      ],
+                      "keys": [
+                        {
+                          "frame": 1,
+                          "value": [
+                            -10,
+                            80
+                          ],
+                          "interpolation": "bezier",
+                          "leftSlope": 0,
+                          "rightSlope": 0,
+                          "leftLength": 0.33,
+                          "rightLength": 0.33
+                        },
+                        {
+                          "frame": 60,
+                          "value": [
+                            -10,
+                            80
+                          ],
+                          "interpolation": "bezier",
+                          "leftSlope": 0,
+                          "rightSlope": 0,
+                          "leftLength": 0.33,
+                          "rightLength": 0.33
+                        },
+                        {
+                          "frame": 120,
+                          "value": [
+                            -10,
+                            80
+                          ],
+                          "interpolation": "bezier",
+                          "leftSlope": 0,
+                          "rightSlope": 0,
+                          "leftLength": 0.33,
+                          "rightLength": 0.33
+                        }
+                      ]
+                    },
+                    "outTangentTrack": {
+                      "defaultValue": [
+                        0,
+                        0
+                      ],
+                      "keys": [
+                        {
+                          "frame": 1,
+                          "value": [
+                            20,
+                            -80
+                          ],
+                          "interpolation": "bezier",
+                          "leftSlope": 0,
+                          "rightSlope": 0,
+                          "leftLength": 0.33,
+                          "rightLength": 0.33
+                        },
+                        {
+                          "frame": 60,
+                          "value": [
+                            20,
+                            -80
+                          ],
+                          "interpolation": "bezier",
+                          "leftSlope": 0,
+                          "rightSlope": 0,
+                          "leftLength": 0.33,
+                          "rightLength": 0.33
+                        },
+                        {
+                          "frame": 120,
+                          "value": [
+                            20,
+                            -80
+                          ],
+                          "interpolation": "bezier",
+                          "leftSlope": 0,
+                          "rightSlope": 0,
+                          "leftLength": 0.33,
+                          "rightLength": 0.33
+                        }
+                      ]
+                    },
+                    "featherTrack": {
+                      "defaultValue": 0,
+                      "keys": [
+                        {
+                          "frame": 1,
+                          "value": 2,
+                          "interpolation": "bezier",
+                          "leftSlope": 0,
+                          "rightSlope": 0,
+                          "leftLength": 0.33,
+                          "rightLength": 0.33
+                        },
+                        {
+                          "frame": 60,
+                          "value": 2,
+                          "interpolation": "bezier",
+                          "leftSlope": 0,
+                          "rightSlope": 0,
+                          "leftLength": 0.33,
+                          "rightLength": 0.33
+                        },
+                        {
+                          "frame": 120,
+                          "value": 2,
+                          "interpolation": "bezier",
+                          "leftSlope": 0,
+                          "rightSlope": 0,
+                          "leftLength": 0.33,
+                          "rightLength": 0.33
+                        }
+                      ]
+                    },
+                    "isSmooth": true
+                  },
+                  0
+                ],
+                "keys": [
+                  {
+                    "frame": 1,
+                    "value": [
+                      {
+                        "id": "pt_ms21oexmc",
+                        "posTrack": {
+                          "defaultValue": [
+                            890,
+                            700
+                          ],
+                          "keys": [
+                            {
+                              "frame": 1,
+                              "value": [
+                                890,
+                                700
+                              ],
+                              "interpolation": "bezier",
+                              "leftSlope": 0,
+                              "rightSlope": 0,
+                              "leftLength": 0.33,
+                              "rightLength": 0.33
+                            },
+                            {
+                              "frame": 60,
+                              "value": [
+                                895,
+                                695
+                              ],
+                              "interpolation": "bezier",
+                              "leftSlope": 0,
+                              "rightSlope": 0,
+                              "leftLength": 0.33,
+                              "rightLength": 0.33
+                            },
+                            {
+                              "frame": 120,
+                              "value": [
+                                900,
+                                700
+                              ],
+                              "interpolation": "bezier",
+                              "leftSlope": 0,
+                              "rightSlope": 0,
+                              "leftLength": 0.33,
+                              "rightLength": 0.33
+                            }
+                          ]
+                        },
+                        "inTangentTrack": {
+                          "defaultValue": [
+                            0,
+                            0
+                          ],
+                          "keys": [
+                            {
+                              "frame": 1,
+                              "value": [
+                                -10,
+                                80
+                              ],
+                              "interpolation": "bezier",
+                              "leftSlope": 0,
+                              "rightSlope": 0,
+                              "leftLength": 0.33,
+                              "rightLength": 0.33
+                            },
+                            {
+                              "frame": 60,
+                              "value": [
+                                -10,
+                                80
+                              ],
+                              "interpolation": "bezier",
+                              "leftSlope": 0,
+                              "rightSlope": 0,
+                              "leftLength": 0.33,
+                              "rightLength": 0.33
+                            },
+                            {
+                              "frame": 120,
+                              "value": [
+                                -10,
+                                80
+                              ],
+                              "interpolation": "bezier",
+                              "leftSlope": 0,
+                              "rightSlope": 0,
+                              "leftLength": 0.33,
+                              "rightLength": 0.33
+                            }
+                          ]
+                        },
+                        "outTangentTrack": {
+                          "defaultValue": [
+                            0,
+                            0
+                          ],
+                          "keys": [
+                            {
+                              "frame": 1,
+                              "value": [
+                                20,
+                                -80
+                              ],
+                              "interpolation": "bezier",
+                              "leftSlope": 0,
+                              "rightSlope": 0,
+                              "leftLength": 0.33,
+                              "rightLength": 0.33
+                            },
+                            {
+                              "frame": 60,
+                              "value": [
+                                20,
+                                -80
+                              ],
+                              "interpolation": "bezier",
+                              "leftSlope": 0,
+                              "rightSlope": 0,
+                              "leftLength": 0.33,
+                              "rightLength": 0.33
+                            },
+                            {
+                              "frame": 120,
+                              "value": [
+                                20,
+                                -80
+                              ],
+                              "interpolation": "bezier",
+                              "leftSlope": 0,
+                              "rightSlope": 0,
+                              "leftLength": 0.33,
+                              "rightLength": 0.33
+                            }
+                          ]
+                        },
+                        "featherTrack": {
+                          "defaultValue": 0,
+                          "keys": [
+                            {
+                              "frame": 1,
+                              "value": 2,
+                              "interpolation": "bezier",
+                              "leftSlope": 0,
+                              "rightSlope": 0,
+                              "leftLength": 0.33,
+                              "rightLength": 0.33
+                            },
+                            {
+                              "frame": 60,
+                              "value": 2,
+                              "interpolation": "bezier",
+                              "leftSlope": 0,
+                              "rightSlope": 0,
+                              "leftLength": 0.33,
+                              "rightLength": 0.33
+                            },
+                            {
+                              "frame": 120,
+                              "value": 2,
+                              "interpolation": "bezier",
+                              "leftSlope": 0,
+                              "rightSlope": 0,
+                              "leftLength": 0.33,
+                              "rightLength": 0.33
+                            }
+                          ]
+                        },
+                        "isSmooth": true
+                      },
+                      null
+                    ],
+                    "interpolation": "bezier",
+                    "leftSlope": 0,
+                    "rightSlope": 0,
+                    "leftLength": 0.33,
+                    "rightLength": 0.33
+                  }
+                ]
+              },
+              "inTangentTrack": {
+                "defaultValue": [
+                  0,
+                  0
+                ],
+                "keys": [
+                  {
+                    "frame": 1,
+                    "value": [
+                      0,
+                      0
+                    ],
+                    "interpolation": "bezier",
+                    "leftSlope": 0,
+                    "rightSlope": 0,
+                    "leftLength": 0.33,
+                    "rightLength": 0.33
+                  }
+                ]
+              },
+              "outTangentTrack": {
+                "defaultValue": [
+                  0,
+                  0
+                ],
+                "keys": [
+                  {
+                    "frame": 1,
+                    "value": [
+                      0,
+                      0
+                    ],
+                    "interpolation": "bezier",
+                    "leftSlope": 0,
+                    "rightSlope": 0,
+                    "leftLength": 0.33,
+                    "rightLength": 0.33
+                  }
+                ]
+              },
+              "featherTrack": {
+                "defaultValue": 0,
+                "keys": [
+                  {
+                    "frame": 1,
+                    "value": 0,
+                    "interpolation": "bezier",
+                    "leftSlope": 0,
+                    "rightSlope": 0,
+                    "leftLength": 0.33,
+                    "rightLength": 0.33
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "shape_l0cq70t4q",
+          "name": "Head_Hood",
+          "type": "bezier",
+          "closed": true,
+          "inverted": false,
+          "feather": 1.5,
+          "opacity": 1,
+          "blendMode": "add",
+          "visible": true,
+          "locked": false,
+          "color": "#38d9a9",
+          "points": [
+            {
+              "id": "pt_zpnf6zhvd",
+              "isSmooth": true,
+              "posTrack": {
+                "defaultValue": [
+                  {
+                    "id": "pt_lnkdbm38o",
+                    "posTrack": {
+                      "defaultValue": [
+                        960,
+                        370
+                      ],
+                      "keys": [
+                        {
+                          "frame": 1,
+                          "value": [
+                            960,
+                            370
+                          ],
+                          "interpolation": "bezier",
+                          "leftSlope": 0,
+                          "rightSlope": 0,
+                          "leftLength": 0.33,
+                          "rightLength": 0.33
+                        },
+                        {
+                          "frame": 60,
+                          "value": [
+                            965,
+                            368
+                          ],
+                          "interpolation": "bezier",
+                          "leftSlope": 0,
+                          "rightSlope": 0,
+                          "leftLength": 0.33,
+                          "rightLength": 0.33
+                        },
+                        {
+                          "frame": 120,
+                          "value": [
+                            970,
+                            370
+                          ],
+                          "interpolation": "bezier",
+                          "leftSlope": 0,
+                          "rightSlope": 0,
+                          "leftLength": 0.33,
+                          "rightLength": 0.33
+                        }
+                      ]
+                    },
+                    "inTangentTrack": {
+                      "defaultValue": [
+                        0,
+                        0
+                      ],
+                      "keys": [
+                        {
+                          "frame": 1,
+                          "value": [
+                            -25,
+                            0
+                          ],
+                          "interpolation": "bezier",
+                          "leftSlope": 0,
+                          "rightSlope": 0,
+                          "leftLength": 0.33,
+                          "rightLength": 0.33
+                        },
+                        {
+                          "frame": 60,
+                          "value": [
+                            -25,
+                            0
+                          ],
+                          "interpolation": "bezier",
+                          "leftSlope": 0,
+                          "rightSlope": 0,
+                          "leftLength": 0.33,
+                          "rightLength": 0.33
+                        },
+                        {
+                          "frame": 120,
+                          "value": [
+                            -25,
+                            0
+                          ],
+                          "interpolation": "bezier",
+                          "leftSlope": 0,
+                          "rightSlope": 0,
+                          "leftLength": 0.33,
+                          "rightLength": 0.33
+                        }
+                      ]
+                    },
+                    "outTangentTrack": {
+                      "defaultValue": [
+                        0,
+                        0
+                      ],
+                      "keys": [
+                        {
+                          "frame": 1,
+                          "value": [
+                            25,
+                            0
+                          ],
+                          "interpolation": "bezier",
+                          "leftSlope": 0,
+                          "rightSlope": 0,
+                          "leftLength": 0.33,
+                          "rightLength": 0.33
+                        },
+                        {
+                          "frame": 60,
+                          "value": [
+                            25,
+                            0
+                          ],
+                          "interpolation": "bezier",
+                          "leftSlope": 0,
+                          "rightSlope": 0,
+                          "leftLength": 0.33,
+                          "rightLength": 0.33
+                        },
+                        {
+                          "frame": 120,
+                          "value": [
+                            25,
+                            0
+                          ],
+                          "interpolation": "bezier",
+                          "leftSlope": 0,
+                          "rightSlope": 0,
+                          "leftLength": 0.33,
+                          "rightLength": 0.33
+                        }
+                      ]
+                    },
+                    "featherTrack": {
+                      "defaultValue": 0,
+                      "keys": [
+                        {
+                          "frame": 1,
+                          "value": 1.5,
+                          "interpolation": "bezier",
+                          "leftSlope": 0,
+                          "rightSlope": 0,
+                          "leftLength": 0.33,
+                          "rightLength": 0.33
+                        },
+                        {
+                          "frame": 60,
+                          "value": 1.5,
+                          "interpolation": "bezier",
+                          "leftSlope": 0,
+                          "rightSlope": 0,
+                          "leftLength": 0.33,
+                          "rightLength": 0.33
+                        },
+                        {
+                          "frame": 120,
+                          "value": 1.5,
+                          "interpolation": "bezier",
+                          "leftSlope": 0,
+                          "rightSlope": 0,
+                          "leftLength": 0.33,
+                          "rightLength": 0.33
+                        }
+                      ]
+                    },
+                    "isSmooth": true
+                  },
+                  0
+                ],
+                "keys": [
+                  {
+                    "frame": 1,
+                    "value": [
+                      {
+                        "id": "pt_lnkdbm38o",
+                        "posTrack": {
+                          "defaultValue": [
+                            960,
+                            370
+                          ],
+                          "keys": [
+                            {
+                              "frame": 1,
+                              "value": [
+                                960,
+                                370
+                              ],
+                              "interpolation": "bezier",
+                              "leftSlope": 0,
+                              "rightSlope": 0,
+                              "leftLength": 0.33,
+                              "rightLength": 0.33
+                            },
+                            {
+                              "frame": 60,
+                              "value": [
+                                965,
+                                368
+                              ],
+                              "interpolation": "bezier",
+                              "leftSlope": 0,
+                              "rightSlope": 0,
+                              "leftLength": 0.33,
+                              "rightLength": 0.33
+                            },
+                            {
+                              "frame": 120,
+                              "value": [
+                                970,
+                                370
+                              ],
+                              "interpolation": "bezier",
+                              "leftSlope": 0,
+                              "rightSlope": 0,
+                              "leftLength": 0.33,
+                              "rightLength": 0.33
+                            }
+                          ]
+                        },
+                        "inTangentTrack": {
+                          "defaultValue": [
+                            0,
+                            0
+                          ],
+                          "keys": [
+                            {
+                              "frame": 1,
+                              "value": [
+                                -25,
+                                0
+                              ],
+                              "interpolation": "bezier",
+                              "leftSlope": 0,
+                              "rightSlope": 0,
+                              "leftLength": 0.33,
+                              "rightLength": 0.33
+                            },
+                            {
+                              "frame": 60,
+                              "value": [
+                                -25,
+                                0
+                              ],
+                              "interpolation": "bezier",
+                              "leftSlope": 0,
+                              "rightSlope": 0,
+                              "leftLength": 0.33,
+                              "rightLength": 0.33
+                            },
+                            {
+                              "frame": 120,
+                              "value": [
+                                -25,
+                                0
+                              ],
+                              "interpolation": "bezier",
+                              "leftSlope": 0,
+                              "rightSlope": 0,
+                              "leftLength": 0.33,
+                              "rightLength": 0.33
+                            }
+                          ]
+                        },
+                        "outTangentTrack": {
+                          "defaultValue": [
+                            0,
+                            0
+                          ],
+                          "keys": [
+                            {
+                              "frame": 1,
+                              "value": [
+                                25,
+                                0
+                              ],
+                              "interpolation": "bezier",
+                              "leftSlope": 0,
+                              "rightSlope": 0,
+                              "leftLength": 0.33,
+                              "rightLength": 0.33
+                            },
+                            {
+                              "frame": 60,
+                              "value": [
+                                25,
+                                0
+                              ],
+                              "interpolation": "bezier",
+                              "leftSlope": 0,
+                              "rightSlope": 0,
+                              "leftLength": 0.33,
+                              "rightLength": 0.33
+                            },
+                            {
+                              "frame": 120,
+                              "value": [
+                                25,
+                                0
+                              ],
+                              "interpolation": "bezier",
+                              "leftSlope": 0,
+                              "rightSlope": 0,
+                              "leftLength": 0.33,
+                              "rightLength": 0.33
+                            }
+                          ]
+                        },
+                        "featherTrack": {
+                          "defaultValue": 0,
+                          "keys": [
+                            {
+                              "frame": 1,
+                              "value": 1.5,
+                              "interpolation": "bezier",
+                              "leftSlope": 0,
+                              "rightSlope": 0,
+                              "leftLength": 0.33,
+                              "rightLength": 0.33
+                            },
+                            {
+                              "frame": 60,
+                              "value": 1.5,
+                              "interpolation": "bezier",
+                              "leftSlope": 0,
+                              "rightSlope": 0,
+                              "leftLength": 0.33,
+                              "rightLength": 0.33
+                            },
+                            {
+                              "frame": 120,
+                              "value": 1.5,
+                              "interpolation": "bezier",
+                              "leftSlope": 0,
+                              "rightSlope": 0,
+                              "leftLength": 0.33,
+                              "rightLength": 0.33
+                            }
+                          ]
+                        },
+                        "isSmooth": true
+                      },
+                      null
+                    ],
+                    "interpolation": "bezier",
+                    "leftSlope": 0,
+                    "rightSlope": 0,
+                    "leftLength": 0.33,
+                    "rightLength": 0.33
+                  }
+                ]
+              },
+              "inTangentTrack": {
+                "defaultValue": [
+                  0,
+                  0
+                ],
+                "keys": [
+                  {
+                    "frame": 1,
+                    "value": [
+                      0,
+                      0
+                    ],
+                    "interpolation": "bezier",
+                    "leftSlope": 0,
+                    "rightSlope": 0,
+                    "leftLength": 0.33,
+                    "rightLength": 0.33
+                  }
+                ]
+              },
+              "outTangentTrack": {
+                "defaultValue": [
+                  0,
+                  0
+                ],
+                "keys": [
+                  {
+                    "frame": 1,
+                    "value": [
+                      0,
+                      0
+                    ],
+                    "interpolation": "bezier",
+                    "leftSlope": 0,
+                    "rightSlope": 0,
+                    "leftLength": 0.33,
+                    "rightLength": 0.33
+                  }
+                ]
+              },
+              "featherTrack": {
+                "defaultValue": 0,
+                "keys": [
+                  {
+                    "frame": 1,
+                    "value": 0,
+                    "interpolation": "bezier",
+                    "leftSlope": 0,
+                    "rightSlope": 0,
+                    "leftLength": 0.33,
+                    "rightLength": 0.33
+                  }
+                ]
+              }
+            },
+            {
+              "id": "pt_qnb0wbnil",
+              "isSmooth": true,
+              "posTrack": {
+                "defaultValue": [
+                  {
+                    "id": "pt_nr8v2dnor",
+                    "posTrack": {
+                      "defaultValue": [
+                        985,
+                        410
+                      ],
+                      "keys": [
+                        {
+                          "frame": 1,
+                          "value": [
+                            985,
+                            410
+                          ],
+                          "interpolation": "bezier",
+                          "leftSlope": 0,
+                          "rightSlope": 0,
+                          "leftLength": 0.33,
+                          "rightLength": 0.33
+                        },
+                        {
+                          "frame": 60,
+                          "value": [
+                            990,
+                            408
+                          ],
+                          "interpolation": "bezier",
+                          "leftSlope": 0,
+                          "rightSlope": 0,
+                          "leftLength": 0.33,
+                          "rightLength": 0.33
+                        },
+                        {
+                          "frame": 120,
+                          "value": [
+                            995,
+                            410
+                          ],
+                          "interpolation": "bezier",
+                          "leftSlope": 0,
+                          "rightSlope": 0,
+                          "leftLength": 0.33,
+                          "rightLength": 0.33
+                        }
+                      ]
+                    },
+                    "inTangentTrack": {
+                      "defaultValue": [
+                        0,
+                        0
+                      ],
+                      "keys": [
+                        {
+                          "frame": 1,
+                          "value": [
+                            0,
+                            -20
+                          ],
+                          "interpolation": "bezier",
+                          "leftSlope": 0,
+                          "rightSlope": 0,
+                          "leftLength": 0.33,
+                          "rightLength": 0.33
+                        },
+                        {
+                          "frame": 60,
+                          "value": [
+                            0,
+                            -20
+                          ],
+                          "interpolation": "bezier",
+                          "leftSlope": 0,
+                          "rightSlope": 0,
+                          "leftLength": 0.33,
+                          "rightLength": 0.33
+                        },
+                        {
+                          "frame": 120,
+                          "value": [
+                            0,
+                            -20
+                          ],
+                          "interpolation": "bezier",
+                          "leftSlope": 0,
+                          "rightSlope": 0,
+                          "leftLength": 0.33,
+                          "rightLength": 0.33
+                        }
+                      ]
+                    },
+                    "outTangentTrack": {
+                      "defaultValue": [
+                        0,
+                        0
+                      ],
+                      "keys": [
+                        {
+                          "frame": 1,
+                          "value": [
+                            -5,
+                            30
+                          ],
+                          "interpolation": "bezier",
+                          "leftSlope": 0,
+                          "rightSlope": 0,
+                          "leftLength": 0.33,
+                          "rightLength": 0.33
+                        },
+                        {
+                          "frame": 60,
+                          "value": [
+                            -5,
+                            30
+                          ],
+                          "interpolation": "bezier",
+                          "leftSlope": 0,
+                          "rightSlope": 0,
+                          "leftLength": 0.33,
+                          "rightLength": 0.33
+                        },
+                        {
+                          "frame": 120,
+                          "value": [
+                            -5,
+                            30
+                          ],
+                          "interpolation": "bezier",
+                          "leftSlope": 0,
+                          "rightSlope": 0,
+                          "leftLength": 0.33,
+                          "rightLength": 0.33
+                        }
+                      ]
+                    },
+                    "featherTrack": {
+                      "defaultValue": 0,
+                      "keys": [
+                        {
+                          "frame": 1,
+                          "value": 1.5,
+                          "interpolation": "bezier",
+                          "leftSlope": 0,
+                          "rightSlope": 0,
+                          "leftLength": 0.33,
+                          "rightLength": 0.33
+                        },
+                        {
+                          "frame": 60,
+                          "value": 1.5,
+                          "interpolation": "bezier",
+                          "leftSlope": 0,
+                          "rightSlope": 0,
+                          "leftLength": 0.33,
+                          "rightLength": 0.33
+                        },
+                        {
+                          "frame": 120,
+                          "value": 1.5,
+                          "interpolation": "bezier",
+                          "leftSlope": 0,
+                          "rightSlope": 0,
+                          "leftLength": 0.33,
+                          "rightLength": 0.33
+                        }
+                      ]
+                    },
+                    "isSmooth": true
+                  },
+                  0
+                ],
+                "keys": [
+                  {
+                    "frame": 1,
+                    "value": [
+                      {
+                        "id": "pt_nr8v2dnor",
+                        "posTrack": {
+                          "defaultValue": [
+                            985,
+                            410
+                          ],
+                          "keys": [
+                            {
+                              "frame": 1,
+                              "value": [
+                                985,
+                                410
+                              ],
+                              "interpolation": "bezier",
+                              "leftSlope": 0,
+                              "rightSlope": 0,
+                              "leftLength": 0.33,
+                              "rightLength": 0.33
+                            },
+                            {
+                              "frame": 60,
+                              "value": [
+                                990,
+                                408
+                              ],
+                              "interpolation": "bezier",
+                              "leftSlope": 0,
+                              "rightSlope": 0,
+                              "leftLength": 0.33,
+                              "rightLength": 0.33
+                            },
+                            {
+                              "frame": 120,
+                              "value": [
+                                995,
+                                410
+                              ],
+                              "interpolation": "bezier",
+                              "leftSlope": 0,
+                              "rightSlope": 0,
+                              "leftLength": 0.33,
+                              "rightLength": 0.33
+                            }
+                          ]
+                        },
+                        "inTangentTrack": {
+                          "defaultValue": [
+                            0,
+                            0
+                          ],
+                          "keys": [
+                            {
+                              "frame": 1,
+                              "value": [
+                                0,
+                                -20
+                              ],
+                              "interpolation": "bezier",
+                              "leftSlope": 0,
+                              "rightSlope": 0,
+                              "leftLength": 0.33,
+                              "rightLength": 0.33
+                            },
+                            {
+                              "frame": 60,
+                              "value": [
+                                0,
+                                -20
+                              ],
+                              "interpolation": "bezier",
+                              "leftSlope": 0,
+                              "rightSlope": 0,
+                              "leftLength": 0.33,
+                              "rightLength": 0.33
+                            },
+                            {
+                              "frame": 120,
+                              "value": [
+                                0,
+                                -20
+                              ],
+                              "interpolation": "bezier",
+                              "leftSlope": 0,
+                              "rightSlope": 0,
+                              "leftLength": 0.33,
+                              "rightLength": 0.33
+                            }
+                          ]
+                        },
+                        "outTangentTrack": {
+                          "defaultValue": [
+                            0,
+                            0
+                          ],
+                          "keys": [
+                            {
+                              "frame": 1,
+                              "value": [
+                                -5,
+                                30
+                              ],
+                              "interpolation": "bezier",
+                              "leftSlope": 0,
+                              "rightSlope": 0,
+                              "leftLength": 0.33,
+                              "rightLength": 0.33
+                            },
+                            {
+                              "frame": 60,
+                              "value": [
+                                -5,
+                                30
+                              ],
+                              "interpolation": "bezier",
+                              "leftSlope": 0,
+                              "rightSlope": 0,
+                              "leftLength": 0.33,
+                              "rightLength": 0.33
+                            },
+                            {
+                              "frame": 120,
+                              "value": [
+                                -5,
+                                30
+                              ],
+                              "interpolation": "bezier",
+                              "leftSlope": 0,
+                              "rightSlope": 0,
+                              "leftLength": 0.33,
+                              "rightLength": 0.33
+                            }
+                          ]
+                        },
+                        "featherTrack": {
+                          "defaultValue": 0,
+                          "keys": [
+                            {
+                              "frame": 1,
+                              "value": 1.5,
+                              "interpolation": "bezier",
+                              "leftSlope": 0,
+                              "rightSlope": 0,
+                              "leftLength": 0.33,
+                              "rightLength": 0.33
+                            },
+                            {
+                              "frame": 60,
+                              "value": 1.5,
+                              "interpolation": "bezier",
+                              "leftSlope": 0,
+                              "rightSlope": 0,
+                              "leftLength": 0.33,
+                              "rightLength": 0.33
+                            },
+                            {
+                              "frame": 120,
+                              "value": 1.5,
+                              "interpolation": "bezier",
+                              "leftSlope": 0,
+                              "rightSlope": 0,
+                              "leftLength": 0.33,
+                              "rightLength": 0.33
+                            }
+                          ]
+                        },
+                        "isSmooth": true
+                      },
+                      null
+                    ],
+                    "interpolation": "bezier",
+                    "leftSlope": 0,
+                    "rightSlope": 0,
+                    "leftLength": 0.33,
+                    "rightLength": 0.33
+                  }
+                ]
+              },
+              "inTangentTrack": {
+                "defaultValue": [
+                  0,
+                  0
+                ],
+                "keys": [
+                  {
+                    "frame": 1,
+                    "value": [
+                      0,
+                      0
+                    ],
+                    "interpolation": "bezier",
+                    "leftSlope": 0,
+                    "rightSlope": 0,
+                    "leftLength": 0.33,
+                    "rightLength": 0.33
+                  }
+                ]
+              },
+              "outTangentTrack": {
+                "defaultValue": [
+                  0,
+                  0
+                ],
+                "keys": [
+                  {
+                    "frame": 1,
+                    "value": [
+                      0,
+                      0
+                    ],
+                    "interpolation": "bezier",
+                    "leftSlope": 0,
+                    "rightSlope": 0,
+                    "leftLength": 0.33,
+                    "rightLength": 0.33
+                  }
+                ]
+              },
+              "featherTrack": {
+                "defaultValue": 0,
+                "keys": [
+                  {
+                    "frame": 1,
+                    "value": 0,
+                    "interpolation": "bezier",
+                    "leftSlope": 0,
+                    "rightSlope": 0,
+                    "leftLength": 0.33,
+                    "rightLength": 0.33
+                  }
+                ]
+              }
+            },
+            {
+              "id": "pt_ff56wlazr",
+              "isSmooth": true,
+              "posTrack": {
+                "defaultValue": [
+                  {
+                    "id": "pt_dt4zy3bfw",
+                    "posTrack": {
+                      "defaultValue": [
+                        960,
+                        460
+                      ],
+                      "keys": [
+                        {
+                          "frame": 1,
+                          "value": [
+                            960,
+                            460
+                          ],
+                          "interpolation": "bezier",
+                          "leftSlope": 0,
+                          "rightSlope": 0,
+                          "leftLength": 0.33,
+                          "rightLength": 0.33
+                        },
+                        {
+                          "frame": 60,
+                          "value": [
+                            965,
+                            458
+                          ],
+                          "interpolation": "bezier",
+                          "leftSlope": 0,
+                          "rightSlope": 0,
+                          "leftLength": 0.33,
+                          "rightLength": 0.33
+                        },
+                        {
+                          "frame": 120,
+                          "value": [
+                            970,
+                            460
+                          ],
+                          "interpolation": "bezier",
+                          "leftSlope": 0,
+                          "rightSlope": 0,
+                          "leftLength": 0.33,
+                          "rightLength": 0.33
+                        }
+                      ]
+                    },
+                    "inTangentTrack": {
+                      "defaultValue": [
+                        0,
+                        0
+                      ],
+                      "keys": [
+                        {
+                          "frame": 1,
+                          "value": [
+                            15,
+                            0
+                          ],
+                          "interpolation": "bezier",
+                          "leftSlope": 0,
+                          "rightSlope": 0,
+                          "leftLength": 0.33,
+                          "rightLength": 0.33
+                        },
+                        {
+                          "frame": 60,
+                          "value": [
+                            15,
+                            0
+                          ],
+                          "interpolation": "bezier",
+                          "leftSlope": 0,
+                          "rightSlope": 0,
+                          "leftLength": 0.33,
+                          "rightLength": 0.33
+                        },
+                        {
+                          "frame": 120,
+                          "value": [
+                            15,
+                            0
+                          ],
+                          "interpolation": "bezier",
+                          "leftSlope": 0,
+                          "rightSlope": 0,
+                          "leftLength": 0.33,
+                          "rightLength": 0.33
+                        }
+                      ]
+                    },
+                    "outTangentTrack": {
+                      "defaultValue": [
+                        0,
+                        0
+                      ],
+                      "keys": [
+                        {
+                          "frame": 1,
+                          "value": [
+                            -15,
+                            0
+                          ],
+                          "interpolation": "bezier",
+                          "leftSlope": 0,
+                          "rightSlope": 0,
+                          "leftLength": 0.33,
+                          "rightLength": 0.33
+                        },
+                        {
+                          "frame": 60,
+                          "value": [
+                            -15,
+                            0
+                          ],
+                          "interpolation": "bezier",
+                          "leftSlope": 0,
+                          "rightSlope": 0,
+                          "leftLength": 0.33,
+                          "rightLength": 0.33
+                        },
+                        {
+                          "frame": 120,
+                          "value": [
+                            -15,
+                            0
+                          ],
+                          "interpolation": "bezier",
+                          "leftSlope": 0,
+                          "rightSlope": 0,
+                          "leftLength": 0.33,
+                          "rightLength": 0.33
+                        }
+                      ]
+                    },
+                    "featherTrack": {
+                      "defaultValue": 0,
+                      "keys": [
+                        {
+                          "frame": 1,
+                          "value": 1.5,
+                          "interpolation": "bezier",
+                          "leftSlope": 0,
+                          "rightSlope": 0,
+                          "leftLength": 0.33,
+                          "rightLength": 0.33
+                        },
+                        {
+                          "frame": 60,
+                          "value": 1.5,
+                          "interpolation": "bezier",
+                          "leftSlope": 0,
+                          "rightSlope": 0,
+                          "leftLength": 0.33,
+                          "rightLength": 0.33
+                        },
+                        {
+                          "frame": 120,
+                          "value": 1.5,
+                          "interpolation": "bezier",
+                          "leftSlope": 0,
+                          "rightSlope": 0,
+                          "leftLength": 0.33,
+                          "rightLength": 0.33
+                        }
+                      ]
+                    },
+                    "isSmooth": true
+                  },
+                  0
+                ],
+                "keys": [
+                  {
+                    "frame": 1,
+                    "value": [
+                      {
+                        "id": "pt_dt4zy3bfw",
+                        "posTrack": {
+                          "defaultValue": [
+                            960,
+                            460
+                          ],
+                          "keys": [
+                            {
+                              "frame": 1,
+                              "value": [
+                                960,
+                                460
+                              ],
+                              "interpolation": "bezier",
+                              "leftSlope": 0,
+                              "rightSlope": 0,
+                              "leftLength": 0.33,
+                              "rightLength": 0.33
+                            },
+                            {
+                              "frame": 60,
+                              "value": [
+                                965,
+                                458
+                              ],
+                              "interpolation": "bezier",
+                              "leftSlope": 0,
+                              "rightSlope": 0,
+                              "leftLength": 0.33,
+                              "rightLength": 0.33
+                            },
+                            {
+                              "frame": 120,
+                              "value": [
+                                970,
+                                460
+                              ],
+                              "interpolation": "bezier",
+                              "leftSlope": 0,
+                              "rightSlope": 0,
+                              "leftLength": 0.33,
+                              "rightLength": 0.33
+                            }
+                          ]
+                        },
+                        "inTangentTrack": {
+                          "defaultValue": [
+                            0,
+                            0
+                          ],
+                          "keys": [
+                            {
+                              "frame": 1,
+                              "value": [
+                                15,
+                                0
+                              ],
+                              "interpolation": "bezier",
+                              "leftSlope": 0,
+                              "rightSlope": 0,
+                              "leftLength": 0.33,
+                              "rightLength": 0.33
+                            },
+                            {
+                              "frame": 60,
+                              "value": [
+                                15,
+                                0
+                              ],
+                              "interpolation": "bezier",
+                              "leftSlope": 0,
+                              "rightSlope": 0,
+                              "leftLength": 0.33,
+                              "rightLength": 0.33
+                            },
+                            {
+                              "frame": 120,
+                              "value": [
+                                15,
+                                0
+                              ],
+                              "interpolation": "bezier",
+                              "leftSlope": 0,
+                              "rightSlope": 0,
+                              "leftLength": 0.33,
+                              "rightLength": 0.33
+                            }
+                          ]
+                        },
+                        "outTangentTrack": {
+                          "defaultValue": [
+                            0,
+                            0
+                          ],
+                          "keys": [
+                            {
+                              "frame": 1,
+                              "value": [
+                                -15,
+                                0
+                              ],
+                              "interpolation": "bezier",
+                              "leftSlope": 0,
+                              "rightSlope": 0,
+                              "leftLength": 0.33,
+                              "rightLength": 0.33
+                            },
+                            {
+                              "frame": 60,
+                              "value": [
+                                -15,
+                                0
+                              ],
+                              "interpolation": "bezier",
+                              "leftSlope": 0,
+                              "rightSlope": 0,
+                              "leftLength": 0.33,
+                              "rightLength": 0.33
+                            },
+                            {
+                              "frame": 120,
+                              "value": [
+                                -15,
+                                0
+                              ],
+                              "interpolation": "bezier",
+                              "leftSlope": 0,
+                              "rightSlope": 0,
+                              "leftLength": 0.33,
+                              "rightLength": 0.33
+                            }
+                          ]
+                        },
+                        "featherTrack": {
+                          "defaultValue": 0,
+                          "keys": [
+                            {
+                              "frame": 1,
+                              "value": 1.5,
+                              "interpolation": "bezier",
+                              "leftSlope": 0,
+                              "rightSlope": 0,
+                              "leftLength": 0.33,
+                              "rightLength": 0.33
+                            },
+                            {
+                              "frame": 60,
+                              "value": 1.5,
+                              "interpolation": "bezier",
+                              "leftSlope": 0,
+                              "rightSlope": 0,
+                              "leftLength": 0.33,
+                              "rightLength": 0.33
+                            },
+                            {
+                              "frame": 120,
+                              "value": 1.5,
+                              "interpolation": "bezier",
+                              "leftSlope": 0,
+                              "rightSlope": 0,
+                              "leftLength": 0.33,
+                              "rightLength": 0.33
+                            }
+                          ]
+                        },
+                        "isSmooth": true
+                      },
+                      null
+                    ],
+                    "interpolation": "bezier",
+                    "leftSlope": 0,
+                    "rightSlope": 0,
+                    "leftLength": 0.33,
+                    "rightLength": 0.33
+                  }
+                ]
+              },
+              "inTangentTrack": {
+                "defaultValue": [
+                  0,
+                  0
+                ],
+                "keys": [
+                  {
+                    "frame": 1,
+                    "value": [
+                      0,
+                      0
+                    ],
+                    "interpolation": "bezier",
+                    "leftSlope": 0,
+                    "rightSlope": 0,
+                    "leftLength": 0.33,
+                    "rightLength": 0.33
+                  }
+                ]
+              },
+              "outTangentTrack": {
+                "defaultValue": [
+                  0,
+                  0
+                ],
+                "keys": [
+                  {
+                    "frame": 1,
+                    "value": [
+                      0,
+                      0
+                    ],
+                    "interpolation": "bezier",
+                    "leftSlope": 0,
+                    "rightSlope": 0,
+                    "leftLength": 0.33,
+                    "rightLength": 0.33
+                  }
+                ]
+              },
+              "featherTrack": {
+                "defaultValue": 0,
+                "keys": [
+                  {
+                    "frame": 1,
+                    "value": 0,
+                    "interpolation": "bezier",
+                    "leftSlope": 0,
+                    "rightSlope": 0,
+                    "leftLength": 0.33,
+                    "rightLength": 0.33
+                  }
+                ]
+              }
+            },
+            {
+              "id": "pt_yryeum5uh",
+              "isSmooth": true,
+              "posTrack": {
+                "defaultValue": [
+                  {
+                    "id": "pt_0k844d5qa",
+                    "posTrack": {
+                      "defaultValue": [
+                        935,
+                        410
+                      ],
+                      "keys": [
+                        {
+                          "frame": 1,
+                          "value": [
+                            935,
+                            410
+                          ],
+                          "interpolation": "bezier",
+                          "leftSlope": 0,
+                          "rightSlope": 0,
+                          "leftLength": 0.33,
+                          "rightLength": 0.33
+                        },
+                        {
+                          "frame": 60,
+                          "value": [
+                            940,
+                            408
+                          ],
+                          "interpolation": "bezier",
+                          "leftSlope": 0,
+                          "rightSlope": 0,
+                          "leftLength": 0.33,
+                          "rightLength": 0.33
+                        },
+                        {
+                          "frame": 120,
+                          "value": [
+                            945,
+                            410
+                          ],
+                          "interpolation": "bezier",
+                          "leftSlope": 0,
+                          "rightSlope": 0,
+                          "leftLength": 0.33,
+                          "rightLength": 0.33
+                        }
+                      ]
+                    },
+                    "inTangentTrack": {
+                      "defaultValue": [
+                        0,
+                        0
+                      ],
+                      "keys": [
+                        {
+                          "frame": 1,
+                          "value": [
+                            5,
+                            30
+                          ],
+                          "interpolation": "bezier",
+                          "leftSlope": 0,
+                          "rightSlope": 0,
+                          "leftLength": 0.33,
+                          "rightLength": 0.33
+                        },
+                        {
+                          "frame": 60,
+                          "value": [
+                            5,
+                            30
+                          ],
+                          "interpolation": "bezier",
+                          "leftSlope": 0,
+                          "rightSlope": 0,
+                          "leftLength": 0.33,
+                          "rightLength": 0.33
+                        },
+                        {
+                          "frame": 120,
+                          "value": [
+                            5,
+                            30
+                          ],
+                          "interpolation": "bezier",
+                          "leftSlope": 0,
+                          "rightSlope": 0,
+                          "leftLength": 0.33,
+                          "rightLength": 0.33
+                        }
+                      ]
+                    },
+                    "outTangentTrack": {
+                      "defaultValue": [
+                        0,
+                        0
+                      ],
+                      "keys": [
+                        {
+                          "frame": 1,
+                          "value": [
+                            0,
+                            -20
+                          ],
+                          "interpolation": "bezier",
+                          "leftSlope": 0,
+                          "rightSlope": 0,
+                          "leftLength": 0.33,
+                          "rightLength": 0.33
+                        },
+                        {
+                          "frame": 60,
+                          "value": [
+                            0,
+                            -20
+                          ],
+                          "interpolation": "bezier",
+                          "leftSlope": 0,
+                          "rightSlope": 0,
+                          "leftLength": 0.33,
+                          "rightLength": 0.33
+                        },
+                        {
+                          "frame": 120,
+                          "value": [
+                            0,
+                            -20
+                          ],
+                          "interpolation": "bezier",
+                          "leftSlope": 0,
+                          "rightSlope": 0,
+                          "leftLength": 0.33,
+                          "rightLength": 0.33
+                        }
+                      ]
+                    },
+                    "featherTrack": {
+                      "defaultValue": 0,
+                      "keys": [
+                        {
+                          "frame": 1,
+                          "value": 1.5,
+                          "interpolation": "bezier",
+                          "leftSlope": 0,
+                          "rightSlope": 0,
+                          "leftLength": 0.33,
+                          "rightLength": 0.33
+                        },
+                        {
+                          "frame": 60,
+                          "value": 1.5,
+                          "interpolation": "bezier",
+                          "leftSlope": 0,
+                          "rightSlope": 0,
+                          "leftLength": 0.33,
+                          "rightLength": 0.33
+                        },
+                        {
+                          "frame": 120,
+                          "value": 1.5,
+                          "interpolation": "bezier",
+                          "leftSlope": 0,
+                          "rightSlope": 0,
+                          "leftLength": 0.33,
+                          "rightLength": 0.33
+                        }
+                      ]
+                    },
+                    "isSmooth": true
+                  },
+                  0
+                ],
+                "keys": [
+                  {
+                    "frame": 1,
+                    "value": [
+                      {
+                        "id": "pt_0k844d5qa",
+                        "posTrack": {
+                          "defaultValue": [
+                            935,
+                            410
+                          ],
+                          "keys": [
+                            {
+                              "frame": 1,
+                              "value": [
+                                935,
+                                410
+                              ],
+                              "interpolation": "bezier",
+                              "leftSlope": 0,
+                              "rightSlope": 0,
+                              "leftLength": 0.33,
+                              "rightLength": 0.33
+                            },
+                            {
+                              "frame": 60,
+                              "value": [
+                                940,
+                                408
+                              ],
+                              "interpolation": "bezier",
+                              "leftSlope": 0,
+                              "rightSlope": 0,
+                              "leftLength": 0.33,
+                              "rightLength": 0.33
+                            },
+                            {
+                              "frame": 120,
+                              "value": [
+                                945,
+                                410
+                              ],
+                              "interpolation": "bezier",
+                              "leftSlope": 0,
+                              "rightSlope": 0,
+                              "leftLength": 0.33,
+                              "rightLength": 0.33
+                            }
+                          ]
+                        },
+                        "inTangentTrack": {
+                          "defaultValue": [
+                            0,
+                            0
+                          ],
+                          "keys": [
+                            {
+                              "frame": 1,
+                              "value": [
+                                5,
+                                30
+                              ],
+                              "interpolation": "bezier",
+                              "leftSlope": 0,
+                              "rightSlope": 0,
+                              "leftLength": 0.33,
+                              "rightLength": 0.33
+                            },
+                            {
+                              "frame": 60,
+                              "value": [
+                                5,
+                                30
+                              ],
+                              "interpolation": "bezier",
+                              "leftSlope": 0,
+                              "rightSlope": 0,
+                              "leftLength": 0.33,
+                              "rightLength": 0.33
+                            },
+                            {
+                              "frame": 120,
+                              "value": [
+                                5,
+                                30
+                              ],
+                              "interpolation": "bezier",
+                              "leftSlope": 0,
+                              "rightSlope": 0,
+                              "leftLength": 0.33,
+                              "rightLength": 0.33
+                            }
+                          ]
+                        },
+                        "outTangentTrack": {
+                          "defaultValue": [
+                            0,
+                            0
+                          ],
+                          "keys": [
+                            {
+                              "frame": 1,
+                              "value": [
+                                0,
+                                -20
+                              ],
+                              "interpolation": "bezier",
+                              "leftSlope": 0,
+                              "rightSlope": 0,
+                              "leftLength": 0.33,
+                              "rightLength": 0.33
+                            },
+                            {
+                              "frame": 60,
+                              "value": [
+                                0,
+                                -20
+                              ],
+                              "interpolation": "bezier",
+                              "leftSlope": 0,
+                              "rightSlope": 0,
+                              "leftLength": 0.33,
+                              "rightLength": 0.33
+                            },
+                            {
+                              "frame": 120,
+                              "value": [
+                                0,
+                                -20
+                              ],
+                              "interpolation": "bezier",
+                              "leftSlope": 0,
+                              "rightSlope": 0,
+                              "leftLength": 0.33,
+                              "rightLength": 0.33
+                            }
+                          ]
+                        },
+                        "featherTrack": {
+                          "defaultValue": 0,
+                          "keys": [
+                            {
+                              "frame": 1,
+                              "value": 1.5,
+                              "interpolation": "bezier",
+                              "leftSlope": 0,
+                              "rightSlope": 0,
+                              "leftLength": 0.33,
+                              "rightLength": 0.33
+                            },
+                            {
+                              "frame": 60,
+                              "value": 1.5,
+                              "interpolation": "bezier",
+                              "leftSlope": 0,
+                              "rightSlope": 0,
+                              "leftLength": 0.33,
+                              "rightLength": 0.33
+                            },
+                            {
+                              "frame": 120,
+                              "value": 1.5,
+                              "interpolation": "bezier",
+                              "leftSlope": 0,
+                              "rightSlope": 0,
+                              "leftLength": 0.33,
+                              "rightLength": 0.33
+                            }
+                          ]
+                        },
+                        "isSmooth": true
+                      },
+                      null
+                    ],
+                    "interpolation": "bezier",
+                    "leftSlope": 0,
+                    "rightSlope": 0,
+                    "leftLength": 0.33,
+                    "rightLength": 0.33
+                  }
+                ]
+              },
+              "inTangentTrack": {
+                "defaultValue": [
+                  0,
+                  0
+                ],
+                "keys": [
+                  {
+                    "frame": 1,
+                    "value": [
+                      0,
+                      0
+                    ],
+                    "interpolation": "bezier",
+                    "leftSlope": 0,
+                    "rightSlope": 0,
+                    "leftLength": 0.33,
+                    "rightLength": 0.33
+                  }
+                ]
+              },
+              "outTangentTrack": {
+                "defaultValue": [
+                  0,
+                  0
+                ],
+                "keys": [
+                  {
+                    "frame": 1,
+                    "value": [
+                      0,
+                      0
+                    ],
+                    "interpolation": "bezier",
+                    "leftSlope": 0,
+                    "rightSlope": 0,
+                    "leftLength": 0.33,
+                    "rightLength": 0.33
+                  }
+                ]
+              },
+              "featherTrack": {
+                "defaultValue": 0,
+                "keys": [
+                  {
+                    "frame": 1,
+                    "value": 0,
+                    "interpolation": "bezier",
+                    "leftSlope": 0,
+                    "rightSlope": 0,
+                    "leftLength": 0.33,
+                    "rightLength": 0.33
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "shape_daec1i6e6",
+          "name": "Staff_Prop",
+          "type": "bezier",
+          "closed": true,
+          "inverted": false,
+          "feather": 1,
+          "opacity": 1,
+          "blendMode": "add",
+          "visible": true,
+          "locked": false,
+          "color": "#ffd43b",
+          "points": [
+            {
+              "id": "pt_h3416mmxm",
+              "isSmooth": true,
+              "posTrack": {
+                "defaultValue": [
+                  {
+                    "id": "pt_fjf62t7sh",
+                    "posTrack": {
+                      "defaultValue": [
+                        1060,
+                        310
+                      ],
+                      "keys": []
+                    },
+                    "inTangentTrack": {
+                      "defaultValue": [
+                        0,
+                        0
+                      ],
+                      "keys": []
+                    },
+                    "outTangentTrack": {
+                      "defaultValue": [
+                        0,
+                        0
+                      ],
+                      "keys": []
+                    },
+                    "featherTrack": {
+                      "defaultValue": 0,
+                      "keys": []
+                    },
+                    "isSmooth": true
+                  },
+                  0
+                ],
+                "keys": [
+                  {
+                    "frame": 1,
+                    "value": [
+                      {
+                        "id": "pt_fjf62t7sh",
+                        "posTrack": {
+                          "defaultValue": [
+                            1060,
+                            310
+                          ],
+                          "keys": []
+                        },
+                        "inTangentTrack": {
+                          "defaultValue": [
+                            0,
+                            0
+                          ],
+                          "keys": []
+                        },
+                        "outTangentTrack": {
+                          "defaultValue": [
+                            0,
+                            0
+                          ],
+                          "keys": []
+                        },
+                        "featherTrack": {
+                          "defaultValue": 0,
+                          "keys": []
+                        },
+                        "isSmooth": true
+                      },
+                      null
+                    ],
+                    "interpolation": "bezier",
+                    "leftSlope": 0,
+                    "rightSlope": 0,
+                    "leftLength": 0.33,
+                    "rightLength": 0.33
+                  }
+                ]
+              },
+              "inTangentTrack": {
+                "defaultValue": [
+                  0,
+                  0
+                ],
+                "keys": [
+                  {
+                    "frame": 1,
+                    "value": [
+                      0,
+                      0
+                    ],
+                    "interpolation": "bezier",
+                    "leftSlope": 0,
+                    "rightSlope": 0,
+                    "leftLength": 0.33,
+                    "rightLength": 0.33
+                  }
+                ]
+              },
+              "outTangentTrack": {
+                "defaultValue": [
+                  0,
+                  0
+                ],
+                "keys": [
+                  {
+                    "frame": 1,
+                    "value": [
+                      0,
+                      0
+                    ],
+                    "interpolation": "bezier",
+                    "leftSlope": 0,
+                    "rightSlope": 0,
+                    "leftLength": 0.33,
+                    "rightLength": 0.33
+                  }
+                ]
+              },
+              "featherTrack": {
+                "defaultValue": 0,
+                "keys": [
+                  {
+                    "frame": 1,
+                    "value": 0,
+                    "interpolation": "bezier",
+                    "leftSlope": 0,
+                    "rightSlope": 0,
+                    "leftLength": 0.33,
+                    "rightLength": 0.33
+                  }
+                ]
+              }
+            },
+            {
+              "id": "pt_j3z4n0g9v",
+              "isSmooth": true,
+              "posTrack": {
+                "defaultValue": [
+                  {
+                    "id": "pt_z2jxp3912",
+                    "posTrack": {
+                      "defaultValue": [
+                        1055,
+                        600
+                      ],
+                      "keys": []
+                    },
+                    "inTangentTrack": {
+                      "defaultValue": [
+                        0,
+                        0
+                      ],
+                      "keys": []
+                    },
+                    "outTangentTrack": {
+                      "defaultValue": [
+                        0,
+                        0
+                      ],
+                      "keys": []
+                    },
+                    "featherTrack": {
+                      "defaultValue": 0,
+                      "keys": []
+                    },
+                    "isSmooth": true
+                  },
+                  0
+                ],
+                "keys": [
+                  {
+                    "frame": 1,
+                    "value": [
+                      {
+                        "id": "pt_z2jxp3912",
+                        "posTrack": {
+                          "defaultValue": [
+                            1055,
+                            600
+                          ],
+                          "keys": []
+                        },
+                        "inTangentTrack": {
+                          "defaultValue": [
+                            0,
+                            0
+                          ],
+                          "keys": []
+                        },
+                        "outTangentTrack": {
+                          "defaultValue": [
+                            0,
+                            0
+                          ],
+                          "keys": []
+                        },
+                        "featherTrack": {
+                          "defaultValue": 0,
+                          "keys": []
+                        },
+                        "isSmooth": true
+                      },
+                      null
+                    ],
+                    "interpolation": "bezier",
+                    "leftSlope": 0,
+                    "rightSlope": 0,
+                    "leftLength": 0.33,
+                    "rightLength": 0.33
+                  }
+                ]
+              },
+              "inTangentTrack": {
+                "defaultValue": [
+                  0,
+                  0
+                ],
+                "keys": [
+                  {
+                    "frame": 1,
+                    "value": [
+                      0,
+                      0
+                    ],
+                    "interpolation": "bezier",
+                    "leftSlope": 0,
+                    "rightSlope": 0,
+                    "leftLength": 0.33,
+                    "rightLength": 0.33
+                  }
+                ]
+              },
+              "outTangentTrack": {
+                "defaultValue": [
+                  0,
+                  0
+                ],
+                "keys": [
+                  {
+                    "frame": 1,
+                    "value": [
+                      0,
+                      0
+                    ],
+                    "interpolation": "bezier",
+                    "leftSlope": 0,
+                    "rightSlope": 0,
+                    "leftLength": 0.33,
+                    "rightLength": 0.33
+                  }
+                ]
+              },
+              "featherTrack": {
+                "defaultValue": 0,
+                "keys": [
+                  {
+                    "frame": 1,
+                    "value": 0,
+                    "interpolation": "bezier",
+                    "leftSlope": 0,
+                    "rightSlope": 0,
+                    "leftLength": 0.33,
+                    "rightLength": 0.33
+                  }
+                ]
+              }
+            },
+            {
+              "id": "pt_ex37ko7qp",
+              "isSmooth": true,
+              "posTrack": {
+                "defaultValue": [
+                  {
+                    "id": "pt_lau9hu8pb",
+                    "posTrack": {
+                      "defaultValue": [
+                        1050,
+                        920
+                      ],
+                      "keys": []
+                    },
+                    "inTangentTrack": {
+                      "defaultValue": [
+                        0,
+                        0
+                      ],
+                      "keys": []
+                    },
+                    "outTangentTrack": {
+                      "defaultValue": [
+                        0,
+                        0
+                      ],
+                      "keys": []
+                    },
+                    "featherTrack": {
+                      "defaultValue": 0,
+                      "keys": []
+                    },
+                    "isSmooth": true
+                  },
+                  0
+                ],
+                "keys": [
+                  {
+                    "frame": 1,
+                    "value": [
+                      {
+                        "id": "pt_lau9hu8pb",
+                        "posTrack": {
+                          "defaultValue": [
+                            1050,
+                            920
+                          ],
+                          "keys": []
+                        },
+                        "inTangentTrack": {
+                          "defaultValue": [
+                            0,
+                            0
+                          ],
+                          "keys": []
+                        },
+                        "outTangentTrack": {
+                          "defaultValue": [
+                            0,
+                            0
+                          ],
+                          "keys": []
+                        },
+                        "featherTrack": {
+                          "defaultValue": 0,
+                          "keys": []
+                        },
+                        "isSmooth": true
+                      },
+                      null
+                    ],
+                    "interpolation": "bezier",
+                    "leftSlope": 0,
+                    "rightSlope": 0,
+                    "leftLength": 0.33,
+                    "rightLength": 0.33
+                  }
+                ]
+              },
+              "inTangentTrack": {
+                "defaultValue": [
+                  0,
+                  0
+                ],
+                "keys": [
+                  {
+                    "frame": 1,
+                    "value": [
+                      0,
+                      0
+                    ],
+                    "interpolation": "bezier",
+                    "leftSlope": 0,
+                    "rightSlope": 0,
+                    "leftLength": 0.33,
+                    "rightLength": 0.33
+                  }
+                ]
+              },
+              "outTangentTrack": {
+                "defaultValue": [
+                  0,
+                  0
+                ],
+                "keys": [
+                  {
+                    "frame": 1,
+                    "value": [
+                      0,
+                      0
+                    ],
+                    "interpolation": "bezier",
+                    "leftSlope": 0,
+                    "rightSlope": 0,
+                    "leftLength": 0.33,
+                    "rightLength": 0.33
+                  }
+                ]
+              },
+              "featherTrack": {
+                "defaultValue": 0,
+                "keys": [
+                  {
+                    "frame": 1,
+                    "value": 0,
+                    "interpolation": "bezier",
+                    "leftSlope": 0,
+                    "rightSlope": 0,
+                    "leftLength": 0.33,
+                    "rightLength": 0.33
+                  }
+                ]
+              }
+            },
+            {
+              "id": "pt_deqy1g5o8",
+              "isSmooth": true,
+              "posTrack": {
+                "defaultValue": [
+                  {
+                    "id": "pt_rcbauk39o",
+                    "posTrack": {
+                      "defaultValue": [
+                        1040,
+                        920
+                      ],
+                      "keys": []
+                    },
+                    "inTangentTrack": {
+                      "defaultValue": [
+                        0,
+                        0
+                      ],
+                      "keys": []
+                    },
+                    "outTangentTrack": {
+                      "defaultValue": [
+                        0,
+                        0
+                      ],
+                      "keys": []
+                    },
+                    "featherTrack": {
+                      "defaultValue": 0,
+                      "keys": []
+                    },
+                    "isSmooth": true
+                  },
+                  0
+                ],
+                "keys": [
+                  {
+                    "frame": 1,
+                    "value": [
+                      {
+                        "id": "pt_rcbauk39o",
+                        "posTrack": {
+                          "defaultValue": [
+                            1040,
+                            920
+                          ],
+                          "keys": []
+                        },
+                        "inTangentTrack": {
+                          "defaultValue": [
+                            0,
+                            0
+                          ],
+                          "keys": []
+                        },
+                        "outTangentTrack": {
+                          "defaultValue": [
+                            0,
+                            0
+                          ],
+                          "keys": []
+                        },
+                        "featherTrack": {
+                          "defaultValue": 0,
+                          "keys": []
+                        },
+                        "isSmooth": true
+                      },
+                      null
+                    ],
+                    "interpolation": "bezier",
+                    "leftSlope": 0,
+                    "rightSlope": 0,
+                    "leftLength": 0.33,
+                    "rightLength": 0.33
+                  }
+                ]
+              },
+              "inTangentTrack": {
+                "defaultValue": [
+                  0,
+                  0
+                ],
+                "keys": [
+                  {
+                    "frame": 1,
+                    "value": [
+                      0,
+                      0
+                    ],
+                    "interpolation": "bezier",
+                    "leftSlope": 0,
+                    "rightSlope": 0,
+                    "leftLength": 0.33,
+                    "rightLength": 0.33
+                  }
+                ]
+              },
+              "outTangentTrack": {
+                "defaultValue": [
+                  0,
+                  0
+                ],
+                "keys": [
+                  {
+                    "frame": 1,
+                    "value": [
+                      0,
+                      0
+                    ],
+                    "interpolation": "bezier",
+                    "leftSlope": 0,
+                    "rightSlope": 0,
+                    "leftLength": 0.33,
+                    "rightLength": 0.33
+                  }
+                ]
+              },
+              "featherTrack": {
+                "defaultValue": 0,
+                "keys": [
+                  {
+                    "frame": 1,
+                    "value": 0,
+                    "interpolation": "bezier",
+                    "leftSlope": 0,
+                    "rightSlope": 0,
+                    "leftLength": 0.33,
+                    "rightLength": 0.33
+                  }
+                ]
+              }
+            },
+            {
+              "id": "pt_wn49zqala",
+              "isSmooth": true,
+              "posTrack": {
+                "defaultValue": [
+                  {
+                    "id": "pt_s3mllghr9",
+                    "posTrack": {
+                      "defaultValue": [
+                        1045,
+                        600
+                      ],
+                      "keys": []
+                    },
+                    "inTangentTrack": {
+                      "defaultValue": [
+                        0,
+                        0
+                      ],
+                      "keys": []
+                    },
+                    "outTangentTrack": {
+                      "defaultValue": [
+                        0,
+                        0
+                      ],
+                      "keys": []
+                    },
+                    "featherTrack": {
+                      "defaultValue": 0,
+                      "keys": []
+                    },
+                    "isSmooth": true
+                  },
+                  0
+                ],
+                "keys": [
+                  {
+                    "frame": 1,
+                    "value": [
+                      {
+                        "id": "pt_s3mllghr9",
+                        "posTrack": {
+                          "defaultValue": [
+                            1045,
+                            600
+                          ],
+                          "keys": []
+                        },
+                        "inTangentTrack": {
+                          "defaultValue": [
+                            0,
+                            0
+                          ],
+                          "keys": []
+                        },
+                        "outTangentTrack": {
+                          "defaultValue": [
+                            0,
+                            0
+                          ],
+                          "keys": []
+                        },
+                        "featherTrack": {
+                          "defaultValue": 0,
+                          "keys": []
+                        },
+                        "isSmooth": true
+                      },
+                      null
+                    ],
+                    "interpolation": "bezier",
+                    "leftSlope": 0,
+                    "rightSlope": 0,
+                    "leftLength": 0.33,
+                    "rightLength": 0.33
+                  }
+                ]
+              },
+              "inTangentTrack": {
+                "defaultValue": [
+                  0,
+                  0
+                ],
+                "keys": [
+                  {
+                    "frame": 1,
+                    "value": [
+                      0,
+                      0
+                    ],
+                    "interpolation": "bezier",
+                    "leftSlope": 0,
+                    "rightSlope": 0,
+                    "leftLength": 0.33,
+                    "rightLength": 0.33
+                  }
+                ]
+              },
+              "outTangentTrack": {
+                "defaultValue": [
+                  0,
+                  0
+                ],
+                "keys": [
+                  {
+                    "frame": 1,
+                    "value": [
+                      0,
+                      0
+                    ],
+                    "interpolation": "bezier",
+                    "leftSlope": 0,
+                    "rightSlope": 0,
+                    "leftLength": 0.33,
+                    "rightLength": 0.33
+                  }
+                ]
+              },
+              "featherTrack": {
+                "defaultValue": 0,
+                "keys": [
+                  {
+                    "frame": 1,
+                    "value": 0,
+                    "interpolation": "bezier",
+                    "leftSlope": 0,
+                    "rightSlope": 0,
+                    "leftLength": 0.33,
+                    "rightLength": 0.33
+                  }
+                ]
+              }
+            },
+            {
+              "id": "pt_iof3az1ap",
+              "isSmooth": true,
+              "posTrack": {
+                "defaultValue": [
+                  {
+                    "id": "pt_dol3hkuq9",
+                    "posTrack": {
+                      "defaultValue": [
+                        1050,
+                        310
+                      ],
+                      "keys": []
+                    },
+                    "inTangentTrack": {
+                      "defaultValue": [
+                        0,
+                        0
+                      ],
+                      "keys": []
+                    },
+                    "outTangentTrack": {
+                      "defaultValue": [
+                        0,
+                        0
+                      ],
+                      "keys": []
+                    },
+                    "featherTrack": {
+                      "defaultValue": 0,
+                      "keys": []
+                    },
+                    "isSmooth": true
+                  },
+                  0
+                ],
+                "keys": [
+                  {
+                    "frame": 1,
+                    "value": [
+                      {
+                        "id": "pt_dol3hkuq9",
+                        "posTrack": {
+                          "defaultValue": [
+                            1050,
+                            310
+                          ],
+                          "keys": []
+                        },
+                        "inTangentTrack": {
+                          "defaultValue": [
+                            0,
+                            0
+                          ],
+                          "keys": []
+                        },
+                        "outTangentTrack": {
+                          "defaultValue": [
+                            0,
+                            0
+                          ],
+                          "keys": []
+                        },
+                        "featherTrack": {
+                          "defaultValue": 0,
+                          "keys": []
+                        },
+                        "isSmooth": true
+                      },
+                      null
+                    ],
+                    "interpolation": "bezier",
+                    "leftSlope": 0,
+                    "rightSlope": 0,
+                    "leftLength": 0.33,
+                    "rightLength": 0.33
+                  }
+                ]
+              },
+              "inTangentTrack": {
+                "defaultValue": [
+                  0,
+                  0
+                ],
+                "keys": [
+                  {
+                    "frame": 1,
+                    "value": [
+                      0,
+                      0
+                    ],
+                    "interpolation": "bezier",
+                    "leftSlope": 0,
+                    "rightSlope": 0,
+                    "leftLength": 0.33,
+                    "rightLength": 0.33
+                  }
+                ]
+              },
+              "outTangentTrack": {
+                "defaultValue": [
+                  0,
+                  0
+                ],
+                "keys": [
+                  {
+                    "frame": 1,
+                    "value": [
+                      0,
+                      0
+                    ],
+                    "interpolation": "bezier",
+                    "leftSlope": 0,
+                    "rightSlope": 0,
+                    "leftLength": 0.33,
+                    "rightLength": 0.33
+                  }
+                ]
+              },
+              "featherTrack": {
+                "defaultValue": 0,
+                "keys": [
+                  {
+                    "frame": 1,
+                    "value": 0,
+                    "interpolation": "bezier",
+                    "leftSlope": 0,
+                    "rightSlope": 0,
+                    "leftLength": 0.33,
+                    "rightLength": 0.33
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "Premult_Char",
+      "name": "Premult_Char",
+      "type": "Premult",
+      "category": "Merge",
+      "x": 120,
+      "y": 380,
+      "disabled": false,
+      "knobs": {
+        "alphaChannel": {
+          "value": "alpha"
+        }
+      },
+      "inputs": [
+        {
+          "id": "in",
+          "name": "in",
+          "connection": {
+            "nodeId": "Roto_Subject",
+            "outputPortId": "out"
+          }
+        }
+      ]
+    },
+    {
+      "id": "Grade_Rim",
+      "name": "Grade_Rim",
+      "type": "Grade",
+      "category": "Color",
+      "x": 120,
+      "y": 520,
+      "disabled": false,
+      "knobs": {
+        "blackpoint": {
+          "value": 0
+        },
+        "whitepoint": {
+          "value": 1
+        },
+        "lift": {
+          "value": 0
+        },
+        "gain": {
+          "value": 1.25
+        },
+        "multiply": {
+          "value": 1
+        },
+        "offset": {
+          "value": 0
+        },
+        "gamma": {
+          "value": 1.06
+        },
+        "blackClamp": {
+          "value": true
+        },
+        "whiteClamp": {
+          "value": false
+        },
+        "reverse": {
+          "value": false
+        }
+      },
+      "inputs": [
+        {
+          "id": "in",
+          "name": "in",
+          "connection": {
+            "nodeId": "Premult_Char",
+            "outputPortId": "out"
+          }
+        },
+        {
+          "id": "mask",
+          "name": "mask",
+          "connection": null
+        }
+      ]
+    },
+    {
+      "id": "Read_BG",
+      "name": "Read_BG",
+      "type": "Read",
+      "category": "Image",
+      "x": 460,
+      "y": 100,
+      "disabled": false,
+      "knobs": {
+        "sourceType": {
+          "value": "file"
+        },
+        "format": {
+          "value": "1920x1080"
+        },
+        "file": {
+          "value": "demo/vfx_showcase/source/bg_plate.%04d.exr"
+        },
+        "first": {
+          "value": 1
+        },
+        "last": {
+          "value": 120
+        },
+        "frame": {
+          "value": 1
+        },
+        "channels": {
+          "value": "rgba"
+        },
+        "colorspace": {
+          "value": "default"
+        },
+        "on_error": {
+          "value": "error"
+        }
+      },
+      "inputs": []
+    },
+    {
+      "id": "Paint_RigCleanup",
+      "name": "Paint_RigCleanup",
+      "type": "Paint",
+      "category": "Filter",
+      "x": 460,
+      "y": 240,
+      "disabled": false,
+      "knobs": {
+        "opacity": {
+          "value": 1
+        }
+      },
+      "inputs": [
+        {
+          "id": "in",
+          "name": "in",
+          "connection": {
+            "nodeId": "Read_BG",
+            "outputPortId": "out"
+          }
+        },
+        {
+          "id": "clean",
+          "name": "clean",
+          "connection": null
+        }
+      ],
+      "strokes": [
+        {
+          "id": "stroke_ffdfplq67",
+          "type": "clone",
+          "color": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "size": 32,
+          "hardness": 0.25,
+          "opacity": 1,
+          "flow": 1,
+          "spacing": 0.15,
+          "cloneOffset": {
+            "dx": 140,
+            "dy": 0
+          },
+          "sourceFrame": 1,
+          "frame": 1,
+          "lifetime": "all",
+          "startFrame": 1,
+          "endFrame": 120,
+          "visible": true,
+          "points": [
+            {
+              "x": 960,
+              "y": 40,
+              "pressure": 1
+            },
+            {
+              "x": 960,
+              "y": 70,
+              "pressure": 1
+            },
+            {
+              "x": 960,
+              "y": 100,
+              "pressure": 1
+            },
+            {
+              "x": 960,
+              "y": 130,
+              "pressure": 1
+            },
+            {
+              "x": 960,
+              "y": 160,
+              "pressure": 1
+            },
+            {
+              "x": 960,
+              "y": 190,
+              "pressure": 1
+            },
+            {
+              "x": 960,
+              "y": 220,
+              "pressure": 1
+            },
+            {
+              "x": 960,
+              "y": 250,
+              "pressure": 1
+            },
+            {
+              "x": 960,
+              "y": 280,
+              "pressure": 1
+            },
+            {
+              "x": 960,
+              "y": 310,
+              "pressure": 1
+            },
+            {
+              "x": 960,
+              "y": 340,
+              "pressure": 1
+            },
+            {
+              "x": 960,
+              "y": 370,
+              "pressure": 1
+            },
+            {
+              "x": 960,
+              "y": 400,
+              "pressure": 1
+            },
+            {
+              "x": 960,
+              "y": 430,
+              "pressure": 1
+            },
+            {
+              "x": 960,
+              "y": 460,
+              "pressure": 1
+            },
+            {
+              "x": 960,
+              "y": 490,
+              "pressure": 1
+            },
+            {
+              "x": 960,
+              "y": 520,
+              "pressure": 1
+            },
+            {
+              "x": 960,
+              "y": 550,
+              "pressure": 1
+            },
+            {
+              "x": 960,
+              "y": 580,
+              "pressure": 1
+            },
+            {
+              "x": 960,
+              "y": 610,
+              "pressure": 1
+            }
+          ]
+        },
+        {
+          "id": "stroke_g79ip0ddc",
+          "type": "clone",
+          "color": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "size": 40,
+          "hardness": 0.2,
+          "opacity": 1,
+          "flow": 1,
+          "spacing": 0.15,
+          "cloneOffset": {
+            "dx": -70,
+            "dy": -45
+          },
+          "sourceFrame": 1,
+          "frame": 1,
+          "lifetime": "all",
+          "startFrame": 1,
+          "endFrame": 120,
+          "visible": true,
+          "points": [
+            {
+              "x": 1420,
+              "y": 340,
+              "pressure": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "Read_Depth",
+      "name": "Read_Depth",
+      "type": "Read",
+      "category": "Image",
+      "x": 800,
+      "y": 100,
+      "disabled": false,
+      "knobs": {
+        "sourceType": {
+          "value": "file"
+        },
+        "format": {
+          "value": "1920x1080"
+        },
+        "file": {
+          "value": "demo/vfx_showcase/depth/depth_pass.%04d.exr"
+        },
+        "first": {
+          "value": 1
+        },
+        "last": {
+          "value": 120
+        },
+        "frame": {
+          "value": 1
+        },
+        "channels": {
+          "value": "rgba"
+        },
+        "colorspace": {
+          "value": "default"
+        },
+        "on_error": {
+          "value": "error"
+        }
+      },
+      "inputs": []
+    },
+    {
+      "id": "ZDefocus_BG",
+      "name": "ZDefocus_BG",
+      "type": "ZDefocus",
+      "category": "Filter",
+      "x": 460,
+      "y": 380,
+      "disabled": false,
+      "knobs": {
+        "focusPlane": {
+          "value": 0.5
+        },
+        "depthOfField": {
+          "value": 0.12
+        },
+        "maxDefocus": {
+          "value": 14
+        },
+        "aspectRatio": {
+          "value": 1
+        },
+        "bloom": {
+          "value": 0.25
+        }
+      },
+      "inputs": [
+        {
+          "id": "in",
+          "name": "in",
+          "connection": {
+            "nodeId": "Paint_RigCleanup",
+            "outputPortId": "out"
+          }
+        },
+        {
+          "id": "depth",
+          "name": "depth",
+          "connection": {
+            "nodeId": "Read_Depth",
+            "outputPortId": "out"
+          }
+        }
+      ]
+    },
+    {
+      "id": "Grade_Atmosphere",
+      "name": "Grade_Atmosphere",
+      "type": "Grade",
+      "category": "Color",
+      "x": 460,
+      "y": 520,
+      "disabled": false,
+      "knobs": {
+        "blackpoint": {
+          "value": 0
+        },
+        "whitepoint": {
+          "value": 1
+        },
+        "lift": {
+          "value": 0.04
+        },
+        "gain": {
+          "value": 1.02
+        },
+        "multiply": {
+          "value": 1
+        },
+        "offset": {
+          "value": 0
+        },
+        "gamma": {
+          "value": 0.98
+        },
+        "blackClamp": {
+          "value": true
+        },
+        "whiteClamp": {
+          "value": false
+        },
+        "reverse": {
+          "value": false
+        }
+      },
+      "inputs": [
+        {
+          "id": "in",
+          "name": "in",
+          "connection": {
+            "nodeId": "ZDefocus_BG",
+            "outputPortId": "out"
+          }
+        },
+        {
+          "id": "mask",
+          "name": "mask",
+          "connection": null
+        }
+      ]
+    },
+    {
+      "id": "Merge_Char_Over_BG",
+      "name": "Merge_Char_Over_BG",
+      "type": "Merge",
+      "category": "Merge",
+      "x": 320,
+      "y": 660,
+      "disabled": false,
+      "knobs": {
+        "operation": {
+          "value": "over"
+        },
+        "bbox": {
+          "value": "union"
+        },
+        "mix": {
+          "value": 1
+        },
+        "maskChannel": {
+          "value": "alpha"
+        },
+        "invertMask": {
+          "value": false
+        }
+      },
+      "inputs": [
+        {
+          "id": "B",
+          "name": "B",
+          "connection": {
+            "nodeId": "Grade_Atmosphere",
+            "outputPortId": "out"
+          }
+        },
+        {
+          "id": "A",
+          "name": "A",
+          "connection": {
+            "nodeId": "Grade_Rim",
+            "outputPortId": "out"
+          }
+        },
+        {
+          "id": "mask",
+          "name": "mask",
+          "connection": null
+        }
+      ]
+    },
+    {
+      "id": "Read_FG",
+      "name": "Read_FG",
+      "type": "Read",
+      "category": "Image",
+      "x": 650,
+      "y": 660,
+      "disabled": false,
+      "knobs": {
+        "sourceType": {
+          "value": "file"
+        },
+        "format": {
+          "value": "1920x1080"
+        },
+        "file": {
+          "value": "demo/vfx_showcase/source/fg_element.%04d.exr"
+        },
+        "first": {
+          "value": 1
+        },
+        "last": {
+          "value": 120
+        },
+        "frame": {
+          "value": 1
+        },
+        "channels": {
+          "value": "rgba"
+        },
+        "colorspace": {
+          "value": "default"
+        },
+        "on_error": {
+          "value": "error"
+        }
+      },
+      "inputs": []
+    },
+    {
+      "id": "Merge_FG_Over",
+      "name": "Merge_FG_Over",
+      "type": "Merge",
+      "category": "Merge",
+      "x": 320,
+      "y": 780,
+      "disabled": false,
+      "knobs": {
+        "operation": {
+          "value": "over"
+        },
+        "bbox": {
+          "value": "union"
+        },
+        "mix": {
+          "value": 1
+        },
+        "maskChannel": {
+          "value": "alpha"
+        },
+        "invertMask": {
+          "value": false
+        }
+      },
+      "inputs": [
+        {
+          "id": "B",
+          "name": "B",
+          "connection": {
+            "nodeId": "Merge_Char_Over_BG",
+            "outputPortId": "out"
+          }
+        },
+        {
+          "id": "A",
+          "name": "A",
+          "connection": {
+            "nodeId": "Read_FG",
+            "outputPortId": "out"
+          }
+        },
+        {
+          "id": "mask",
+          "name": "mask",
+          "connection": null
+        }
+      ]
+    },
+    {
+      "id": "Grade_FilmMaster",
+      "name": "Grade_FilmMaster",
+      "type": "Grade",
+      "category": "Color",
+      "x": 320,
+      "y": 900,
+      "disabled": false,
+      "knobs": {
+        "blackpoint": {
+          "value": 0
+        },
+        "whitepoint": {
+          "value": 1
+        },
+        "lift": {
+          "value": 0.015
+        },
+        "gain": {
+          "value": 1.05
+        },
+        "multiply": {
+          "value": 1
+        },
+        "offset": {
+          "value": 0
+        },
+        "gamma": {
+          "value": 1.05
+        },
+        "blackClamp": {
+          "value": true
+        },
+        "whiteClamp": {
+          "value": false
+        },
+        "reverse": {
+          "value": false
+        }
+      },
+      "inputs": [
+        {
+          "id": "in",
+          "name": "in",
+          "connection": {
+            "nodeId": "Merge_FG_Over",
+            "outputPortId": "out"
+          }
+        },
+        {
+          "id": "mask",
+          "name": "mask",
+          "connection": null
+        }
+      ]
+    },
+    {
+      "id": "Write_FinalComp",
+      "name": "Write_FinalComp",
+      "type": "Write",
+      "category": "Image",
+      "x": 320,
+      "y": 1020,
+      "disabled": false,
+      "knobs": {
+        "filePrefix": {
+          "value": "demo/vfx_showcase/render/final_comp."
+        },
+        "fileType": {
+          "value": "exr"
+        },
+        "datatype": {
+          "value": "16-bit float"
+        },
+        "compression": {
+          "value": "zip"
+        },
+        "compressionQuality": {
+          "value": 45
+        },
+        "channels": {
+          "value": "all"
+        },
+        "quality": {
+          "value": 0.95
+        },
+        "colorspace": {
+          "value": "default"
+        }
+      },
+      "inputs": [
+        {
+          "id": "in",
+          "name": "in",
+          "connection": {
+            "nodeId": "Grade_FilmMaster",
+            "outputPortId": "out"
+          }
+        }
+      ]
+    },
+    {
+      "id": "Viewer_Master",
+      "name": "Viewer_Master",
+      "type": "Viewer",
+      "category": "Viewer",
+      "x": 100,
+      "y": 1020,
+      "disabled": false,
+      "knobs": {
+        "activeInput": {
+          "value": "1"
+        },
+        "compareMode": {
+          "value": "wipe"
+        },
+        "sourceA": {
+          "value": "1"
+        },
+        "sourceB": {
+          "value": "2"
+        },
+        "wipePosition": {
+          "value": 0.5
+        },
+        "diffGain": {
+          "value": 1
+        },
+        "layoutMode": {
+          "value": "single"
+        }
+      },
+      "inputs": [
+        {
+          "id": "1",
+          "name": "1",
+          "connection": {
+            "nodeId": "Grade_FilmMaster",
+            "outputPortId": "out"
+          }
+        },
+        {
+          "id": "2",
+          "name": "2",
+          "connection": {
+            "nodeId": "Paint_RigCleanup",
+            "outputPortId": "out"
+          }
+        },
+        {
+          "id": "3",
+          "name": "3",
+          "connection": {
+            "nodeId": "Roto_Subject",
+            "outputPortId": "out"
+          }
+        },
+        {
+          "id": "4",
+          "name": "4",
+          "connection": {
+            "nodeId": "Read_Depth",
+            "outputPortId": "out"
+          }
+        },
+        {
+          "id": "5",
+          "name": "5",
+          "connection": null
+        },
+        {
+          "id": "6",
+          "name": "6",
+          "connection": null
+        },
+        {
+          "id": "7",
+          "name": "7",
+          "connection": null
+        },
+        {
+          "id": "8",
+          "name": "8",
+          "connection": null
+        },
+        {
+          "id": "9",
+          "name": "9",
+          "connection": null
+        },
+        {
+          "id": "10",
+          "name": "10",
+          "connection": null
+        }
+      ]
+    }
+  ]
+}

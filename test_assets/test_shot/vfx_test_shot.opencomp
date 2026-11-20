@@ -1,0 +1,193 @@
+{
+  "version": "1.0",
+  "name": "OpenComp Production VFX Test Shot 01",
+  "format": "1280x720",
+  "frameRange": {
+    "start": 1,
+    "end": 24,
+    "current": 1,
+    "fps": 24
+  },
+  "nodes": [
+    {
+      "id": "Read_BG",
+      "name": "Read_BG",
+      "type": "Read",
+      "category": "Image",
+      "x": 100,
+      "y": 60,
+      "disabled": false,
+      "knobs": {
+        "file": {
+          "value": "C:/Users/rajeshn/Desktop/Rajesh/OpenComp/test_assets/test_shot/sequence/background/bg_plate.%04d.exr"
+        },
+        "format": {
+          "value": "1280x720"
+        },
+        "first": {
+          "value": 1
+        },
+        "last": {
+          "value": 24
+        },
+        "channels": {
+          "value": "rgba"
+        }
+      },
+      "inputs": []
+    },
+    {
+      "id": "Read_FG",
+      "name": "Read_FG",
+      "type": "Read",
+      "category": "Image",
+      "x": 360,
+      "y": 60,
+      "disabled": false,
+      "knobs": {
+        "file": {
+          "value": "C:/Users/rajeshn/Desktop/Rajesh/OpenComp/test_assets/test_shot/sequence/greenscreen/fg_actor.%04d.exr"
+        },
+        "format": {
+          "value": "1280x720"
+        },
+        "first": {
+          "value": 1
+        },
+        "last": {
+          "value": 24
+        },
+        "channels": {
+          "value": "rgba"
+        }
+      },
+      "inputs": []
+    },
+    {
+      "id": "Keyer1",
+      "name": "Keyer1",
+      "type": "Keyer",
+      "category": "Keyer",
+      "x": 360,
+      "y": 160,
+      "disabled": false,
+      "knobs": {
+        "tolerance": {
+          "value": 0.28
+        },
+        "softness": {
+          "value": 0.16
+        },
+        "despill": {
+          "value": 1.1
+        }
+      },
+      "inputs": [
+        {
+          "id": "in",
+          "connection": {
+            "nodeId": "Read_FG",
+            "outputPortId": "out"
+          }
+        }
+      ]
+    },
+    {
+      "id": "Grade1",
+      "name": "Grade1",
+      "type": "Grade",
+      "category": "Color",
+      "x": 360,
+      "y": 260,
+      "disabled": false,
+      "knobs": {
+        "gain": {
+          "value": 1.12,
+          "keyframes": {
+            "1": 1.05,
+            "12": 1.18,
+            "24": 1.1
+          }
+        },
+        "gamma": {
+          "value": 1.08
+        },
+        "lift": {
+          "value": -0.02
+        }
+      },
+      "inputs": [
+        {
+          "id": "in",
+          "connection": {
+            "nodeId": "Keyer1",
+            "outputPortId": "out"
+          }
+        }
+      ]
+    },
+    {
+      "id": "Merge1",
+      "name": "Merge1",
+      "type": "Merge",
+      "category": "Merge",
+      "x": 220,
+      "y": 380,
+      "disabled": false,
+      "knobs": {
+        "operation": {
+          "value": "over"
+        }
+      },
+      "inputs": [
+        {
+          "id": "B",
+          "connection": {
+            "nodeId": "Read_BG",
+            "outputPortId": "out"
+          }
+        },
+        {
+          "id": "A",
+          "connection": {
+            "nodeId": "Grade1",
+            "outputPortId": "out"
+          }
+        }
+      ]
+    },
+    {
+      "id": "Viewer1",
+      "name": "Viewer1",
+      "type": "Viewer",
+      "category": "Viewer",
+      "x": 220,
+      "y": 500,
+      "disabled": false,
+      "knobs": {
+        "activeInput": {
+          "value": "1"
+        },
+        "compareMode": {
+          "value": "off"
+        }
+      },
+      "inputs": [
+        {
+          "id": "1",
+          "connection": {
+            "nodeId": "Merge1",
+            "outputPortId": "out"
+          }
+        },
+        {
+          "id": "2",
+          "connection": {
+            "nodeId": "Read_FG",
+            "outputPortId": "out"
+          }
+        }
+      ]
+    }
+  ]
+}

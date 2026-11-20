@@ -1,0 +1,141 @@
+{
+  "version": "1.0",
+  "nodes": [
+    {
+      "id": "Copy_16Pair_Test",
+      "name": "Copy_16Pair_Test",
+      "type": "Copy",
+      "category": "Channel",
+      "x": 150,
+      "y": 250,
+      "disabled": false,
+      "knobs": {
+        "from0": {
+          "value": "depth.Z"
+        },
+        "to0": {
+          "value": "target_depth.Z"
+        },
+        "from1": {
+          "value": "forward.u"
+        },
+        "to1": {
+          "value": "target_forward.u"
+        },
+        "from2": {
+          "value": "forward.v"
+        },
+        "to2": {
+          "value": "target_forward.v"
+        },
+        "from3": {
+          "value": "backward.u"
+        },
+        "to3": {
+          "value": "target_backward.u"
+        },
+        "mix": {
+          "value": 0.65
+        },
+        "bbox": {
+          "value": "union"
+        },
+        "maskChannel": {
+          "value": "luma"
+        },
+        "invertMask": {
+          "value": true
+        },
+        "from4": {
+          "value": "backward.v"
+        },
+        "to4": {
+          "value": "target_backward.v"
+        },
+        "from5": {
+          "value": "diffuse.R"
+        },
+        "to5": {
+          "value": "target_diffuse.R"
+        },
+        "from6": {
+          "value": "diffuse.G"
+        },
+        "to6": {
+          "value": "target_diffuse.G"
+        },
+        "from7": {
+          "value": "diffuse.B"
+        },
+        "to7": {
+          "value": "target_diffuse.B"
+        },
+        "from8": {
+          "value": "specular.R"
+        },
+        "to8": {
+          "value": "target_specular.R"
+        },
+        "from9": {
+          "value": "specular.G"
+        },
+        "to9": {
+          "value": "target_specular.G"
+        },
+        "from10": {
+          "value": "specular.B"
+        },
+        "to10": {
+          "value": "target_specular.B"
+        },
+        "from11": {
+          "value": "normal.X"
+        },
+        "to11": {
+          "value": "target_normal.X"
+        },
+        "from12": {
+          "value": "normal.Y"
+        },
+        "to12": {
+          "value": "target_normal.Y"
+        },
+        "from13": {
+          "value": "normal.Z"
+        },
+        "to13": {
+          "value": "target_normal.Z"
+        },
+        "from14": {
+          "value": "crypto_material"
+        },
+        "to14": {
+          "value": "target_crypto_material"
+        },
+        "from15": {
+          "value": "crypto_object"
+        },
+        "to15": {
+          "value": "target_crypto_object"
+        }
+      },
+      "inputs": [
+        {
+          "id": "B",
+          "name": "B",
+          "connection": null
+        },
+        {
+          "id": "A",
+          "name": "A",
+          "connection": null
+        },
+        {
+          "id": "mask",
+          "name": "mask",
+          "connection": null
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,239 @@
+#! /usr/local/Nuke14.0v1/libnuke-14.0.1.so -nx
+version 14.0 v1
+define_window_layout_xml {<layout version="1.0">...</layout>}
+Root {
+ inputs 0
+ name "OpenComp_Production_Script"
+ format "1920 1080 0 0 1920 1080 1 HD_1080"
+ proxy_type scale
+ proxy_scale 0.5
+}
+Read {
+ inputs 0
+ sourceType file
+ format 1920x1080
+ file demo/vfx_showcase/source/character_plate.%04d.exr
+ first 1
+ last 120
+ frame 1
+ channels rgba
+ colorspace default
+ on_error error
+ name Read_Character
+ xpos 120
+ ypos 100
+}
+set N_Read_Character [stack 0]
+push $N_Read_Character
+Roto {
+ inputs 1
+ outputMode replace_alpha
+ shape ellipse
+ centerX 0.5
+ centerY 0.5
+ radiusX 0.35
+ radiusY 0.35
+ feather 0.15
+ invert false
+ opacity 1
+ name Roto_Subject
+ xpos 120
+ ypos 240
+}
+set N_Roto_Subject [stack 0]
+push $N_Roto_Subject
+Premult {
+ inputs 1
+ alphaChannel alpha
+ name Premult_Char
+ xpos 120
+ ypos 380
+}
+set N_Premult_Char [stack 0]
+push $N_Premult_Char
+Grade {
+ inputs 1
+ blackpoint 0
+ whitepoint 1
+ lift 0
+ gain 1.25
+ multiply 1
+ offset 0
+ gamma 1.06
+ blackClamp true
+ whiteClamp false
+ reverse false
+ name Grade_Rim
+ xpos 120
+ ypos 520
+}
+set N_Grade_Rim [stack 0]
+Read {
+ inputs 0
+ sourceType file
+ format 1920x1080
+ file demo/vfx_showcase/source/bg_plate.%04d.exr
+ first 1
+ last 120
+ frame 1
+ channels rgba
+ colorspace default
+ on_error error
+ name Read_BG
+ xpos 460
+ ypos 100
+}
+set N_Read_BG [stack 0]
+push $N_Read_BG
+Paint {
+ inputs 1
+ opacity 1
+ name Paint_RigCleanup
+ xpos 460
+ ypos 240
+}
+set N_Paint_RigCleanup [stack 0]
+Read {
+ inputs 0
+ sourceType file
+ format 1920x1080
+ file demo/vfx_showcase/depth/depth_pass.%04d.exr
+ first 1
+ last 120
+ frame 1
+ channels rgba
+ colorspace default
+ on_error error
+ name Read_Depth
+ xpos 800
+ ypos 100
+}
+set N_Read_Depth [stack 0]
+push $N_Paint_RigCleanup
+push $N_Read_Depth
+ZDefocus2 {
+ inputs 2
+ focusPlane 0.5
+ depthOfField 0.12
+ maxDefocus 14
+ aspectRatio 1
+ bloom 0.25
+ name ZDefocus_BG
+ xpos 460
+ ypos 380
+}
+set N_ZDefocus_BG [stack 0]
+push $N_ZDefocus_BG
+Grade {
+ inputs 1
+ blackpoint 0
+ whitepoint 1
+ lift 0.04
+ gain 1.02
+ multiply 1
+ offset 0
+ gamma 0.98
+ blackClamp true
+ whiteClamp false
+ reverse false
+ name Grade_Atmosphere
+ xpos 460
+ ypos 520
+}
+set N_Grade_Atmosphere [stack 0]
+push $N_Grade_Atmosphere
+push $N_Grade_Rim
+Merge2 {
+ inputs 2
+ operation over
+ bbox union
+ mix 1
+ maskChannel alpha
+ invertMask false
+ name Merge_Char_Over_BG
+ xpos 320
+ ypos 660
+}
+set N_Merge_Char_Over_BG [stack 0]
+Read {
+ inputs 0
+ sourceType file
+ format 1920x1080
+ file demo/vfx_showcase/source/fg_element.%04d.exr
+ first 1
+ last 120
+ frame 1
+ channels rgba
+ colorspace default
+ on_error error
+ name Read_FG
+ xpos 650
+ ypos 660
+}
+set N_Read_FG [stack 0]
+push $N_Merge_Char_Over_BG
+push $N_Read_FG
+Merge2 {
+ inputs 2
+ operation over
+ bbox union
+ mix 1
+ maskChannel alpha
+ invertMask false
+ name Merge_FG_Over
+ xpos 320
+ ypos 780
+}
+set N_Merge_FG_Over [stack 0]
+push $N_Merge_FG_Over
+Grade {
+ inputs 1
+ blackpoint 0
+ whitepoint 1
+ lift 0.015
+ gain 1.05
+ multiply 1
+ offset 0
+ gamma 1.05
+ blackClamp true
+ whiteClamp false
+ reverse false
+ name Grade_FilmMaster
+ xpos 320
+ ypos 900
+}
+set N_Grade_FilmMaster [stack 0]
+push $N_Grade_FilmMaster
+Write {
+ inputs 1
+ filePrefix demo/vfx_showcase/render/final_comp.
+ fileType exr
+ datatype 16-bit float
+ compression zip
+ compressionQuality 45
+ channels all
+ quality 0.95
+ colorspace default
+ name Write_FinalComp
+ xpos 320
+ ypos 1020
+}
+set N_Write_FinalComp [stack 0]
+push $N_Grade_FilmMaster
+push $N_Paint_RigCleanup
+push $N_Roto_Subject
+push $N_Read_Depth
+Viewer {
+ inputs 4
+ activeInput 1
+ compareMode wipe
+ sourceA 1
+ sourceB 2
+ wipePosition 0.5
+ diffGain 1
+ layoutMode single
+ name Viewer_Master
+ xpos 100
+ ypos 1020
+}
+set N_Viewer_Master [stack 0]

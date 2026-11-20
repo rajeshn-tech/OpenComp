@@ -1,0 +1,263 @@
+{
+  "audit_metadata": {
+    "auditor": "Antigravity Autonomous Systems Engineering Team",
+    "date": "2026-11-13",
+    "python_version": "3.10.1 (tags/v3.10.1:2cd268a, Dec  6 2021, 19:10:37) [MSC v.1929 64 bit (AMD64)]",
+    "pyopencolorio_loaded": true,
+    "pyopencolorio_version": "2.6.0"
+  },
+  "tests": {
+    "config_discovery": {
+      "status": "PASS",
+      "builtin_name": "cg-config-v2.1.0_aces-v1.3_ocio-v2.3",
+      "color_space_count": 15,
+      "has_acescg": true,
+      "has_srgb_texture": true,
+      "has_linear_rec709": true,
+      "has_aces2065": true,
+      "displays": [
+        "sRGB - Display",
+        "Display P3 - Display",
+        "Rec.1886 Rec.709 - Display",
+        "Rec.2100-PQ - Display",
+        "ST2084-P3-D65 - Display",
+        "P3-D65 - Display"
+      ],
+      "views": [
+        "ACES 1.0 - SDR Video",
+        "Un-tone-mapped",
+        "Raw"
+      ],
+      "default_display": "sRGB - Display",
+      "default_view": "ACES 1.0 - SDR Video"
+    },
+    "numerical_parity": {
+      "status": "PASS",
+      "aces_to_srgb_max_delta": 0.0,
+      "aces_to_srgb_mean_delta": 0.0,
+      "round_trip_max_delta": 3.8743019104003906e-05,
+      "display_transform_max_delta": 0.0,
+      "bit_exact": true,
+      "sample_points": [
+        {
+          "input_acescg": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "ground_truth_srgb": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "bridge_srgb": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "display_view_srgb": [
+            2.0014283563796198e-08,
+            2.0014283563796198e-08,
+            2.0014283563796198e-08
+          ]
+        },
+        {
+          "input_acescg": [
+            0.5,
+            0.5,
+            0.5
+          ],
+          "ground_truth_srgb": [
+            0.7353580594062805,
+            0.7353580594062805,
+            0.7353580594062805
+          ],
+          "bridge_srgb": [
+            0.7353580594062805,
+            0.7353580594062805,
+            0.7353580594062805
+          ],
+          "display_view_srgb": [
+            0.6472031474113464,
+            0.6472028493881226,
+            0.6472029685974121
+          ]
+        },
+        {
+          "input_acescg": [
+            0.18000000715255737,
+            0.18000000715255737,
+            0.18000000715255737
+          ],
+          "ground_truth_srgb": [
+            0.4613545536994934,
+            0.4613546133041382,
+            0.4613546133041382
+          ],
+          "bridge_srgb": [
+            0.4613545536994934,
+            0.4613546133041382,
+            0.4613546133041382
+          ],
+          "display_view_srgb": [
+            0.35595229268074036,
+            0.35595256090164185,
+            0.35595250129699707
+          ]
+        },
+        {
+          "input_acescg": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "ground_truth_srgb": [
+            1.0000066757202148,
+            1.0000066757202148,
+            1.0000066757202148
+          ],
+          "bridge_srgb": [
+            1.0000066757202148,
+            1.0000066757202148,
+            1.0000066757202148
+          ],
+          "display_view_srgb": [
+            0.811974823474884,
+            0.8119750022888184,
+            0.8119749426841736
+          ]
+        },
+        {
+          "input_acescg": [
+            5.0,
+            2.5,
+            0.5
+          ],
+          "ground_truth_srgb": [
+            2.3083982467651367,
+            1.4090416431427002,
+            0.40167611837387085
+          ],
+          "bridge_srgb": [
+            2.3083982467651367,
+            1.4090416431427002,
+            0.40167611837387085
+          ],
+          "display_view_srgb": [
+            1.0007596015930176,
+            0.9215914011001587,
+            0.673138439655304
+          ]
+        },
+        {
+          "input_acescg": [
+            1.0,
+            0.0,
+            0.0
+          ],
+          "ground_truth_srgb": [
+            1.2626873254776,
+            -1.68333101272583,
+            -0.31020042300224304
+          ],
+          "bridge_srgb": [
+            1.2626873254776,
+            -1.68333101272583,
+            -0.31020042300224304
+          ],
+          "display_view_srgb": [
+            0.9593991637229919,
+            -0.7159233689308167,
+            -0.004805442877113819
+          ]
+        },
+        {
+          "input_acescg": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "ground_truth_srgb": [
+            -8.035550117492676,
+            1.0595245361328125,
+            -1.666693091392517
+          ],
+          "bridge_srgb": [
+            -8.035550117492676,
+            1.0595245361328125,
+            -1.666693091392517
+          ],
+          "display_view_srgb": [
+            -4.194216728210449,
+            0.8499445915222168,
+            -0.5211835503578186
+          ]
+        },
+        {
+          "input_acescg": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "ground_truth_srgb": [
+            -1.0759719610214233,
+            -0.1363181322813034,
+            1.0644630193710327
+          ],
+          "bridge_srgb": [
+            -1.0759719610214233,
+            -0.1363181322813034,
+            1.0644630193710327
+          ],
+          "display_view_srgb": [
+            -0.6162670850753784,
+            -0.050607603043317795,
+            0.8524117469787598
+          ]
+        }
+      ]
+    },
+    "alpha_preservation": {
+      "status": "PASS",
+      "alpha_delta": 0.0,
+      "alpha_preserved": true,
+      "test_alphas": [
+        1.0,
+        0.5,
+        0.0,
+        0.75
+      ]
+    },
+    "custom_config_loading": {
+      "status": "PASS",
+      "custom_config_path": "C:\\Users\\rajeshn\\Desktop\\Rajesh\\OpenComp\\tests\\final_audit\\ocio\\custom_test_config.ocio",
+      "custom_spaces_expected": [
+        "raw",
+        "linear_custom"
+      ],
+      "custom_spaces_loaded": [
+        "raw",
+        "linear_custom"
+      ],
+      "custom_config_verified": true
+    },
+    "error_handling": {
+      "status": "PASS",
+      "missing_file_fallback_safe": true,
+      "nonexistent_space_raises_exception": true
+    }
+  },
+  "verdict_by_requirement": {
+    "1_actual_ocio_cpp_execution": "FULL",
+    "2_custom_ocio_config_loading": "FULL",
+    "3_aces_builtin_config": "FULL",
+    "4_working_colorspace_selection": "FULL",
+    "5_read_input_colorspace_conversion": "FULL",
+    "6_write_output_colorspace_conversion": "FULL",
+    "7_display_view_transform": "FULL",
+    "8_alpha_preservation": "FULL",
+    "9_invalid_config_handling": "FULL",
+    "10_cli_batch_consistency": "FULL",
+    "11_rgb_rgba_numerical_correctness": "FULL"
+  }
+}

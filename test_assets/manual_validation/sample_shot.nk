@@ -1,0 +1,48 @@
+#! C:/Program Files/Nuke15.0v1/nuke-15.0.dll -nx
+version 15.0 v1
+define_window_layout_xml {<layout version="1.0">}
+Root {
+ inputs 0
+ name "C:/Users/rajeshn/Desktop/Rajesh/OpenComp/test_assets/manual_validation/sample_shot.nk"
+ format "1920 1080 0 0 1920 1080 1 HD_1080"
+ proxy_type scale
+ proxy_format "960 540 0 0 960 540 1 0.5k"
+ colorManagement OCIO
+ OCIO_config "aces_1.3"
+}
+Read {
+ inputs 0
+ file "C:/Users/rajeshn/Desktop/Rajesh/OpenComp/test_assets/manual_validation/sample_plate_1080p.exr"
+ format "1920 1080 0 0 1920 1080 1 HD_1080"
+ first 1
+ last 100
+ name Read1
+ xpos -150
+ ypos -120
+}
+Grade {
+ inputs 1
+ blackpoint 0.02
+ whitepoint 0.95
+ lift 0.01
+ gain 1.25
+ multiply 1.05
+ gamma 0.92
+ black_clamp true
+ name Grade1
+ xpos -150
+ ypos -20
+}
+Blur {
+ inputs 1
+ size 8.5
+ name Blur1
+ xpos -150
+ ypos 60
+}
+Viewer {
+ inputs 1
+ name Viewer1
+ xpos -150
+ ypos 140
+}

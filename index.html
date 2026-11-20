@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OpenComp - VFX Node-Based Compositing Workstation</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+  <!-- File:// Protocol CORS Warning (Active ONLY if opened directly from disk without local server) -->
+  <noscript>
+    <div style="background:#800;color:#fff;padding:20px;text-align:center;font-family:sans-serif;font-size:16px;">
+      ⚠️ OpenComp requires JavaScript enabled to run.
+    </div>
+  </noscript>
+  <div id="file-protocol-warning" style="display:none;position:fixed;inset:0;background:#141414;color:#e2e8f0;z-index:999999;font-family:system-ui,-apple-system,sans-serif;padding:40px;text-align:center;flex-direction:column;align-items:center;justify-content:center;">
+    <div style="max-width:680px;background:#202020;border:1px solid #e03131;border-radius:8px;padding:32px;box-shadow:0 16px 48px rgba(0,0,0,0.8);">
+      <div style="font-size:48px;margin-bottom:12px;">⚠️</div>
+      <h1 style="color:#ff6b6b;font-size:20px;margin-bottom:12px;">Cannot Run Directly via file:// Protocol</h1>
+      <p style="font-size:14px;color:#cbd5e1;line-height:1.6;margin-bottom:20px;">
+        Modern browsers enforce strict CORS security policies that block local ES modules (<code>&lt;script type="module"&gt;</code>) when loaded from <code>file:///</code> paths.
+      </p>
+      <div style="background:#111;padding:16px;border-radius:6px;border:1px solid #333;font-family:monospace;font-size:13px;text-align:left;color:#f8f9fa;margin-bottom:20px;">
+        <span style="color:#adb5bd;"># To launch OpenComp with full hardware acceleration:</span><br/>
+        <strong style="color:#ff922b;">run_desktop.bat</strong><br/><br/>
+        <span style="color:#adb5bd;"># Or start the local HTTP server manually:</span><br/>
+        <strong>node server.js</strong><br/>
+        <span style="color:#adb5bd;">Then visit:</span> <a href="http://127.0.0.1:8080/" style="color:#74c0fc;">http://127.0.0.1:8080/</a>
+      </div>
+      <p style="font-size:13px;color:#868e96;margin:0;">
+        Never disable browser security flags globally. Always use OpenComp's local HTTP server (bound exclusively to 127.0.0.1).
+      </p>
+    </div>
+  </div>
+  <script>
+    if (window.location.protocol === 'file:') {
+      var warn = document.getElementById('file-protocol-warning');
+      if (warn) warn.style.display = 'flex';
+      console.error('[OpenComp] Running via file:// protocol is blocked by browser CORS policy. Please launch via run_desktop.bat or visit http://127.0.0.1:8080/');
+    }
+  </script>
+
+  <!-- Top Menu Bar -->
+  <header class="menu-bar">
+    <div class="brand">
+      <span>OpenComp</span>
+      <span class="brand-badge">v1.0 VFX</span>
+    </div>
+
+    <nav class="menu-items">
+      <!-- File Menu -->
+      <div class="menu-dropdown">
+        <button class="menu-btn" id="btn-file-menu">File</button>
+        <div class="dropdown-content">
+          <a href="#" id="menu-new-project">New Project <span class="shortcut-hint">Ctrl+N</span></a>
+          <a href="#" id="menu-open-project">Open Project (.comp, .opencomp) <span class="shortcut-hint">Ctrl+O</span></a>
+          <a href="#" id="menu-save-project">Save Project (.comp) <span class="shortcut-hint">Ctrl+S</span></a>
+          <a href="#" id="menu-save-project-as">Save Project As... <span class="shortcut-hint">Ctrl+Shift+S</span></a>
+          <hr />
+          <a href="#" id="menu-import-script">OpenComp Legacy Script Import (.nk)...</a>
+          <a href="#" id="menu-export-script">OpenComp Script Export (.nk)...</a>
+          <hr />
+          <a href="#" id="menu-render-frame">Export Rendered Frame <span class="shortcut-hint">F7</span></a>
+          <input type="file" id="file-project-open" style="display:none" accept=".comp,.json,.opencomp" />
+          <input type="file" id="file-script-open" style="display:none" accept=".nk" />
+        </div>
+      </div>
+
+      <!-- Edit Menu -->
+      <div class="menu-dropdown">
+        <button class="menu-btn" id="btn-edit-menu">Edit</button>
+        <div class="dropdown-content">
+          <a href="#" id="menu-undo">Undo <span class="shortcut-hint">Ctrl+Z</span></a>
+          <a href="#" id="menu-redo">Redo <span class="shortcut-hint">Ctrl+Y</span></a>
+          <hr />
+          <a href="#" id="menu-select-all">Select All Nodes <span class="shortcut-hint">Ctrl+A</span></a>
+          <a href="#" id="menu-duplicate-node">Duplicate Selected <span class="shortcut-hint">Ctrl+D</span></a>
+          <a href="#" id="menu-delete-node">Delete Selected <span class="shortcut-hint">Del</span></a>
+          <a href="#" id="menu-disable-node">Disable / Bypass <span class="shortcut-hint">D</span></a>
+          <a href="#" id="menu-invert-selection">Invert Selection</a>
+          <hr />
+          <a href="#" id="menu-shortcuts">Keyboard Shortcuts... <span class="shortcut-hint">Shift+S</span></a>
+        </div>
+      </div>
+
+      <!-- Workspace Menu -->
+      <div class="menu-dropdown" id="menu-dropdown-workspace">
+        <button class="menu-btn" id="btn-workspace-menu">Workspace</button>
+        <div class="dropdown-content">
+          <div class="menu-section-header">WORKSPACE PRESETS</div>
+          <div id="workspace-menu-presets-list">
+            <a href="#" id="menu-ws-composite" class="ws-preset-item active-ws">✓ Composite</a>
+            <a href="#" id="menu-ws-roto" class="ws-preset-item">  Roto</a>
+            <a href="#" id="menu-ws-3d" class="ws-preset-item">  3D</a>
+            <a href="#" id="menu-ws-deep-stereo" class="ws-preset-item">  Deep / Stereo</a>
+            <a href="#" id="menu-ws-scripting" class="ws-preset-item">  Scripting</a>
+          </div>
+          <hr />
+          <a href="#" id="menu-ws-save">Save Current Workspace...</a>
+          <a href="#" id="menu-ws-delete">Delete Custom Workspace...</a>
+          <a href="#" id="menu-ws-reset">Reset to Default Layout</a>
+          <hr />
+          <div class="menu-section-header">PANELS</div>
+          <label class="menu-chk-item"><input type="checkbox" id="toggle-panel-viewer" checked /> Viewer</label>
+          <label class="menu-chk-item"><input type="checkbox" id="toggle-panel-nodegraph" checked /> Node Graph (DAG)</label>
+          <label class="menu-chk-item"><input type="checkbox" id="toggle-panel-curveeditor" checked /> Curve Editor</label>
+          <label class="menu-chk-item"><input type="checkbox" id="toggle-panel-properties" checked /> Properties Bin</label>
+          <label class="menu-chk-item"><input type="checkbox" id="toggle-panel-timeline" checked /> Timeline</label>
+        </div>
+      </div>
+
+      <!-- Viewer Menu -->
+      <div class="menu-dropdown">
+        <button class="menu-btn" id="btn-viewer-menu">Viewer</button>
+        <div class="dropdown-content">
+          <div class="menu-section-header">VIEWER LAYOUT</div>
+          <a href="#" id="menu-view-layout-single">Single Viewer</a>
+          <a href="#" id="menu-view-layout-dual">Dual Viewer (A/B)</a>
+          <a href="#" id="menu-view-layout-quad">Quad Viewer (1-4)</a>
+          <a href="#" id="menu-view-layout-reset">Reset Viewer Layout</a>
+          <hr />
+          <div class="menu-section-header">INPUT SLOTS</div>
+          <div class="menu-submenu-grid">
+            <a href="#" data-viewer-slot="1">Slot 1 <span class="shortcut-hint">1</span></a>
+            <a href="#" data-viewer-slot="2">Slot 2 <span class="shortcut-hint">2</span></a>
+            <a href="#" data-viewer-slot="3">Slot 3 <span class="shortcut-hint">3</span></a>
+            <a href="#" data-viewer-slot="4">Slot 4 <span class="shortcut-hint">4</span></a>
+            <a href="#" data-viewer-slot="5">Slot 5 <span class="shortcut-hint">5</span></a>
+            <a href="#" data-viewer-slot="6">Slot 6 <span class="shortcut-hint">6</span></a>
+            <a href="#" data-viewer-slot="7">Slot 7 <span class="shortcut-hint">7</span></a>
+            <a href="#" data-viewer-slot="8">Slot 8 <span class="shortcut-hint">8</span></a>
+            <a href="#" data-viewer-slot="9">Slot 9 <span class="shortcut-hint">9</span></a>
+            <a href="#" data-viewer-slot="10">Slot 10 <span class="shortcut-hint">0</span></a>
+          </div>
+          <hr />
+          <a href="#" id="menu-view-fit">Fit to View <span class="shortcut-hint">F</span></a>
+          <a href="#" id="menu-view-100">1:1 Actual Size <span class="shortcut-hint">H</span></a>
+          <a href="#" id="menu-view-reset">Reset Exposure & Gamma</a>
+          <a href="#" id="menu-view-reset-pipeline">Reset Color Pipeline</a>
+          <hr />
+          <div class="menu-section-header">TOOLS &amp; OVERLAYS</div>
+          <a href="#" id="menu-view-toggle-scopes">Toggle Scopes</a>
+          <a href="#" id="menu-view-clear-roi">Clear Region of Interest (ROI)</a>
+          <hr />
+          <div class="menu-section-header">COMPARISON MODES</div>
+          <a href="#" data-compare-mode="single">Single View</a>
+          <a href="#" data-compare-mode="wipe_h">Horizontal Wipe</a>
+          <a href="#" data-compare-mode="wipe_v">Vertical Wipe</a>
+          <a href="#" data-compare-mode="diff">Difference</a>
+          <a href="#" data-compare-mode="side_by_side">Side-by-Side</a>
+          <hr />
+          <a href="#" class="menu-item-disabled" title="Controlled via viewer toolbar wipe divider">Lock Wipe Divider</a>
+          <a href="#" class="menu-item-disabled" title="Pause viewer auto-updates">Pause Viewer Updates</a>
+        </div>
+      </div>
+
+      <!-- Nodes Menu -->
+      <div class="menu-dropdown" id="menu-dropdown-nodes">
+        <button class="menu-btn" id="btn-nodes-menu">Nodes</button>
+        <div class="dropdown-content nodes-dropdown-catalog" id="nodes-dropdown-catalog">
+          <div class="nodes-menu-search-box">
+            <input type="text" id="nodes-menu-search-input" placeholder="Search nodes (e.g. Grade, Blur, Merge)..." autocomplete="off" />
+          </div>
+          <div class="nodes-menu-catalog-list" id="nodes-menu-catalog-list">
+            <!-- Dynamically populated by NodeCreationService with all 34 registered nodes -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Render Menu -->
+      <div class="menu-dropdown">
+        <button class="menu-btn" id="btn-render-menu">Render</button>
+        <div class="dropdown-content">
+          <a href="#" id="menu-render-active-frame">Export Active Frame <span class="shortcut-hint">F7</span></a>
+          <a href="#" id="menu-render-selected-write">Render Selected Write Node <span class="shortcut-hint">F5</span></a>
+          <a href="#" id="menu-render-cli-info">Batch Render CLI Helper...</a>
+          <hr />
+          <a href="#" id="menu-render-farm-queue">Render Farm Queue &amp; Dispatcher...</a>
+          <a href="#" id="menu-render-pipeline-status">Production Pipeline Status...</a>
+        </div>
+      </div>
+
+      <!-- Cache Menu -->
+      <div class="menu-dropdown">
+        <button class="menu-btn" id="btn-cache-menu">Cache</button>
+        <div class="dropdown-content">
+          <a href="#" id="menu-cache-clear-ram">Clear RAM Buffer Cache</a>
+          <a href="#" id="menu-cache-force-eval">Force Re-evaluate Graph</a>
+          <hr />
+          <a href="#" class="menu-item-disabled" title="No disk cache directory configured">Clear Disk Cache...</a>
+          <a href="#" class="menu-item-disabled" title="Live background playback cache pause">Pause Playback Caching</a>
+        </div>
+      </div>
+
+      <!-- Presets (Demos) -->
+      <div class="menu-dropdown">
+        <button class="menu-btn">Presets (Demos)</button>
+        <div class="dropdown-content">
+          <a href="#" id="menu-preset-greenscreen">1. VFX Greenscreen Keying & BG</a>
+          <a href="#" id="menu-preset-grade">2. Cinematic Color Grade & Glow</a>
+          <a href="#" id="menu-preset-wipe">3. A/B Wipe Comparison</a>
+          <a href="#" id="menu-preset-cornerpin">4. CornerPin 2D Screen Replacement</a>
+          <a href="#" id="menu-preset-curves">5. Multi-Pass Curves & Shuffle</a>
+          <a href="#" id="menu-preset-stereo">6. 2D-to-3D Stereo Conversion (Depth + Anaglyph)</a>
+        </div>
+      </div>
+
+      <!-- Help Menu -->
+      <div class="menu-dropdown">
+        <button class="menu-btn">Help</button>
+        <div class="dropdown-content">
+          <a href="#" id="menu-help-hotkeys">Hotkey Cheat Sheet</a>
+          <a href="#" id="menu-help-shortcuts">Keyboard Shortcut Manager... <span class="shortcut-hint">Shift+S</span></a>
+          <hr />
+          <a href="#" id="menu-help-about">About OpenComp</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Workspace Container (3-Column Layout: Left Palette | Center DAG+Viewer | Right Properties Bin) -->
+  <main class="workspace-container" id="workspace-container">
+
+    <!-- Left Node Creation Toolbar -->
+    <aside class="opencomp-left-toolbar" id="opencomp-left-toolbar">
+      <div class="tool-btn-group" title="Image Nodes">
+        <button class="left-tool-btn" data-category="Image">📁</button>
+        <div class="tool-flyout">
+          <div class="flyout-header">Image</div>
+          <button data-create-node="Read">Read <span class="kbd">R</span></button>
+          <button data-create-node="Write">Write <span class="kbd">W</span></button>
+          <button data-create-node="Constant">Constant</button>
+        </div>
+      </div>
+
+      <div class="tool-btn-group" title="Draw Nodes (Roto, Paint, Ramp)">
+        <button class="left-tool-btn" data-category="Draw">✒️</button>
+        <div class="tool-flyout">
+          <div class="flyout-header">Draw</div>
+          <button data-create-node="Roto">Roto <span class="kbd">O</span></button>
+          <button data-create-node="Paint">Paint</button>
+          <button data-create-node="Ramp">Ramp</button>
+        </div>
+      </div>
+
+      <div class="tool-btn-group" title="Time Nodes">
+        <button class="left-tool-btn" data-category="Time">⏱️</button>
+        <div class="tool-flyout">
+          <div class="flyout-header">Time</div>
+          <button data-create-node="FrameHold">FrameHold</button>
+          <button data-create-node="Retime">Retime</button>
+          <button data-create-node="TimeWarp">TimeWarp</button>
+        </div>
+      </div>
+
+      <div class="tool-btn-group" title="Channel & Keying Nodes">
+        <button class="left-tool-btn" data-category="Channel">🔀</button>
+        <div class="tool-flyout">
+          <div class="flyout-header">Channel</div>
+          <button data-create-node="Shuffle">Shuffle <span class="kbd">S</span></button>
+          <button data-create-node="Keyer">Keyer <span class="kbd">K</span></button>
+        </div>
+      </div>
+
+      <div class="tool-btn-group" title="Color Nodes">
+        <button class="left-tool-btn" data-category="Color">🎨</button>
+        <div class="tool-flyout">
+          <div class="flyout-header">Color</div>
+          <button data-create-node="Grade">Grade <span class="kbd">G</span></button>
+          <button data-create-node="ColorCorrect">ColorCorrect <span class="kbd">C</span></button>
+          <button data-create-node="ColorLookup">ColorLookup</button>
+          <button data-create-node="Colorspace">Colorspace</button>
+          <button data-create-node="Invert">Invert</button>
+        </div>
+      </div>
+
+      <div class="tool-btn-group" title="Filter Nodes">
+        <button class="left-tool-btn" data-category="Filter">💧</button>
+        <div class="tool-flyout">
+          <div class="flyout-header">Filter</div>
+          <button data-create-node="Blur">Blur <span class="kbd">B</span></button>
+          <button data-create-node="EdgeBlur">EdgeBlur</button>
+          <button data-create-node="Erode">Erode <span class="kbd">E</span></button>
+          <button data-create-node="Glow">Glow</button>
+        </div>
+      </div>
+
+      <div class="tool-btn-group" title="Merge & Alpha Nodes">
+        <button class="left-tool-btn" data-category="Merge">⧉</button>
+        <div class="tool-flyout">
+          <div class="flyout-header">Merge</div>
+          <button data-create-node="Merge">Merge <span class="kbd">M</span></button>
+          <button data-create-node="Premult">Premult <span class="kbd">P</span></button>
+          <button data-create-node="Unpremult">Unpremult</button>
+        </div>
+      </div>
+
+      <div class="tool-btn-group" title="Transform Nodes">
+        <button class="left-tool-btn" data-category="Transform">📐</button>
+        <div class="tool-flyout">
+          <div class="flyout-header">Transform</div>
+          <button data-create-node="Transform">Transform <span class="kbd">T</span></button>
+          <button data-create-node="CornerPin">CornerPin</button>
+          <button data-create-node="Crop">Crop</button>
+          <button data-create-node="Reformat">Reformat</button>
+          <button data-create-node="Tracker">Tracker</button>
+          <button data-create-node="PlanarTracker">PlanarTracker</button>
+          <button data-create-node="SplineWarp">SplineWarp</button>
+        </div>
+      </div>
+
+      <div class="tool-btn-group" title="3D & Stereo Conversion Nodes">
+        <button class="left-tool-btn" data-category="Stereo">👓</button>
+        <div class="tool-flyout">
+          <div class="flyout-header">3D Stereo</div>
+          <button data-create-node="Depth">Depth (Z-Map)</button>
+          <button data-create-node="StereoWarp">StereoWarp (DIBR)</button>
+          <button data-create-node="StereoMerge">StereoMerge (3D)</button>
+        </div>
+      </div>
+
+      <div class="tool-btn-group" title="Production 3D Compositing Nodes">
+        <button class="left-tool-btn" data-category="3D">🧊</button>
+        <div class="tool-flyout">
+          <div class="flyout-header">3D Compositing</div>
+          <button data-create-node="Camera3D">Camera3D</button>
+          <button data-create-node="Axis3D">Axis3D</button>
+          <button data-create-node="Card3D">Card3D</button>
+          <button data-create-node="Cube3D">Cube3D</button>
+          <button data-create-node="Scene3D">Scene3D</button>
+          <button data-create-node="Project3D">Project3D</button>
+          <button data-create-node="ScanlineRender">ScanlineRender</button>
+        </div>
+      </div>
+
+      <div class="tool-btn-group" title="Production Deep Compositing Nodes">
+        <button class="left-tool-btn" data-category="Deep">🌌</button>
+        <div class="tool-flyout">
+          <div class="flyout-header">Deep Compositing</div>
+          <button data-create-node="DeepRead">DeepRead</button>
+          <button data-create-node="DeepWrite">DeepWrite</button>
+          <button data-create-node="DeepToImage">DeepToImage</button>
+          <button data-create-node="DeepFromImage">DeepFromImage</button>
+          <button data-create-node="DeepMerge">DeepMerge</button>
+          <button data-create-node="DeepHoldout">DeepHoldout</button>
+          <button data-create-node="DeepCrop">DeepCrop</button>
+        </div>
+      </div>
+
+      <div class="tool-btn-group" title="Other Nodes (Dot, Backdrop)">
+        <button class="left-tool-btn" data-category="Other">⚬</button>
+        <div class="tool-flyout">
+          <div class="flyout-header">Other</div>
+          <button data-create-node="Dot">Dot <span class="kbd">.</span></button>
+          <button data-create-node="Backdrop">Backdrop</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Center Stack (Viewer on top, Node Graph on bottom) -->
+    <section class="left-stack">
+
+      <!-- Viewport Panel -->
+      <div class="viewer-panel" id="viewer-panel">
+        <div class="panel-toolbar" id="viewer-toolbar">
+          <!-- 2D / 3D Mode Toggle (Nuke Tab standard) -->
+          <div class="toolbar-group" id="viewer-mode-group">
+            <button id="btn-viewer-mode-2d" class="btn-tool active" title="2D Compositing Viewport (Tab to toggle)">2D</button>
+            <button id="btn-viewer-mode-3d" class="btn-tool" title="3D Scene Viewport (Tab to toggle)">3D</button>
+          </div>
+
+          <!-- 3D Viewport Controls (Shown in 3D Mode) -->
+          <div class="toolbar-group" id="viewer-3d-toolbar" style="display:none;">
+            <label style="font-size:10px; color:#ff922b; margin-right:3px;">3D View:</label>
+            <select id="viewer-3d-camera-select" class="tool-select" title="3D View Camera / Perspective">
+              <option value="perspective" selected>Perspective (Free)</option>
+              <option value="top">Top</option>
+              <option value="front">Front</option>
+              <option value="right">Right</option>
+              <option value="bottom">Bottom</option>
+              <option value="back">Back</option>
+              <option value="left">Left</option>
+            </select>
+
+            <label style="font-size:10px; color:#aaa; margin-left:4px; margin-right:3px;">Display:</label>
+            <select id="viewer-3d-display-mode" class="tool-select" title="3D Display Mode">
+              <option value="wireframe">Wireframe</option>
+              <option value="shaded" selected>Shaded</option>
+              <option value="textured">Textured</option>
+            </select>
+
+            <label style="font-size:10px; color:#aaa; margin-left:4px; margin-right:3px;">Gizmo:</label>
+            <div style="display:inline-flex; gap:2px;">
+              <button id="btn-gizmo-translate" class="btn-tool active" title="Translate Gizmo [W]">W</button>
+              <button id="btn-gizmo-rotate" class="btn-tool" title="Rotate Gizmo [E]">E</button>
+              <button id="btn-gizmo-scale" class="btn-tool" title="Scale Gizmo [R]">R</button>
+            </div>
+
+            <select id="viewer-3d-coord-space" class="tool-select" title="Coordinate Space (World / Local)" style="margin-left:4px;">
+              <option value="world" selected>World</option>
+              <option value="local">Local</option>
+            </select>
+
+            <button id="btn-viewer-3d-grid" class="btn-tool active" title="Toggle 3D Ground Grid">Grid</button>
+            <button id="btn-viewer-3d-lock-cam" class="btn-tool" title="Lock Camera to View (Navigation writes to Camera node)">🔒 Cam</button>
+            <button id="btn-viewer-3d-frame-sel" class="btn-tool" title="Frame Selected [F]">Frame [F]</button>
+            <button id="btn-viewer-3d-frame-all" class="btn-tool" title="Frame All [A]">All [A]</button>
+          </div>
+
+          <div class="toolbar-group viewer-2d-group">
+            <label style="font-size:10px; color:#aaa; margin-right:3px;">Layout:</label>
+            <select id="viewer-layout-select" class="tool-select" title="Viewer Layout (Single, Dual A/B, Quad 1-4)">
+              <option value="single" selected>Single</option>
+              <option value="dual">Dual (A/B)</option>
+              <option value="dual_v">Dual Vertical</option>
+              <option value="quad">Quad (1-4)</option>
+            </select>
+            <button id="btn-sync-zoom-pan" class="btn-tool active" title="Synchronize Pan &amp; Zoom Across Viewports">Sync</button>
+          </div>
+
+          <div class="toolbar-group viewer-2d-group">
+            <label style="font-size:10px; color:#aaa; margin-right:3px;">Slot:</label>
+            <select id="viewer-input-select" class="tool-select" title="Active Viewer Input Slot (1-10)">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10 (0)</option>
+            </select>
+          </div>
+
+          <div class="toolbar-group viewer-2d-group">
+            <label style="font-size:10px; color:#aaa; margin-right:3px;">Mode:</label>
+            <select id="viewer-compare-select" class="tool-select" title="Viewer Comparison Mode">
+              <option value="single">Single View</option>
+              <option value="wipe_h">Wipe H</option>
+              <option value="wipe_v">Wipe V</option>
+              <option value="diff">Difference</option>
+              <option value="side_by_side">Side-by-Side</option>
+            </select>
+          </div>
+
+          <div class="toolbar-group viewer-2d-group" id="viewer-ab-sources" style="display:none;">
+            <label style="font-size:10px; color:#ff922b;">A:</label>
+            <select id="viewer-source-a" class="tool-select" title="Source A Input Slot">
+              <option value="1" selected>1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+            </select>
+            <label style="font-size:10px; color:#ff922b; margin-left:3px;">B:</label>
+            <select id="viewer-source-b" class="tool-select" title="Source B Input Slot">
+              <option value="1">1</option>
+              <option value="2" selected>2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+            </select>
+          </div>
+
+          <div class="toolbar-group viewer-2d-group">
+            <button id="btn-viewer-tool-nav" class="btn-tool active" title="Navigation Tool (Pan &amp; Zoom)">Pan</button>
+            <button id="btn-viewer-tool-roi" class="btn-tool" title="Region of Interest (ROI) Tool">ROI</button>
+            <button id="btn-viewer-roi-clear" class="btn-reset" title="Clear ROI" style="display:none;">✕</button>
+            <button id="btn-viewer-tool-sample" class="btn-tool" title="Pixel Sampler Tool (Pin Target)">Sample</button>
+          </div>
+
+          <div class="toolbar-group viewer-2d-group">
+            <label style="font-size:10px; color:#aaa; margin-right:3px;">Guides:</label>
+            <select id="viewer-guides-select" class="tool-select" title="Safe Areas &amp; Viewport Guides">
+              <option value="none" selected>None</option>
+              <option value="action_safe">Action Safe (90%)</option>
+              <option value="title_safe">Title Safe (80%)</option>
+              <option value="all_safe">All Safe Areas</option>
+              <option value="format_16_9">16:9 (1.78:1)</option>
+              <option value="format_1_85">1.85:1 Flat</option>
+              <option value="format_2_39">2.39:1 Scope</option>
+              <option value="format_4_3">4:3 Academy</option>
+              <option value="format_1_1">1:1 Square</option>
+              <option value="format_9_16">9:16 Vertical</option>
+              <option value="center_cross">Center Cross</option>
+              <option value="center_marks">Center Marks</option>
+              <option value="rule_thirds">Rule of Thirds</option>
+              <option value="grid">Grid (100px)</option>
+              <option value="all">All Guides</option>
+            </select>
+          </div>
+
+          <div class="toolbar-group viewer-2d-group">
+            <button id="btn-viewer-ocio-toggle" class="btn-tool active" title="Toggle OCIO Processing (Active / Bypass)">OCIO</button>
+            <select id="viewer-ocio-display" class="tool-select" title="OCIO Display Device"></select>
+            <select id="viewer-ocio-view" class="tool-select" title="OCIO View Transform"></select>
+            <span id="viewer-lut-status" class="lut-badge" title="OCIO Display / View Transform Status">OCIO: sRGB / ACES 1.0</span>
+            <button id="btn-reset-color-pipeline" class="btn-reset" title="Reset Color Pipeline">↺</button>
+          </div>
+
+          <div class="toolbar-group slider-group viewer-2d-group">
+            <label>Gain/Exp:</label>
+            <input type="range" id="viewer-exposure-slider" min="-5.0" max="5.0" step="0.1" value="0.0" />
+            <span id="viewer-exposure-val">0.0</span>
+            <button id="btn-reset-exp" class="btn-reset" title="Reset Exposure">↺</button>
+          </div>
+
+          <div class="toolbar-group slider-group viewer-2d-group">
+            <label>Gamma:</label>
+            <input type="range" id="viewer-gamma-slider" min="0.2" max="3.0" step="0.05" value="1.0" />
+            <span id="viewer-gamma-val">1.0</span>
+            <button id="btn-reset-gamma" class="btn-reset" title="Reset Gamma">↺</button>
+          </div>
+
+          <div class="toolbar-group viewer-2d-group">
+            <select id="viewer-layer-select" class="tool-select" title="Active Layer / AOV Channel" style="font-size:10px; width:75px;">
+              <option value="RGBA">RGBA</option>
+            </select>
+            <button class="btn-channel active" data-channel="RGBA">RGBA</button>
+            <button class="btn-channel" data-channel="RGB">RGB</button>
+            <button class="btn-channel" data-channel="RED">R</button>
+            <button class="btn-channel" data-channel="GREEN">G</button>
+            <button class="btn-channel" data-channel="BLUE">B</button>
+            <button class="btn-channel" data-channel="ALPHA">A</button>
+            <button class="btn-channel" data-channel="LUMA">Luma</button>
+          </div>
+
+          <div class="toolbar-group viewer-2d-group">
+            <button id="btn-stereo-left" class="btn-tool" title="Stereo Left Eye [L]">L</button>
+            <button id="btn-stereo-right" class="btn-tool" title="Stereo Right Eye [R]">R</button>
+            <button id="btn-stereo-3d" class="btn-tool" title="Stereo 3D Anaglyph">3D 🕶️</button>
+            <span id="viewer-deep-badge" class="badge-deep" style="display:none;" title="Active Deep Image Buffer">🌊 DEEP</span>
+          </div>
+
+          <div class="toolbar-group viewer-2d-group">
+            <button id="btn-toggle-scopes" class="btn-tool" title="Toggle Real-Time Image Scopes">Scopes</button>
+            <select id="viewer-scope-type" class="tool-select" title="Scope Type" style="display:none;">
+              <option value="waveform" selected>Waveform</option>
+              <option value="parade">RGB Parade</option>
+              <option value="histogram">Histogram</option>
+              <option value="vectorscope">Vectorscope</option>
+              <option value="pixel_analyzer">Pixel Analyzer</option>
+            </select>
+          </div>
+
+          <div class="toolbar-group" style="margin-left: auto;">
+            <select id="viewer-zoom-preset" class="tool-select" title="Zoom Preset" style="font-family: monospace; font-size:10px; width:65px;">
+              <option value="fit">Fit</option>
+              <option value="1.0" selected>100%</option>
+              <option value="0.25">25%</option>
+              <option value="0.5">50%</option>
+              <option value="2.0">200%</option>
+              <option value="4.0">400%</option>
+              <option value="8.0">800%</option>
+            </select>
+            <span id="viewer-zoom-label" style="font-family: monospace; color:#999; font-size:10px;">100%</span>
+            <button id="btn-fit-view" class="btn-tool" title="Fit to View (Hotkey: F)">Fit [F]</button>
+            <button id="btn-actual-view" class="btn-tool" title="1:1 Actual Size (Hotkey: H)">1:1 [H]</button>
+            <button id="btn-reset-view" class="btn-tool" title="Reset View (Hotkey: Home)">Reset</button>
+          </div>
+        </div>
+
+        <!-- Context-Sensitive Department Toolbar (Roto, Paint, Keyer) -->
+        <div class="panel-toolbar context-toolbar" id="viewer-context-toolbar" style="display:none; background:#181818; border-top:1px solid #292929; border-bottom:1px solid #333; padding:3px 8px; gap:8px; align-items:center; min-height:28px;"></div>
+
+        <div class="canvas-wrapper">
+          <canvas id="viewer-canvas"></canvas>
+          <div class="viewer-scopes-overlay" id="viewer-scopes-overlay" style="display:none;">
+            <div class="scopes-header">
+              <span class="scopes-title" id="scopes-overlay-title">📊 Image Scope: Waveform</span>
+              <button class="scopes-close-btn" id="btn-close-scopes" title="Close Scopes">✕</button>
+            </div>
+            <canvas id="viewer-scopes-canvas" width="360" height="240"></canvas>
+          </div>
+        </div>
+
+        <div class="info-bar" id="viewer-info-bar">
+          <span class="info-res">1920 x 1080 (32-bit Float Linear)</span>
+        </div>
+      </div>
+
+      <!-- Horizontal Splitter between Viewer and Node Graph -->
+      <div class="splitter-h" id="splitter-viewer-dag" title="Drag to resize Viewer / Node Graph"></div>
+
+      <!-- Node Graph (DAG) & Curve Editor Panel -->
+      <div class="node-graph-panel" id="node-graph-panel">
+        <div class="panel-header-tab" id="dag-panel-tabs">
+          <div style="display:flex; gap:2px; align-items:center;">
+            <button class="dag-tab-btn active" id="tab-btn-nodegraph">Node Graph (DAG)</button>
+            <button class="dag-tab-btn" id="tab-btn-curveeditor">Curve Editor</button>
+            <button class="dag-tab-btn" id="tab-btn-dopesheet">Dope Sheet</button>
+            <button class="dag-tab-btn" id="tab-btn-scenegraph">Scene Graph</button>
+            <button class="dag-tab-btn" id="tab-btn-particles">Particles</button>
+            <button class="dag-tab-btn" id="tab-btn-deepinspector">Deep Inspector</button>
+            <button class="dag-tab-btn" id="tab-btn-metadata">Metadata &amp; AOVs</button>
+            <button class="dag-tab-btn" id="tab-btn-stereo">Stereo 3D</button>
+            <button class="dag-tab-btn" id="tab-btn-production">Production &amp; Farm</button>
+          </div>
+          <span class="tab-hint" id="tab-hint-text">Press <kbd>Tab</kbd> to add node | <kbd>1-0</kbd> to view | <kbd>D</kbd> to disable</span>
+        </div>
+
+        <div class="canvas-wrapper" id="nodegraph-canvas-wrapper" style="width:100%; height:100%;">
+          <canvas id="node-graph-canvas"></canvas>
+        </div>
+
+        <div class="canvas-wrapper" id="curveeditor-canvas-wrapper" style="display:none; position:relative; width:100%; height:100%;">
+          <div class="curve-editor-toolbar" style="position:absolute; top:8px; right:12px; z-index:10; display:flex; gap:6px;">
+            <button class="btn-tool" id="btn-curve-fit" title="Fit Curve View [F]">Fit [F]</button>
+            <button class="btn-tool" id="btn-curve-smooth" title="Smooth Tangents">Smooth</button>
+            <button class="btn-tool" id="btn-curve-flat" title="Flat Tangents">Flat</button>
+            <button class="btn-tool" id="btn-curve-linear" title="Linear Tangents">Linear</button>
+            <button class="btn-tool" id="btn-curve-free" title="Free / Broken Tangents">Free</button>
+          </div>
+          <canvas id="curve-editor-canvas" style="width:100%; height:100%;"></canvas>
+        </div>
+
+        <div class="canvas-wrapper" id="dopesheet-wrapper" style="display:none; position:relative; width:100%; height:100%;">
+          <!-- Populated by DopeSheetUI.js -->
+        </div>
+
+        <div class="canvas-wrapper" id="scenegraph-wrapper" style="display:none; position:relative; width:100%; height:100%;">
+          <!-- Populated by SceneGraphUI.js -->
+        </div>
+
+        <div class="canvas-wrapper" id="particles-wrapper" style="display:none; position:relative; width:100%; height:100%;">
+          <!-- Populated by ParticlesUI.js -->
+        </div>
+
+        <div class="canvas-wrapper" id="deepinspector-wrapper" style="display:none; position:relative; width:100%; height:100%;">
+          <!-- Populated by DeepInspectorUI.js -->
+        </div>
+
+        <div class="canvas-wrapper" id="metadata-wrapper" style="display:none; position:relative; width:100%; height:100%;">
+          <!-- Populated by MetadataUI.js -->
+        </div>
+
+        <div class="canvas-wrapper" id="stereo-wrapper" style="display:none; position:relative; width:100%; height:100%;">
+          <!-- Populated by StereoUI.js -->
+        </div>
+
+        <div class="canvas-wrapper" id="production-wrapper" style="display:none; position:relative; width:100%; height:100%; overflow:auto;">
+          <!-- Populated by ProductionPipelineUI.js -->
+        </div>
+
+        <!-- Tab Node Spawner Quick Search Popup -->
+        <div id="node-search-popup" class="search-popup">
+          <div class="search-input-box">
+            <input type="text" id="node-search-input" placeholder="Type node name (e.g. Merge, Grade)..."
+              autocomplete="off" />
+          </div>
+          <div id="node-search-results" class="search-results"></div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Vertical Splitter between Center Stack and Properties Bin -->
+    <div class="splitter-v" id="splitter-center-props" title="Drag to resize Properties Bin"></div>
+
+    <!-- Right Properties Bin (Unified Parameters & Tools) -->
+    <aside class="properties-panel" id="properties-panel">
+      <div class="panel-header-tab">
+        <span class="tab-title" id="properties-panel-title">Properties Bin</span>
+        <div class="properties-header-actions">
+          <button id="btn-clear-properties" class="btn-tool-sm" title="Close all open property panels">✕ Clear</button>
+        </div>
+      </div>
+      <div class="properties-content" id="properties-container">
+        <!-- Dynamically populated by PropertiesUI.js for open nodes -->
+      </div>
+    </aside>
+
+  </main>
+
+  <!-- Node Graph Right-Click Context Menu -->
+  <div id="nodegraph-context-menu" class="opencomp-context-menu" style="display:none;">
+    <div class="ctx-header">Add Node</div>
+    <div class="ctx-item" data-create-node="Read">📁 Image &gt; Read <span class="kbd">R</span></div>
+    <div class="ctx-item" data-create-node="Write">📁 Image &gt; Write <span class="kbd">W</span></div>
+    <div class="ctx-item" data-create-node="Roto">✒️ Draw &gt; Roto <span class="kbd">O</span></div>
+    <div class="ctx-item" data-create-node="Paint">🎨 Draw &gt; Paint</div>
+    <div class="ctx-item" data-create-node="Grade">🎨 Color &gt; Grade <span class="kbd">G</span></div>
+    <div class="ctx-item" data-create-node="ColorCorrect">🎨 Color &gt; ColorCorrect <span class="kbd">C</span></div>
+    <div class="ctx-item" data-create-node="Blur">💧 Filter &gt; Blur <span class="kbd">B</span></div>
+    <div class="ctx-item" data-create-node="ZDefocus">💧 Filter &gt; ZDefocus</div>
+    <div class="ctx-item" data-create-node="Merge">⧉ Merge &gt; Merge <span class="kbd">M</span></div>
+    <div class="ctx-item" data-create-node="Switch">⧉ Merge &gt; Switch</div>
+    <div class="ctx-item" data-create-node="Premult">⧉ Merge &gt; Premult <span class="kbd">P</span></div>
+    <div class="ctx-item" data-create-node="Keyer">🔀 Keyer &gt; Keyer <span class="kbd">K</span></div>
+    <div class="ctx-item" data-create-node="Transform">📐 Transform &gt; Transform <span class="kbd">T</span></div>
+    <div class="ctx-item" data-create-node="Depth">👓 3D &gt; Depth</div>
+    <div class="ctx-item" data-create-node="StereoWarp">👓 3D &gt; StereoWarp</div>
+    <div class="ctx-item" data-create-node="StereoMerge">👓 3D &gt; StereoMerge</div>
+    <div class="ctx-item" data-create-node="Dot">⚬ Other &gt; Dot <span class="kbd">.</span></div>
+    <div class="ctx-item" data-create-node="Backdrop">⚬ Other &gt; Backdrop</div>
+    <hr class="ctx-hr" />
+    <div class="ctx-item" id="ctx-action-duplicate">Duplicate Selected <span class="kbd">Ctrl+D</span></div>
+    <div class="ctx-item" id="ctx-action-disable">Disable / Bypass <span class="kbd">D</span></div>
+    <div class="ctx-item" id="ctx-action-delete">Delete Selected <span class="kbd">Del</span></div>
+  </div>
+
+  <!-- Viewer Right-Click Context Menu -->
+  <div id="viewer-context-menu" class="opencomp-context-menu" style="display:none;">
+    <div class="ctx-header">Viewer Controls</div>
+    <div class="ctx-item" id="ctx-view-fit">Fit to View <span class="kbd">F</span></div>
+    <div class="ctx-item" id="ctx-view-100">1:1 Actual Size <span class="kbd">H</span></div>
+    <div class="ctx-item" id="ctx-view-reset-view">Reset View <span class="kbd">Home</span></div>
+    <hr class="ctx-hr" />
+    <div class="ctx-item" id="ctx-view-rgba">Channels: RGBA <span class="kbd">~</span></div>
+    <div class="ctx-item" id="ctx-view-rgb">Channels: RGB <span class="kbd">C</span></div>
+    <div class="ctx-item" id="ctx-view-red">Channel: Red <span class="kbd">R</span></div>
+    <div class="ctx-item" id="ctx-view-green">Channel: Green <span class="kbd">G</span></div>
+    <div class="ctx-item" id="ctx-view-blue">Channel: Blue <span class="kbd">B</span></div>
+    <div class="ctx-item" id="ctx-view-alpha">Channel: Alpha <span class="kbd">A</span></div>
+    <div class="ctx-item" id="ctx-view-luma">Channel: Luminance <span class="kbd">Y</span></div>
+    <hr class="ctx-hr" />
+    <div class="ctx-item" id="ctx-view-wipe">Toggle Wipe Mode <span class="kbd">W</span></div>
+    <div class="ctx-item" id="ctx-view-scopes">Toggle Scopes <span class="kbd">S</span></div>
+    <div class="ctx-item" id="ctx-view-pixel-analyzer">Pixel Analyzer</div>
+    <hr class="ctx-hr" />
+    <div class="ctx-item" id="ctx-view-reset">Reset Exposure & Gamma</div>
+  </div>
+
+  <!-- Bottom Timeline & Dopesheet -->
+  <footer class="timeline-bar" id="timeline-bar">
+    <!-- Populated by TimelineUI.js -->
+  </footer>
+
+  <!-- Save Custom Workspace Modal -->
+  <div id="workspace-save-modal" class="opencomp-modal-overlay" style="display:none;">
+    <div class="opencomp-modal-card" style="max-width:420px;">
+      <div class="modal-header">
+        <div class="modal-title">💾 Save Custom Workspace</div>
+        <button class="modal-close-btn" id="btn-close-ws-modal">✕</button>
+      </div>
+      <div class="modal-body" style="padding:16px;">
+        <label style="display:block; margin-bottom:8px; font-weight:500; font-size:12px;">Workspace Name:</label>
+        <input type="text" id="ws-save-name-input" class="sc-search-input" placeholder="e.g. My Dual Monitor, Clean Review..." style="width:100%; margin-bottom:12px;" />
+        <small style="color:var(--text-muted); font-size:11px;">Saves current panel sizes, positions, visibility, and floating windows to local storage.</small>
+      </div>
+      <div class="modal-footer">
+        <button id="btn-ws-cancel" class="btn-sc-secondary">Cancel</button>
+        <button id="btn-ws-confirm-save" class="btn-sc-primary">Save Workspace</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="src/app.js"></script>
+</body>
+
+</html>

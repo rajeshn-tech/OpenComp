@@ -1,0 +1,45 @@
+#usda 1.0
+(
+    doc = """Generated from Composed Stage of root layer 
+"""
+    endTimeCode = 10
+    metersPerUnit = 1
+    startTimeCode = 1
+    upAxis = "Y"
+)
+
+def "Cameras"
+{
+    def Camera "ShotCam"
+    {
+        float2 clippingRange = (0.1, 5000)
+        float focalLength.timeSamples = {
+            1: 35,
+            2: 38,
+            3: 41,
+            4: 44,
+            5: 47,
+            6: 50,
+            7: 53,
+            8: 56,
+            9: 59,
+            10: 62,
+        }
+        float horizontalAperture = 24.89
+        float verticalAperture = 18.67
+        double3 xformOp:translate.timeSamples = {
+            1: (0, 1.5, 9.5),
+            2: (0, 1.5, 9),
+            3: (0, 1.5, 8.5),
+            4: (0, 1.5, 8),
+            5: (0, 1.5, 7.5),
+            6: (0, 1.5, 7),
+            7: (0, 1.5, 6.5),
+            8: (0, 1.5, 6),
+            9: (0, 1.5, 5.5),
+            10: (0, 1.5, 5),
+        }
+        uniform token[] xformOpOrder = ["xformOp:translate"]
+    }
+}
+

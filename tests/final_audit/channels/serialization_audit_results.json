@@ -1,0 +1,124 @@
+{
+  "test_16_pair_save_reload": true,
+  "test_legacy_4_pair_load": true,
+  "pairs_16_checked": [
+    {
+      "index": 0,
+      "from": "depth.Z",
+      "to": "target_depth.Z",
+      "verified": true
+    },
+    {
+      "index": 1,
+      "from": "forward.u",
+      "to": "target_forward.u",
+      "verified": true
+    },
+    {
+      "index": 2,
+      "from": "forward.v",
+      "to": "target_forward.v",
+      "verified": true
+    },
+    {
+      "index": 3,
+      "from": "backward.u",
+      "to": "target_backward.u",
+      "verified": true
+    },
+    {
+      "index": 4,
+      "from": "backward.v",
+      "to": "target_backward.v",
+      "verified": true
+    },
+    {
+      "index": 5,
+      "from": "diffuse.R",
+      "to": "target_diffuse.R",
+      "verified": true
+    },
+    {
+      "index": 6,
+      "from": "diffuse.G",
+      "to": "target_diffuse.G",
+      "verified": true
+    },
+    {
+      "index": 7,
+      "from": "diffuse.B",
+      "to": "target_diffuse.B",
+      "verified": true
+    },
+    {
+      "index": 8,
+      "from": "specular.R",
+      "to": "target_specular.R",
+      "verified": true
+    },
+    {
+      "index": 9,
+      "from": "specular.G",
+      "to": "target_specular.G",
+      "verified": true
+    },
+    {
+      "index": 10,
+      "from": "specular.B",
+      "to": "target_specular.B",
+      "verified": true
+    },
+    {
+      "index": 11,
+      "from": "normal.X",
+      "to": "target_normal.X",
+      "verified": true
+    },
+    {
+      "index": 12,
+      "from": "normal.Y",
+      "to": "target_normal.Y",
+      "verified": true
+    },
+    {
+      "index": 13,
+      "from": "normal.Z",
+      "to": "target_normal.Z",
+      "verified": true
+    },
+    {
+      "index": 14,
+      "from": "crypto_material",
+      "to": "target_crypto_material",
+      "verified": true
+    },
+    {
+      "index": 15,
+      "from": "crypto_object",
+      "to": "target_crypto_object",
+      "verified": true
+    }
+  ],
+  "legacy_pairs_checked": [
+    {
+      "index": 0,
+      "from": "rgba.alpha",
+      "to": "rgba.alpha"
+    },
+    {
+      "index": 1,
+      "from": "depth.Z",
+      "to": "depth.Z"
+    },
+    {
+      "index": 2,
+      "from": "forward.u",
+      "to": "forward.u"
+    },
+    {
+      "index": 3,
+      "from": "specular.R",
+      "to": "specular.R"
+    }
+  ]
+}

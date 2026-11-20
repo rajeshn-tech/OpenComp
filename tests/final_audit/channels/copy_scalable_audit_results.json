@@ -1,0 +1,151 @@
+{
+  "file_path": "C:\\Users\\rajeshn\\Desktop\\Rajesh\\OpenComp\\tests\\final_audit\\channels\\test_copy_scalable_8ch.exr",
+  "width": 64,
+  "height": 64,
+  "total_channels_in_header": 13,
+  "header_channel_list": [
+    "A",
+    "B",
+    "G",
+    "R",
+    "ambient.R",
+    "crypto_object.01",
+    "depth.Z",
+    "diffuse.B",
+    "diffuse.G",
+    "diffuse.R",
+    "forward.u",
+    "forward.v",
+    "specular.R"
+  ],
+  "all_expected_channels_present": true,
+  "channel_preservation_ambient_R_bit_exact": true,
+  "copied_8_channels_bit_exact": true,
+  "rgba_preservation": {
+    "r_gradient_check": true,
+    "g_gradient_check": true,
+    "b_constant_0.5": true,
+    "a_constant_1.0": true
+  },
+  "overall_audit_passed": true,
+  "channel_details": {
+    "R": {
+      "present": true,
+      "length": 4096,
+      "min": 0.0,
+      "max": 0.984375,
+      "mean": 0.4921875
+    },
+    "G": {
+      "present": true,
+      "length": 4096,
+      "min": 0.0,
+      "max": 0.984375,
+      "mean": 0.4921875
+    },
+    "B": {
+      "present": true,
+      "length": 4096,
+      "min": 0.5,
+      "max": 0.5,
+      "mean": 0.5
+    },
+    "A": {
+      "present": true,
+      "length": 4096,
+      "min": 1.0,
+      "max": 1.0,
+      "mean": 1.0
+    },
+    "ambient.R": {
+      "present": true,
+      "length": 4096,
+      "min": 42.5,
+      "max": 42.5,
+      "mean": 42.5,
+      "expected_val": 42.5,
+      "max_delta": 0.0,
+      "bit_exact": true
+    },
+    "depth.Z": {
+      "present": true,
+      "length": 4096,
+      "min": 150.25,
+      "max": 150.25,
+      "mean": 150.25,
+      "expected_val": 150.25,
+      "max_delta": 0.0,
+      "bit_exact": true
+    },
+    "forward.u": {
+      "present": true,
+      "length": 4096,
+      "min": 1.5,
+      "max": 1.5,
+      "mean": 1.5,
+      "expected_val": 1.5,
+      "max_delta": 0.0,
+      "bit_exact": true
+    },
+    "forward.v": {
+      "present": true,
+      "length": 4096,
+      "min": -2.75,
+      "max": -2.75,
+      "mean": -2.75,
+      "expected_val": -2.75,
+      "max_delta": 0.0,
+      "bit_exact": true
+    },
+    "diffuse.R": {
+      "present": true,
+      "length": 4096,
+      "min": 0.800000011920929,
+      "max": 0.800000011920929,
+      "mean": 0.8000001311302185,
+      "expected_val": 0.8,
+      "max_delta": 0.0,
+      "bit_exact": true
+    },
+    "diffuse.G": {
+      "present": true,
+      "length": 4096,
+      "min": 0.6000000238418579,
+      "max": 0.6000000238418579,
+      "mean": 0.6000000238418579,
+      "expected_val": 0.6,
+      "max_delta": 0.0,
+      "bit_exact": true
+    },
+    "diffuse.B": {
+      "present": true,
+      "length": 4096,
+      "min": 0.4000000059604645,
+      "max": 0.4000000059604645,
+      "mean": 0.40000006556510925,
+      "expected_val": 0.4,
+      "max_delta": 0.0,
+      "bit_exact": true
+    },
+    "specular.R": {
+      "present": true,
+      "length": 4096,
+      "min": 0.949999988079071,
+      "max": 0.949999988079071,
+      "mean": 0.9499998688697815,
+      "expected_val": 0.95,
+      "max_delta": 0.0,
+      "bit_exact": true
+    },
+    "crypto_object.01": {
+      "present": true,
+      "length": 4096,
+      "min": 1042.0,
+      "max": 1042.0,
+      "mean": 1042.0,
+      "expected_val": 1042.0,
+      "max_delta": 0.0,
+      "bit_exact": true
+    }
+  }
+}

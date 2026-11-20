@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# ==============================================================================
+# OpenComp Headless CLI Batch Renderer Launcher (Linux / macOS)
+# Runs bin/opencomp-render.mjs with Node.js and 4GB heap space.
+# ==============================================================================
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+NODE_BIN="node"
+
+if ! command -v node >/dev/null 2>&1; then
+    echo "❌ ERROR: Node.js is not found in PATH."
+    exit 1
+fi
+
+exec "$NODE_BIN" --max-old-space-size=4096 "${SCRIPT_DIR}/bin/opencomp-render.mjs" "$@"
+

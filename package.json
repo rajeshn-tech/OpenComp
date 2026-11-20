@@ -1,0 +1,27 @@
+{
+  "name": "opencomp-vfx",
+  "version": "1.0.0",
+  "description": "Professional Node-Based VFX Compositing Workstation",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node tests/run_all_tests.mjs",
+    "test:all": "node tests/run_all_tests.mjs",
+    "test:smoke": "node tests/test_nodes_smoke.mjs",
+    "test:docking": "node tests/test_ui_docking_workspace.mjs",
+    "test:viewer": "node tests/test_ui_advanced_viewer_color.mjs"
+  },
+  "keywords": [
+    "vfx",
+    "compositing",
+    "opencomp",
+    "node-graph",
+    "dag",
+    "color-grading",
+    "chroma-key"
+  ],
+  "author": "OpenComp Studio",
+  "license": "MIT"
+}
+

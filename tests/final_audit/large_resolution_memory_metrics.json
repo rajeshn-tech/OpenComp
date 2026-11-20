@@ -1,0 +1,62 @@
+[
+  {
+    "resolution": "4K UHD",
+    "dimensions": "3840x2160",
+    "totalMegaPixels": "8.29",
+    "rawBufferMB": "126.56",
+    "allocationMode": "Contiguous Flat Buffer",
+    "contiguousAllowed": true,
+    "allocTimeMs": "0.6",
+    "pointOpTimeMs": "122.8",
+    "heapUsedBeforeMB": "5.26",
+    "heapUsedPeakMB": "5.49",
+    "rssPeakMB": "180.75",
+    "maxSeamDelta": "1.907e-8",
+    "status": "VERIFIED"
+  },
+  {
+    "resolution": "8K UHD",
+    "dimensions": "7680x4320",
+    "totalMegaPixels": "33.18",
+    "rawBufferMB": "506.25",
+    "allocationMode": "Contiguous Flat Buffer",
+    "contiguousAllowed": true,
+    "allocTimeMs": "0.8",
+    "pointOpTimeMs": "616.9",
+    "heapUsedBeforeMB": "5.51",
+    "heapUsedPeakMB": "5.32",
+    "rssPeakMB": "560.95",
+    "maxSeamDelta": "1.907e-8",
+    "status": "VERIFIED"
+  },
+  {
+    "resolution": "12K DCI",
+    "dimensions": "12288x6480",
+    "totalMegaPixels": "79.63",
+    "rawBufferMB": "1215.00",
+    "allocationMode": "Contiguous Flat Buffer",
+    "contiguousAllowed": true,
+    "allocTimeMs": "2.8",
+    "pointOpTimeMs": "1552.4",
+    "heapUsedBeforeMB": "5.32",
+    "heapUsedPeakMB": "4.72",
+    "rssPeakMB": "1269.72",
+    "maxSeamDelta": "1.907e-8",
+    "status": "VERIFIED"
+  },
+  {
+    "resolution": "16K Extreme",
+    "dimensions": "15360x8640",
+    "totalMegaPixels": "132.71",
+    "rawBufferMB": "2025.00",
+    "allocationMode": "Tiled (8x5 = 40 tiles)",
+    "contiguousAllowed": false,
+    "allocTimeMs": "159.8",
+    "pointOpTimeMs": "1956.2",
+    "heapUsedBeforeMB": "4.73",
+    "heapUsedPeakMB": "4.60",
+    "rssPeakMB": "2080.23",
+    "maxSeamDelta": "1.907e-8",
+    "status": "VERIFIED"
+  }
+]

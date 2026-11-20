@@ -1,0 +1,221 @@
+{
+  "version": "1.0",
+  "nodes": [
+    {
+      "id": "Read1",
+      "name": "Read1",
+      "type": "Read",
+      "category": "Image",
+      "x": 0,
+      "y": 0,
+      "disabled": false,
+      "knobs": {
+        "sourceType": {
+          "value": "ramp"
+        },
+        "format": {
+          "value": "1920x1080"
+        },
+        "file": {
+          "value": ""
+        },
+        "first": {
+          "value": 1
+        },
+        "last": {
+          "value": 100
+        },
+        "frame": {
+          "value": 1
+        },
+        "channels": {
+          "value": "all"
+        },
+        "on_error": {
+          "value": "error"
+        }
+      },
+      "inputs": []
+    },
+    {
+      "id": "Grade1",
+      "name": "Grade1",
+      "type": "Grade",
+      "category": "Color",
+      "x": 0,
+      "y": 0,
+      "disabled": false,
+      "knobs": {
+        "blackpoint": {
+          "value": 0
+        },
+        "whitepoint": {
+          "value": 1
+        },
+        "lift": {
+          "value": 0
+        },
+        "gain": {
+          "value": 1.25,
+          "keyframes": {
+            "1": 1,
+            "5": 1.5
+          }
+        },
+        "multiply": {
+          "value": 1
+        },
+        "offset": {
+          "value": 0
+        },
+        "gamma": {
+          "value": 0.9
+        },
+        "blackClamp": {
+          "value": true
+        },
+        "whiteClamp": {
+          "value": false
+        },
+        "reverse": {
+          "value": false
+        }
+      },
+      "inputs": [
+        {
+          "id": "in",
+          "name": "in",
+          "connection": {
+            "nodeId": "Read1",
+            "outputPortId": "out"
+          }
+        },
+        {
+          "id": "mask",
+          "name": "mask",
+          "connection": null
+        }
+      ]
+    },
+    {
+      "id": "Blur1",
+      "name": "Blur1",
+      "type": "Blur",
+      "category": "Filter",
+      "x": 0,
+      "y": 0,
+      "disabled": false,
+      "knobs": {
+        "size": {
+          "value": 6
+        },
+        "aspectRatio": {
+          "value": 1
+        },
+        "channels": {
+          "value": "rgba"
+        }
+      },
+      "inputs": [
+        {
+          "id": "in",
+          "name": "in",
+          "connection": {
+            "nodeId": "Grade1",
+            "outputPortId": "out"
+          }
+        },
+        {
+          "id": "mask",
+          "name": "mask",
+          "connection": null
+        }
+      ]
+    },
+    {
+      "id": "Transform1",
+      "name": "Transform1",
+      "type": "Transform",
+      "category": "Transform",
+      "x": 0,
+      "y": 0,
+      "disabled": false,
+      "knobs": {
+        "translateX": {
+          "value": 0,
+          "keyframes": {
+            "1": 0,
+            "5": 80
+          }
+        },
+        "translateY": {
+          "value": 0
+        },
+        "rotate": {
+          "value": 0
+        },
+        "scale": {
+          "value": 1
+        },
+        "scaleY": {
+          "value": 1
+        },
+        "centerRatio": {
+          "value": "center"
+        }
+      },
+      "inputs": [
+        {
+          "id": "in",
+          "name": "in",
+          "connection": {
+            "nodeId": "Blur1",
+            "outputPortId": "out"
+          }
+        }
+      ]
+    },
+    {
+      "id": "Write_Final",
+      "name": "Write_Final",
+      "type": "Write",
+      "category": "Image",
+      "x": 0,
+      "y": 0,
+      "disabled": false,
+      "knobs": {
+        "filePrefix": {
+          "value": "render_comp_v01"
+        },
+        "fileType": {
+          "value": "image/exr"
+        },
+        "datatype": {
+          "value": "16bit_half"
+        },
+        "compression": {
+          "value": "dwaa"
+        },
+        "compressionQuality": {
+          "value": 45
+        },
+        "channels": {
+          "value": "all"
+        },
+        "quality": {
+          "value": 0.95
+        }
+      },
+      "inputs": [
+        {
+          "id": "in",
+          "name": "in",
+          "connection": {
+            "nodeId": "Transform1",
+            "outputPortId": "out"
+          }
+        }
+      ]
+    }
+  ]
+}

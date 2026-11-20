@@ -1,0 +1,15 @@
+{
+  "identifier": "org.openfx:SampleInvert",
+  "name": "Sample Invert (Bundle)",
+  "versionMajor": 1,
+  "versionMinor": 2,
+  "description": "Standard OpenFX bundle fixture for filesystem discovery testing",
+  "supportedContexts": [
+    "OfxImageEffectContextFilter"
+  ],
+  "supportedBitDepths": [
+    "OfxBitDepthFloat",
+    "OfxBitDepthShort",
+    "OfxBitDepthByte"
+  ]
+}
